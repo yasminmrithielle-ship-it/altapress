@@ -25,7 +25,9 @@
       "package": "com.anonymous.altapress"
     },
     "web": {
-      "favicon": "./assets/alta-press-favicon.png"
+      "favicon": "./assets/alta-press-favicon.png",
+      "bundler": "metro",
+      "output": "single"
     }
   }
 }

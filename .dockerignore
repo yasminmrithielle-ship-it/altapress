@@ -1,0 +1,8 @@
+.git
+.expo
+dist
+node_modules
+node_modules_partial_failed_install
+android
+local-maven
+test-guava-31.0.1-jre.jar
