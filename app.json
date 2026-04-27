@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "ALTA PRESS",
+    "slug": "alta-press",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/alta-press-logo.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/alta-press-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#090a0c"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/alta-press-logo.png",
+        "backgroundColor": "#090a0c"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.altapress"
+    },
+    "web": {
+      "favicon": "./assets/alta-press-favicon.png"
+    }
+  }
+}
