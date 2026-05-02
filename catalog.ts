@@ -17,16 +17,12 @@ export type CatalogItem = {
   id: string;
   title: string;
   category: CatalogCategory;
-  sourceUrl?: string;
-  sourceLabel?: string;
-  status: 'alta-press' | 'external-reference' | 'authorized-ready';
+  status: 'alta-press' | 'catalog-placeholder' | 'authorized-ready';
   summary: string;
   tags: string[];
   specs: CatalogSpec[];
   localAsset?: string;
 };
-
-const VALACO_BASE_URL = 'http://www.valaco.com.br/produtos/';
 
 function normalizeTitle(slug: string) {
   const clean = slug
@@ -69,23 +65,21 @@ function tagsFromSlug(slug: string, category: CatalogCategory) {
   ];
 }
 
-function makeExternalItem(category: CatalogCategory, slug: string): CatalogItem {
+function makeCatalogPlaceholder(category: CatalogCategory, slug: string): CatalogItem {
   const title = normalizeTitle(slug);
 
   return {
     id: `${category.toLowerCase()}-${slug.replace(/[^a-z0-9]+/gi, '-').replace(/-$/g, '')}`,
     title,
     category,
-    sourceUrl: `${VALACO_BASE_URL}${slug}`,
-    sourceLabel: 'Ficha tecnica externa',
-    status: 'external-reference',
+    status: 'catalog-placeholder',
     summary:
-      'Referencia externa para consulta da ficha original. O conteudo tecnico protegido nao foi copiado para o app.',
+      'Produto cadastrado como estrutura inicial do catalogo. Imagem e especificacoes autorizadas serao inseridas futuramente.',
     tags: tagsFromSlug(slug, category),
     specs: [
-      { label: 'Origem', value: 'Link externo Val Aco' },
-      { label: 'Uso no app', value: 'Consulta por referencia' },
-      { label: 'Dados locais', value: 'Aguardando catalogo autorizado Alta Press' },
+      { label: 'Imagem', value: 'Em breve' },
+      { label: 'Ficha tecnica', value: 'Aguardando dados autorizados' },
+      { label: 'Status', value: 'Preparado para cadastro Alta Press' },
     ],
   };
 }
@@ -334,21 +328,21 @@ export const ALTA_PRESS_INTERNAL_ITEMS: CatalogItem[] = [
   },
 ];
 
-export const VALACO_REFERENCE_ITEMS: CatalogItem[] = [
-  ...valvulas.map((slug) => makeExternalItem('Valvulas', slug)),
-  ...flanges.map((slug) => makeExternalItem('Flanges', slug)),
-  ...conexoes.map((slug) => makeExternalItem('Conexoes', slug)),
-  ...filtros.map((slug) => makeExternalItem('Filtros', slug)),
-  ...purgadores.map((slug) => makeExternalItem('Purgadores', slug)),
-  ...vedacoes.map((slug) => makeExternalItem('Vedacoes', slug)),
-  ...instrumentos.map((slug) => makeExternalItem('Instrumentos', slug)),
-  ...acessorios.map((slug) => makeExternalItem('Acessorios', slug)),
+export const CATALOG_PLACEHOLDER_ITEMS: CatalogItem[] = [
+  ...valvulas.map((slug) => makeCatalogPlaceholder('Valvulas', slug)),
+  ...flanges.map((slug) => makeCatalogPlaceholder('Flanges', slug)),
+  ...conexoes.map((slug) => makeCatalogPlaceholder('Conexoes', slug)),
+  ...filtros.map((slug) => makeCatalogPlaceholder('Filtros', slug)),
+  ...purgadores.map((slug) => makeCatalogPlaceholder('Purgadores', slug)),
+  ...vedacoes.map((slug) => makeCatalogPlaceholder('Vedacoes', slug)),
+  ...instrumentos.map((slug) => makeCatalogPlaceholder('Instrumentos', slug)),
+  ...acessorios.map((slug) => makeCatalogPlaceholder('Acessorios', slug)),
 ];
 
 export const CATALOG_ITEMS: CatalogItem[] = [
   ...ALTA_PRESS_INTERNAL_ITEMS,
   ...AUTHORIZED_CONTENT_SLOTS,
-  ...VALACO_REFERENCE_ITEMS,
+  ...CATALOG_PLACEHOLDER_ITEMS,
 ];
 
 export const CATALOG_CATEGORIES: CatalogCategory[] = [

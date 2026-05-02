@@ -1,27 +1,29 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
+  Animated,
   FlatList,
   Image,
-  Linking,
   Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import {
   Building2,
-  ExternalLink,
+  ChevronRight,
   Filter,
   Image as ImageIcon,
   Info,
+  Menu,
   PackageSearch,
   Ruler,
   Search,
-  ShieldCheck,
+  X,
 } from 'lucide-react-native';
 import {
   CATALOG_CATEGORIES,
@@ -156,7 +158,6 @@ const standards: Standard[] = ['ANSI / ASME B16.5', 'DIN / EN 1092-1'];
 
 type ClassFilter = FlangeClass | 'Todas';
 type StandardFilter = Standard | 'Todas';
-type CategoryFilter = CatalogCategory | 'Todas';
 
 function formatCode(item: Flange) {
   return `${item.dn ?? '-'}${item.nps ? ` / ${item.nps}` : ''}`;
@@ -183,22 +184,47 @@ const COLORS = {
 };
 
 export default function App() {
+  const { width } = useWindowDimensions();
   const [query, setQuery] = useState('');
+  const [catalogQuery, setCatalogQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [selectedClass, setSelectedClass] = useState<ClassFilter>('Todas');
   const [selectedStandard, setSelectedStandard] =
     useState<StandardFilter>('Todas');
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryFilter>('Todas');
   const [selected, setSelected] = useState<Flange | null>(FLANGES[0] ?? null);
+  const drawerProgress = useRef(new Animated.Value(0)).current;
+  const drawerWidth = Math.min(width * 0.88, 390);
+  const drawerTranslateX = drawerProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-drawerWidth, 0],
+  });
+  const drawerOverlayOpacity = drawerProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 0.62],
+  });
 
-  const catalogFiltered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+  useEffect(() => {
+    Animated.timing(drawerProgress, {
+      toValue: menuOpen ? 1 : 0,
+      duration: 240,
+      useNativeDriver: true,
+    }).start();
+  }, [drawerProgress, menuOpen]);
 
-    return CATALOG_ITEMS.filter((item) => {
-      const matchCategory =
-        selectedCategory === 'Todas' || item.category === selectedCategory;
-      const matchSearch =
-        !q ||
+  const catalogGroups = useMemo(() => {
+    const q = catalogQuery.trim().toLowerCase();
+
+    return CATALOG_CATEGORIES.map((category) => {
+      const items = CATALOG_ITEMS.filter((item) => {
+        if (item.category !== category) {
+          return false;
+        }
+
+        if (!q) {
+          return true;
+        }
+
+        return (
         item.title.toLowerCase().includes(q) ||
         item.category.toLowerCase().includes(q) ||
         item.summary.toLowerCase().includes(q) ||
@@ -207,11 +233,13 @@ export default function App() {
           (spec) =>
             spec.label.toLowerCase().includes(q) ||
             spec.value.toLowerCase().includes(q),
+        )
         );
+      });
 
-      return Boolean(matchCategory && matchSearch);
-    });
-  }, [query, selectedCategory]);
+      return { category, items };
+    }).filter((group) => group.items.length > 0);
+  }, [catalogQuery]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -233,25 +261,6 @@ export default function App() {
       return Boolean(matchSearch && matchClass && matchStandard);
     });
   }, [query, selectedClass, selectedStandard]);
-
-  const openCatalogSource = async (item: CatalogItem) => {
-    if (!item.sourceUrl) {
-      Alert.alert(
-        'Conteudo autorizado',
-        'Este espaco esta pronto para receber imagens, desenhos e tabelas autorizadas da Alta Press.',
-      );
-      return;
-    }
-
-    const canOpen = await Linking.canOpenURL(item.sourceUrl);
-
-    if (!canOpen) {
-      Alert.alert('Link indisponivel', item.sourceUrl);
-      return;
-    }
-
-    await Linking.openURL(item.sourceUrl);
-  };
 
   useEffect(() => {
     if (!filtered.length) {
@@ -276,6 +285,15 @@ export default function App() {
 
         <View style={styles.heroInner}>
           <View style={styles.headerBar}>
+            <Pressable
+              style={styles.menuButton}
+              onPress={() => setMenuOpen(true)}
+              accessibilityRole="button"
+              accessibilityLabel="Abrir catalogo"
+            >
+              <Menu color={COLORS.white} size={22} />
+            </Pressable>
+
             <View style={styles.headerBrand}>
               <View style={styles.headerLogoCard}>
                 <Image
@@ -446,47 +464,6 @@ export default function App() {
         </View>
       </View>
 
-      <View style={styles.sectionBlock}>
-        <SectionHeading
-          icon={<PackageSearch color={COLORS.red} size={18} />}
-          title="Catalogo de produtos"
-          text={`${catalogFiltered.length} referencia(s) organizadas por familia.`}
-        />
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsLine}
-        >
-          {(['Todas', ...CATALOG_CATEGORIES] as const).map((value) => (
-            <Chip
-              key={value}
-              label={value}
-              active={selectedCategory === value}
-              onPress={() => setSelectedCategory(value)}
-            />
-          ))}
-        </ScrollView>
-
-        <View style={styles.catalogNotice}>
-          <ShieldCheck color={COLORS.redDeep} size={18} />
-          <Text style={styles.catalogNoticeText}>
-            O app esta pronto para fichas autorizadas da Alta Press. As fichas
-            Val Aco ficam como links externos para consulta da pagina original.
-          </Text>
-        </View>
-
-        <View style={styles.catalogGrid}>
-          {catalogFiltered.map((item) => (
-            <CatalogCard
-              key={item.id}
-              item={item}
-              onOpen={() => openCatalogSource(item)}
-            />
-          ))}
-        </View>
-      </View>
-
       {selected ? (
         <View style={styles.sectionBlock}>
           <SectionHeading
@@ -568,6 +545,77 @@ export default function App() {
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
       />
+      <View
+        pointerEvents={menuOpen ? 'auto' : 'none'}
+        style={styles.drawerLayer}
+      >
+        <Pressable style={styles.drawerScrimButton} onPress={() => setMenuOpen(false)}>
+          <Animated.View
+            style={[
+              styles.drawerScrim,
+              { opacity: drawerOverlayOpacity },
+            ]}
+          />
+        </Pressable>
+
+        <Animated.View
+          style={[
+            styles.drawerPanel,
+            {
+              width: drawerWidth,
+              transform: [{ translateX: drawerTranslateX }],
+            },
+          ]}
+        >
+          <View style={styles.drawerHeader}>
+            <View>
+              <Text style={styles.drawerEyebrow}>ALTA PRESS</Text>
+              <Text style={styles.drawerTitle}>Catalogo</Text>
+            </View>
+
+            <Pressable
+              style={styles.drawerCloseButton}
+              onPress={() => setMenuOpen(false)}
+              accessibilityRole="button"
+              accessibilityLabel="Fechar catalogo"
+            >
+              <X color={COLORS.white} size={20} />
+            </Pressable>
+          </View>
+
+          <View style={styles.drawerSearchBox}>
+            <Search color={COLORS.red} size={18} />
+            <TextInput
+              style={styles.drawerInput}
+              placeholder="Buscar produto..."
+              placeholderTextColor={COLORS.muted}
+              value={catalogQuery}
+              onChangeText={setCatalogQuery}
+            />
+          </View>
+
+          <ScrollView
+            style={styles.drawerScroll}
+            contentContainerStyle={styles.drawerScrollContent}
+            showsVerticalScrollIndicator={false}
+          >
+            {catalogGroups.map((group) => (
+              <View key={group.category} style={styles.drawerGroup}>
+                <View style={styles.drawerGroupHeader}>
+                  <Text style={styles.drawerGroupTitle}>{group.category}</Text>
+                  <Text style={styles.drawerGroupCount}>
+                    {group.items.length}
+                  </Text>
+                </View>
+
+                {group.items.map((item) => (
+                  <CatalogCard key={item.id} item={item} />
+                ))}
+              </View>
+            ))}
+          </ScrollView>
+        </Animated.View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -656,28 +704,23 @@ function getCatalogStatusLabel(status: CatalogItem['status']) {
       return 'Alta Press';
     case 'authorized-ready':
       return 'Pronto para autorizados';
-    case 'external-reference':
-      return 'Referencia externa';
+    case 'catalog-placeholder':
+      return 'Imagem em breve';
   }
 }
 
-function CatalogCard({
-  item,
-  onOpen,
-}: {
-  item: CatalogItem;
-  onOpen: () => void;
-}) {
+function CatalogCard({ item }: { item: CatalogItem }) {
   return (
     <View style={styles.catalogCard}>
       <View style={styles.catalogCardTop}>
-        <View style={styles.catalogIconWrap}>
-          <PackageSearch color={COLORS.red} size={20} />
+        <View style={styles.catalogImageSlot}>
+          <ImageIcon color={COLORS.redDeep} size={18} />
         </View>
         <View style={styles.catalogCopy}>
           <Text style={styles.catalogCategory}>{item.category}</Text>
           <Text style={styles.catalogTitle}>{item.title}</Text>
         </View>
+        <ChevronRight color={COLORS.muted} size={18} />
       </View>
 
       <Text style={styles.catalogSummary}>{item.summary}</Text>
@@ -695,12 +738,6 @@ function CatalogCard({
         <Text style={styles.catalogStatus}>
           {getCatalogStatusLabel(item.status)}
         </Text>
-        <Pressable style={styles.catalogLinkButton} onPress={onOpen}>
-          <ExternalLink color={COLORS.white} size={16} />
-          <Text style={styles.catalogLinkText}>
-            {item.sourceUrl ? 'Abrir ficha' : 'Ver slot'}
-          </Text>
-        </Pressable>
       </View>
     </View>
   );
@@ -833,6 +870,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(18,20,24,0.84)',
     borderRadius: 24,
     marginBottom: 22,
+  },
+  menuButton: {
+    width: 46,
+    height: 46,
+    borderRadius: 16,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerBrand: {
     flexDirection: 'row',
@@ -1121,6 +1168,110 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
+  drawerLayer: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  drawerScrimButton: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  drawerScrim: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: COLORS.bg,
+  },
+  drawerPanel: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: COLORS.ink,
+    borderRightWidth: 1,
+    borderRightColor: COLORS.borderStrong,
+    paddingTop: 16,
+    paddingHorizontal: 16,
+    shadowColor: COLORS.bg,
+    shadowOpacity: 0.22,
+    shadowRadius: 22,
+    shadowOffset: { width: 10, height: 0 },
+    elevation: 16,
+  },
+  drawerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginBottom: 14,
+  },
+  drawerEyebrow: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+  },
+  drawerTitle: {
+    color: COLORS.textDark,
+    fontSize: 28,
+    fontWeight: '900',
+    lineHeight: 32,
+  },
+  drawerCloseButton: {
+    width: 42,
+    height: 42,
+    borderRadius: 14,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  drawerSearchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    backgroundColor: COLORS.silverSoft,
+    borderRadius: 16,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    marginBottom: 14,
+  },
+  drawerInput: {
+    flex: 1,
+    height: 48,
+    color: COLORS.textDark,
+    fontSize: 14,
+  },
+  drawerScroll: {
+    flex: 1,
+  },
+  drawerScrollContent: {
+    paddingBottom: 28,
+  },
+  drawerGroup: {
+    marginBottom: 18,
+  },
+  drawerGroupHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  drawerGroupTitle: {
+    color: COLORS.textDark,
+    fontSize: 18,
+    fontWeight: '900',
+  },
+  drawerGroupCount: {
+    minWidth: 32,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    backgroundColor: COLORS.red,
+    color: COLORS.white,
+    fontSize: 12,
+    fontWeight: '900',
+    textAlign: 'center',
+  },
   catalogNotice: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -1142,22 +1293,25 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   catalogCard: {
-    borderRadius: 22,
-    backgroundColor: COLORS.ink,
+    borderRadius: 18,
+    backgroundColor: COLORS.silverSoft,
     borderWidth: 1,
     borderColor: COLORS.borderSoft,
-    padding: 18,
+    padding: 14,
+    marginBottom: 10,
   },
   catalogCardTop: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 12,
+    alignItems: 'center',
+    gap: 10,
   },
-  catalogIconWrap: {
-    width: 42,
-    height: 42,
+  catalogImageSlot: {
+    width: 48,
+    height: 48,
     borderRadius: 14,
     backgroundColor: 'rgba(215,25,32,0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.28)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -1213,27 +1367,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 10,
-    marginTop: 14,
+    marginTop: 12,
   },
   catalogStatus: {
     color: COLORS.silver,
     fontSize: 12,
     fontWeight: '800',
     flex: 1,
-  },
-  catalogLinkButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    backgroundColor: COLORS.red,
-  },
-  catalogLinkText: {
-    color: COLORS.white,
-    fontSize: 12,
-    fontWeight: '900',
   },
   detailsCard: {
     borderRadius: 30,
