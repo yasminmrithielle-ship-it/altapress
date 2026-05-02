@@ -172,6 +172,124 @@ function formatCode(item: Flange) {
   return `${item.dn ?? '-'}${item.nps ? ` / ${item.nps}` : ''}`;
 }
 
+const MILLIMETERS_PER_INCH = 25.4;
+const QUICK_INCH_SIZES = [
+  '1/4',
+  '3/8',
+  '1/2',
+  '3/4',
+  '1',
+  '1 1/2',
+  '2',
+  '2 1/2',
+  '3',
+  '4',
+];
+
+type ConverterInput = 'inch' | 'millimeter';
+
+function parseDecimalMeasure(value: string) {
+  const cleaned = value
+    .toLowerCase()
+    .replace(/milimetros?|millimeters?|mm/g, ' ')
+    .replace(',', '.')
+    .trim();
+  const match = cleaned.match(/\d+(?:\.\d+)?/);
+
+  if (!match) {
+    return null;
+  }
+
+  const parsed = Number(match[0]);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function parseInchValue(value: string) {
+  const cleaned = value
+    .toLowerCase()
+    .replace(/["']/g, ' ')
+    .replace(/\b(polegadas?|pol|inches?|inch|in)\b\.?/g, ' ')
+    .replace(',', '.')
+    .replace(/-/g, ' ')
+    .trim();
+
+  if (!cleaned) {
+    return null;
+  }
+
+  const fraction = cleaned.match(
+    /^(?:(\d+(?:\.\d+)?)\s+)?(\d+)\/(\d+)$/,
+  );
+
+  if (fraction) {
+    const whole = fraction[1] ? Number(fraction[1]) : 0;
+    const numerator = Number(fraction[2]);
+    const denominator = Number(fraction[3]);
+
+    if (!denominator) {
+      return null;
+    }
+
+    return whole + numerator / denominator;
+  }
+
+  const numeric = cleaned.match(/\d+(?:\.\d+)?/);
+
+  if (!numeric) {
+    return null;
+  }
+
+  const parsed = Number(numeric[0]);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function formatNumber(value: number, decimals = 2) {
+  return value
+    .toFixed(decimals)
+    .replace(/\.?0+$/, '')
+    .replace('.', ',');
+}
+
+function formatNearestFraction(value: number) {
+  const denominatorBase = 16;
+  let whole = Math.floor(value);
+  let numerator = Math.round((value - whole) * denominatorBase);
+
+  if (numerator === denominatorBase) {
+    whole += 1;
+    numerator = 0;
+  }
+
+  if (!numerator) {
+    return `${whole}"`;
+  }
+
+  const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+  const divisor = gcd(numerator, denominatorBase);
+  const reducedNumerator = numerator / divisor;
+  const reducedDenominator = denominatorBase / divisor;
+
+  if (!whole) {
+    return `${reducedNumerator}/${reducedDenominator}"`;
+  }
+
+  return `${whole} ${reducedNumerator}/${reducedDenominator}"`;
+}
+
+function parseFlangeInches(item: Flange) {
+  return item.nps ? parseInchValue(item.nps) : null;
+}
+
+function parseFlangeDnMillimeters(item: Flange) {
+  const match = item.dn?.match(/\d+(?:[,.]\d+)?/);
+
+  if (!match) {
+    return null;
+  }
+
+  return parseDecimalMeasure(match[0]);
+}
+
 const COLORS = {
   bg: '#090a0c',
   ink: '#121418',
@@ -207,6 +325,10 @@ export default function App() {
   const [selectedStandard, setSelectedStandard] =
     useState<StandardFilter>('Todas');
   const [selected, setSelected] = useState<Flange | null>(FLANGES[0] ?? null);
+  const [inchInput, setInchInput] = useState('2');
+  const [millimeterInput, setMillimeterInput] = useState('50,8');
+  const [activeConverterInput, setActiveConverterInput] =
+    useState<ConverterInput>('inch');
   const drawerProgress = useRef(new Animated.Value(0)).current;
   const drawerWidth = Math.min(width * 0.88, 390);
   const drawerTranslateX = drawerProgress.interpolate({
@@ -287,6 +409,93 @@ export default function App() {
       return Boolean(matchSearch && matchClass && matchStandard);
     });
   }, [query, selectedClass, selectedStandard]);
+
+  const inchValue = useMemo(() => parseInchValue(inchInput), [inchInput]);
+  const millimeterValue = useMemo(
+    () => parseDecimalMeasure(millimeterInput),
+    [millimeterInput],
+  );
+  const converterTarget = useMemo(() => {
+    if (activeConverterInput === 'inch' && inchValue !== null) {
+      return {
+        inches: inchValue,
+        millimeters: inchValue * MILLIMETERS_PER_INCH,
+      };
+    }
+
+    if (activeConverterInput === 'millimeter' && millimeterValue !== null) {
+      return {
+        inches: millimeterValue / MILLIMETERS_PER_INCH,
+        millimeters: millimeterValue,
+      };
+    }
+
+    if (inchValue !== null) {
+      return {
+        inches: inchValue,
+        millimeters: inchValue * MILLIMETERS_PER_INCH,
+      };
+    }
+
+    if (millimeterValue !== null) {
+      return {
+        inches: millimeterValue / MILLIMETERS_PER_INCH,
+        millimeters: millimeterValue,
+      };
+    }
+
+    return null;
+  }, [activeConverterInput, inchValue, millimeterValue]);
+  const converterMatches = useMemo(() => {
+    if (!converterTarget) {
+      return [];
+    }
+
+    return FLANGES.filter((item) => {
+      const flangeInches = parseFlangeInches(item);
+      const flangeDnMillimeters = parseFlangeDnMillimeters(item);
+      const matchNps =
+        flangeInches !== null &&
+        Math.abs(flangeInches - converterTarget.inches) <= 0.04;
+      const matchDn =
+        flangeDnMillimeters !== null &&
+        Math.abs(flangeDnMillimeters - converterTarget.millimeters) <= 2;
+
+      return matchNps || matchDn;
+    });
+  }, [converterTarget]);
+
+  const handleInchInputChange = (value: string) => {
+    setActiveConverterInput('inch');
+    setInchInput(value);
+
+    const parsed = parseInchValue(value);
+    setMillimeterInput(
+      parsed === null ? '' : formatNumber(parsed * MILLIMETERS_PER_INCH),
+    );
+  };
+
+  const handleMillimeterInputChange = (value: string) => {
+    setActiveConverterInput('millimeter');
+    setMillimeterInput(value);
+
+    const parsed = parseDecimalMeasure(value);
+    setInchInput(
+      parsed === null ? '' : formatNumber(parsed / MILLIMETERS_PER_INCH, 4),
+    );
+  };
+
+  const handleQuickInchSize = (value: string) => {
+    const parsed = parseInchValue(value);
+
+    if (parsed === null) {
+      return;
+    }
+
+    setActiveConverterInput('inch');
+    setInchInput(value);
+    setMillimeterInput(formatNumber(parsed * MILLIMETERS_PER_INCH));
+  };
 
   const openWhatsApp = async () => {
     const message = encodeURIComponent(WHATSAPP_MESSAGE);
@@ -473,11 +682,11 @@ export default function App() {
           <ToolCard
             icon={<Ruler color={COLORS.red} size={22} />}
             title="Comparador"
-            text="Compare OD, PCD e furacao entre normas e classes."
+            text="Converta polegadas e milimetros para identificar a peca."
             onPress={() =>
               Alert.alert(
-                'Em breve',
-                'Aqui entra a tela de comparacao lado a lado.',
+                'Comparador',
+                'Use o conversor abaixo para transformar polegadas em milimetros e conferir pecas cadastradas.',
               )
             }
           />
@@ -504,6 +713,20 @@ export default function App() {
             }
           />
         </View>
+
+        <InchMillimeterConverter
+          activeInput={activeConverterInput}
+          inchInput={inchInput}
+          inchValue={inchValue}
+          millimeterInput={millimeterInput}
+          millimeterValue={millimeterValue}
+          matches={converterMatches}
+          target={converterTarget}
+          onInchChange={handleInchInputChange}
+          onMillimeterChange={handleMillimeterInputChange}
+          onQuickSize={handleQuickInchSize}
+          onSelectMatch={setSelected}
+        />
       </View>
 
       {selected ? (
@@ -778,6 +1001,173 @@ function ToolCard({
       <Text style={styles.toolTitle}>{title}</Text>
       <Text style={styles.toolText}>{text}</Text>
     </Pressable>
+  );
+}
+
+function InchMillimeterConverter({
+  activeInput,
+  inchInput,
+  inchValue,
+  millimeterInput,
+  millimeterValue,
+  matches,
+  target,
+  onInchChange,
+  onMillimeterChange,
+  onQuickSize,
+  onSelectMatch,
+}: {
+  activeInput: ConverterInput;
+  inchInput: string;
+  inchValue: number | null;
+  millimeterInput: string;
+  millimeterValue: number | null;
+  matches: Flange[];
+  target: { inches: number; millimeters: number } | null;
+  onInchChange: (value: string) => void;
+  onMillimeterChange: (value: string) => void;
+  onQuickSize: (value: string) => void;
+  onSelectMatch: (item: Flange) => void;
+}) {
+  const millimetersFromInches =
+    inchValue === null
+      ? '--'
+      : `${formatNumber(inchValue * MILLIMETERS_PER_INCH)} mm`;
+  const inchesFromMillimeters =
+    millimeterValue === null
+      ? '--'
+      : `${formatNumber(millimeterValue / MILLIMETERS_PER_INCH, 4)} pol`;
+  const nearestFraction =
+    millimeterValue === null
+      ? '--'
+      : formatNearestFraction(millimeterValue / MILLIMETERS_PER_INCH);
+
+  return (
+    <View style={styles.converterCard}>
+      <View style={styles.converterHeader}>
+        <View style={styles.converterHeaderCopy}>
+          <Text style={styles.converterLabel}>Comparador</Text>
+          <Text style={styles.converterTitle}>
+            Conversor polegadas x milimetros
+          </Text>
+          <Text style={styles.converterText}>
+            Digite em qualquer campo para identificar a medida da peca.
+          </Text>
+        </View>
+
+        <View style={styles.converterFormulaBadge}>
+          <Text style={styles.converterFormulaText}>1 pol = 25,4 mm</Text>
+        </View>
+      </View>
+
+      <View style={styles.converterInputGrid}>
+        <View
+          style={[
+            styles.converterField,
+            activeInput === 'inch' && styles.converterFieldActive,
+          ]}
+        >
+          <Text style={styles.converterFieldLabel}>Polegadas</Text>
+          <TextInput
+            value={inchInput}
+            onChangeText={onInchChange}
+            placeholder="Ex: 1 1/2"
+            placeholderTextColor={COLORS.muted}
+            keyboardType="default"
+            style={styles.converterInput}
+          />
+          <Text style={styles.converterHint}>Aceita fracao: 1/2, 3/4, 2</Text>
+        </View>
+
+        <View
+          style={[
+            styles.converterField,
+            activeInput === 'millimeter' && styles.converterFieldActive,
+          ]}
+        >
+          <Text style={styles.converterFieldLabel}>Milimetros</Text>
+          <TextInput
+            value={millimeterInput}
+            onChangeText={onMillimeterChange}
+            placeholder="Ex: 50,8"
+            placeholderTextColor={COLORS.muted}
+            keyboardType="decimal-pad"
+            style={styles.converterInput}
+          />
+          <Text style={styles.converterHint}>Use virgula ou ponto decimal</Text>
+        </View>
+      </View>
+
+      <View style={styles.converterResultGrid}>
+        <View style={styles.converterResultCard}>
+          <Text style={styles.converterResultLabel}>Em milimetros</Text>
+          <Text style={styles.converterResultValue}>{millimetersFromInches}</Text>
+        </View>
+
+        <View style={styles.converterResultCard}>
+          <Text style={styles.converterResultLabel}>Em polegadas</Text>
+          <Text style={styles.converterResultValue}>{inchesFromMillimeters}</Text>
+          <Text style={styles.converterResultHint}>
+            Fracao aprox.: {nearestFraction}
+          </Text>
+        </View>
+      </View>
+
+      <Text style={styles.quickSizeLabel}>Atalhos comuns</Text>
+      <View style={styles.quickSizeRow}>
+        {QUICK_INCH_SIZES.map((size) => (
+          <Pressable
+            key={size}
+            style={styles.quickSizeButton}
+            onPress={() => onQuickSize(size)}
+          >
+            <Text style={styles.quickSizeText}>{size}"</Text>
+          </Pressable>
+        ))}
+      </View>
+
+      <View style={styles.matchPanel}>
+        <View style={styles.matchPanelHeader}>
+          <View>
+            <Text style={styles.matchPanelLabel}>Pecas nesse tamanho</Text>
+            <Text style={styles.matchPanelText}>
+              {target
+                ? `${formatNumber(target.inches, 4)} pol / ${formatNumber(
+                    target.millimeters,
+                  )} mm`
+                : 'Informe uma medida valida'}
+            </Text>
+          </View>
+
+          <Text style={styles.matchCount}>{matches.length}</Text>
+        </View>
+
+        {matches.length ? (
+          <View style={styles.matchList}>
+            {matches.map((item) => (
+              <Pressable
+                key={item.id}
+                style={styles.matchItem}
+                onPress={() => onSelectMatch(item)}
+              >
+                <View style={styles.matchItemCopy}>
+                  <Text style={styles.matchItemTitle}>{item.tipo}</Text>
+                  <Text style={styles.matchItemMeta}>
+                    {formatCode(item)} - {item.classe} - {item.standard}
+                  </Text>
+                </View>
+                <Text style={styles.matchItemAction}>Selecionar</Text>
+              </Pressable>
+            ))}
+          </View>
+        ) : (
+          <Text style={styles.matchEmpty}>
+            Nenhuma peca cadastrada nesse tamanho ainda. A conversao continua
+            valida para consulta.
+          </Text>
+        )}
+      </View>
+    </View>
   );
 }
 
@@ -1299,6 +1689,226 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginTop: 8,
     textAlign: 'center',
+  },
+  converterCard: {
+    marginTop: 16,
+    borderRadius: 30,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    padding: 18,
+    gap: 16,
+  },
+  converterHeader: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  converterHeaderCopy: {
+    flex: 1,
+    minWidth: 220,
+    gap: 6,
+  },
+  converterLabel: {
+    color: COLORS.red,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.3,
+    textTransform: 'uppercase',
+  },
+  converterTitle: {
+    color: COLORS.textDark,
+    fontSize: 22,
+    lineHeight: 25,
+    fontWeight: '900',
+  },
+  converterText: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 19,
+  },
+  converterFormulaBadge: {
+    alignSelf: 'flex-start',
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    backgroundColor: 'rgba(215,25,32,0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.32)',
+  },
+  converterFormulaText: {
+    color: COLORS.textDark,
+    fontSize: 12,
+    fontWeight: '900',
+  },
+  converterInputGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  converterField: {
+    flex: 1,
+    minWidth: 190,
+    borderRadius: 22,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+  },
+  converterFieldActive: {
+    borderColor: COLORS.red,
+    backgroundColor: '#191d23',
+  },
+  converterFieldLabel: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  converterInput: {
+    color: COLORS.textDark,
+    fontSize: 24,
+    fontWeight: '900',
+    paddingVertical: 8,
+  },
+  converterHint: {
+    color: COLORS.muted,
+    fontSize: 11,
+    lineHeight: 16,
+  },
+  converterResultGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  converterResultCard: {
+    flex: 1,
+    minWidth: 160,
+    borderRadius: 22,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+  },
+  converterResultLabel: {
+    color: COLORS.muted,
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  converterResultValue: {
+    color: COLORS.textDark,
+    fontSize: 22,
+    fontWeight: '900',
+    marginTop: 6,
+  },
+  converterResultHint: {
+    color: COLORS.muted,
+    fontSize: 12,
+    marginTop: 4,
+  },
+  quickSizeLabel: {
+    color: COLORS.textDark,
+    fontSize: 13,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  quickSizeRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  quickSizeButton: {
+    borderRadius: 999,
+    paddingHorizontal: 13,
+    paddingVertical: 9,
+    backgroundColor: 'rgba(255,255,255,0.07)',
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+  },
+  quickSizeText: {
+    color: COLORS.textDark,
+    fontSize: 12,
+    fontWeight: '900',
+  },
+  matchPanel: {
+    borderRadius: 24,
+    backgroundColor: COLORS.bg,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+    gap: 12,
+  },
+  matchPanelHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 12,
+  },
+  matchPanelLabel: {
+    color: COLORS.red,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  matchPanelText: {
+    color: COLORS.muted,
+    fontSize: 12,
+    marginTop: 4,
+  },
+  matchCount: {
+    minWidth: 36,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    overflow: 'hidden',
+    backgroundColor: COLORS.red,
+    color: COLORS.white,
+    fontSize: 12,
+    fontWeight: '900',
+    textAlign: 'center',
+  },
+  matchList: {
+    gap: 8,
+  },
+  matchItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    borderRadius: 18,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 12,
+  },
+  matchItemCopy: {
+    flex: 1,
+    gap: 4,
+  },
+  matchItemTitle: {
+    color: COLORS.textDark,
+    fontSize: 14,
+    fontWeight: '900',
+  },
+  matchItemMeta: {
+    color: COLORS.muted,
+    fontSize: 11,
+    lineHeight: 16,
+  },
+  matchItemAction: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  matchEmpty: {
+    color: COLORS.muted,
+    fontSize: 12,
+    lineHeight: 18,
   },
   drawerLayer: {
     ...StyleSheet.absoluteFillObject,
