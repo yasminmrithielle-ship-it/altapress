@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Animated,
   FlatList,
@@ -74,6 +75,36 @@ type Flange = {
   espessuraMm?: number;
   face?: 'RF' | 'FF' | 'RTJ';
   observacao?: string;
+};
+
+type PhotoAnalysisResult = {
+  identificacao_principal: {
+    tipo_peca: string;
+    tipo_flange: string;
+    nome_tecnico: string;
+    norma_provavel: string;
+    classe_provavel: string;
+    material_provavel: string;
+    face: string;
+    confianca: number;
+  };
+  caracteristicas_observadas: string[];
+  possiveis_alternativas: {
+    tipo: string;
+    motivo: string;
+    confianca: number;
+  }[];
+  informacoes_nao_confirmadas: string[];
+  recomendacoes_para_confirmar: string[];
+  resumo_para_usuario: string;
+};
+
+type PhotoChatMessage = {
+  id: string;
+  role: 'user' | 'assistant';
+  text: string;
+  imageUri?: string;
+  result?: PhotoAnalysisResult;
 };
 
 // ATENCAO:
@@ -187,6 +218,28 @@ const QUICK_INCH_SIZES = [
 ];
 
 type ConverterInput = 'inch' | 'millimeter';
+
+const PHOTO_API_FALLBACK_URL =
+  'https://altapress-production.up.railway.app/api/photo-reading';
+const PHOTO_MAX_BYTES = 10 * 1024 * 1024;
+
+function createMessageId() {
+  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function getPhotoReadingEndpoint() {
+  const location = (globalThis as any).location;
+
+  if (
+    location?.origin &&
+    location.hostname !== 'localhost' &&
+    location.hostname !== '127.0.0.1'
+  ) {
+    return `${location.origin}/api/photo-reading`;
+  }
+
+  return PHOTO_API_FALLBACK_URL;
+}
 
 function parseDecimalMeasure(value: string) {
   const cleaned = value
@@ -329,6 +382,12 @@ export default function App() {
   const [millimeterInput, setMillimeterInput] = useState('50,8');
   const [activeConverterInput, setActiveConverterInput] =
     useState<ConverterInput>('inch');
+  const [photoChatOpen, setPhotoChatOpen] = useState(false);
+  const [photoImageUri, setPhotoImageUri] = useState<string | null>(null);
+  const [photoFileName, setPhotoFileName] = useState('');
+  const [photoUserNote, setPhotoUserNote] = useState('');
+  const [photoMessages, setPhotoMessages] = useState<PhotoChatMessage[]>([]);
+  const [photoLoading, setPhotoLoading] = useState(false);
   const drawerProgress = useRef(new Animated.Value(0)).current;
   const drawerWidth = Math.min(width * 0.88, 390);
   const drawerTranslateX = drawerProgress.interpolate({
@@ -495,6 +554,127 @@ export default function App() {
     setActiveConverterInput('inch');
     setInchInput(value);
     setMillimeterInput(formatNumber(parsed * MILLIMETERS_PER_INCH));
+  };
+
+  const handlePickPhoto = () => {
+    const documentRef = (globalThis as any).document;
+    const FileReaderRef = (globalThis as any).FileReader;
+
+    if (!documentRef || !FileReaderRef) {
+      Alert.alert(
+        'Leitura por foto',
+        'No APK nativo vamos precisar adicionar o seletor de camera. No navegador do smartphone, use o site publicado para enviar a foto.',
+      );
+      return;
+    }
+
+    const input = documentRef.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png,image/jpeg,image/webp,image/gif';
+    input.setAttribute('capture', 'environment');
+
+    input.onchange = () => {
+      const file = input.files?.[0];
+
+      if (!file) {
+        return;
+      }
+
+      if (!file.type?.startsWith('image/')) {
+        Alert.alert('Arquivo invalido', 'Envie uma imagem da peca.');
+        return;
+      }
+
+      if (file.size > PHOTO_MAX_BYTES) {
+        Alert.alert(
+          'Imagem muito grande',
+          'Envie uma foto com ate 10 MB para manter a analise rapida.',
+        );
+        return;
+      }
+
+      const reader = new FileReaderRef();
+      reader.onload = () => {
+        setPhotoImageUri(String(reader.result));
+        setPhotoFileName(file.name || 'foto-da-peca');
+      };
+      reader.onerror = () => {
+        Alert.alert('Erro', 'Nao consegui carregar essa imagem.');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    input.click();
+  };
+
+  const handleSendPhoto = async () => {
+    if (!photoImageUri) {
+      Alert.alert('Leitura por foto', 'Envie uma foto da peca primeiro.');
+      return;
+    }
+
+    setPhotoLoading(true);
+
+    const userMessage: PhotoChatMessage = {
+      id: createMessageId(),
+      role: 'user',
+      text: photoUserNote.trim() || 'Analise esta peca pela imagem.',
+      imageUri: photoImageUri,
+    };
+
+    setPhotoMessages((current) => [...current, userMessage]);
+
+    try {
+      const response = await fetch(getPhotoReadingEndpoint(), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          imageDataUrl: photoImageUri,
+          userNote: photoUserNote,
+        }),
+      });
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(
+          payload?.error ||
+            'Nao consegui consultar a OpenAI agora. Tente novamente.',
+        );
+      }
+
+      const result = payload?.result as PhotoAnalysisResult | undefined;
+      const assistantMessage: PhotoChatMessage = {
+        id: createMessageId(),
+        role: 'assistant',
+        text:
+          result?.resumo_para_usuario ||
+          payload?.rawText ||
+          'Analise concluida.',
+        result,
+      };
+
+      setPhotoMessages((current) => [...current, assistantMessage]);
+      setPhotoUserNote('');
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : 'Nao consegui analisar a foto agora.';
+
+      setPhotoMessages((current) => [
+        ...current,
+        {
+          id: createMessageId(),
+          role: 'assistant',
+          text: message,
+        },
+      ]);
+      Alert.alert('Leitura por foto', message);
+    } finally {
+      setPhotoLoading(false);
+    }
   };
 
   const openWhatsApp = async () => {
@@ -694,12 +874,7 @@ export default function App() {
             icon={<ImageIcon color={COLORS.red} size={22} />}
             title="Leitura por foto"
             text="Sugestao visual para acelerar a identificacao da peca."
-            onPress={() =>
-              Alert.alert(
-                'Em breve',
-                'Integre camera + IA para sugestao da peca.',
-              )
-            }
+            onPress={() => setPhotoChatOpen(true)}
           />
           <ToolCard
             icon={<Search color={COLORS.red} size={22} />}
@@ -727,6 +902,20 @@ export default function App() {
           onQuickSize={handleQuickInchSize}
           onSelectMatch={setSelected}
         />
+
+        {photoChatOpen ? (
+          <PhotoReadingChat
+            imageUri={photoImageUri}
+            fileName={photoFileName}
+            loading={photoLoading}
+            messages={photoMessages}
+            userNote={photoUserNote}
+            onClose={() => setPhotoChatOpen(false)}
+            onPickPhoto={handlePickPhoto}
+            onSendPhoto={handleSendPhoto}
+            onUserNoteChange={setPhotoUserNote}
+          />
+        ) : null}
       </View>
 
       {selected ? (
@@ -1167,6 +1356,220 @@ function InchMillimeterConverter({
           </Text>
         )}
       </View>
+    </View>
+  );
+}
+
+function PhotoReadingChat({
+  imageUri,
+  fileName,
+  loading,
+  messages,
+  userNote,
+  onClose,
+  onPickPhoto,
+  onSendPhoto,
+  onUserNoteChange,
+}: {
+  imageUri: string | null;
+  fileName: string;
+  loading: boolean;
+  messages: PhotoChatMessage[];
+  userNote: string;
+  onClose: () => void;
+  onPickPhoto: () => void;
+  onSendPhoto: () => void;
+  onUserNoteChange: (value: string) => void;
+}) {
+  return (
+    <View style={styles.photoChatCard}>
+      <View style={styles.photoChatHeader}>
+        <View style={styles.photoChatHeaderCopy}>
+          <Text style={styles.photoChatLabel}>OpenAI Vision</Text>
+          <Text style={styles.photoChatTitle}>Chat por foto da peca</Text>
+          <Text style={styles.photoChatText}>
+            Envie uma foto, detalhe qualquer gravacao visivel e receba a
+            identificacao tecnica com nivel de confianca.
+          </Text>
+        </View>
+
+        <Pressable style={styles.photoChatClose} onPress={onClose}>
+          <X color={COLORS.white} size={18} />
+        </Pressable>
+      </View>
+
+      <View style={styles.photoUploadArea}>
+        <Pressable style={styles.photoPickButton} onPress={onPickPhoto}>
+          <ImageIcon color={COLORS.redDeep} size={24} />
+          <Text style={styles.photoPickTitle}>
+            {imageUri ? 'Trocar foto' : 'Enviar foto da peca'}
+          </Text>
+          <Text style={styles.photoPickText}>
+            No smartphone, o navegador pode abrir camera ou galeria.
+          </Text>
+        </Pressable>
+
+        <View style={styles.photoPreview}>
+          {imageUri ? (
+            <Image
+              source={{ uri: imageUri }}
+              style={styles.photoPreviewImage}
+              resizeMode="cover"
+            />
+          ) : (
+            <View style={styles.photoPreviewEmpty}>
+              <ImageIcon color={COLORS.muted} size={30} />
+              <Text style={styles.photoPreviewEmptyText}>Aguardando foto</Text>
+            </View>
+          )}
+        </View>
+      </View>
+
+      {fileName ? <Text style={styles.photoFileName}>{fileName}</Text> : null}
+
+      <View style={styles.photoNoteBox}>
+        <Text style={styles.photoNoteLabel}>Observacao opcional</Text>
+        <TextInput
+          value={userNote}
+          onChangeText={onUserNoteChange}
+          placeholder="Ex: tem gravacao 2 polegadas, 150 lbs, RF..."
+          placeholderTextColor={COLORS.muted}
+          multiline
+          style={styles.photoNoteInput}
+        />
+      </View>
+
+      <Pressable
+        style={[
+          styles.photoSendButton,
+          (!imageUri || loading) && styles.photoSendButtonDisabled,
+        ]}
+        onPress={onSendPhoto}
+        disabled={!imageUri || loading}
+      >
+        {loading ? (
+          <ActivityIndicator color={COLORS.white} />
+        ) : (
+          <Send color={COLORS.white} size={18} />
+        )}
+        <Text style={styles.photoSendText}>
+          {loading ? 'Analisando com ChatGPT...' : 'Analisar foto'}
+        </Text>
+      </Pressable>
+
+      <View style={styles.photoMessages}>
+        {messages.length ? (
+          messages.map((message) => (
+            <PhotoMessageBubble key={message.id} message={message} />
+          ))
+        ) : (
+          <Text style={styles.photoEmptyChat}>
+            O chat ainda esta vazio. Envie a primeira foto para comecar a
+            identificacao.
+          </Text>
+        )}
+      </View>
+    </View>
+  );
+}
+
+function PhotoMessageBubble({ message }: { message: PhotoChatMessage }) {
+  const isUser = message.role === 'user';
+
+  return (
+    <View
+      style={[
+        styles.photoBubble,
+        isUser ? styles.photoBubbleUser : styles.photoBubbleAssistant,
+      ]}
+    >
+      <Text style={styles.photoBubbleRole}>
+        {isUser ? 'Voce' : 'ChatGPT'}
+      </Text>
+
+      {message.imageUri ? (
+        <Image
+          source={{ uri: message.imageUri }}
+          style={styles.photoBubbleImage}
+          resizeMode="cover"
+        />
+      ) : null}
+
+      <Text style={styles.photoBubbleText}>{message.text}</Text>
+
+      {message.result ? <PhotoAnalysisCard result={message.result} /> : null}
+    </View>
+  );
+}
+
+function PhotoAnalysisCard({ result }: { result: PhotoAnalysisResult }) {
+  const main = result.identificacao_principal;
+
+  return (
+    <View style={styles.analysisCard}>
+      <Text style={styles.analysisTitle}>Identificacao principal</Text>
+
+      <View style={styles.analysisGrid}>
+        <AnalysisItem label="Peca" value={main.tipo_peca} />
+        <AnalysisItem label="Flange" value={main.tipo_flange} />
+        <AnalysisItem label="Nome tecnico" value={main.nome_tecnico} />
+        <AnalysisItem label="Norma" value={main.norma_provavel} />
+        <AnalysisItem label="Classe" value={main.classe_provavel} />
+        <AnalysisItem label="Material" value={main.material_provavel} />
+        <AnalysisItem label="Face" value={main.face} />
+        <AnalysisItem label="Confianca" value={`${main.confianca}%`} />
+      </View>
+
+      <AnalysisList
+        title="Caracteristicas observadas"
+        items={result.caracteristicas_observadas}
+      />
+
+      {result.possiveis_alternativas.length ? (
+        <View style={styles.analysisSection}>
+          <Text style={styles.analysisSectionTitle}>Possiveis alternativas</Text>
+          {result.possiveis_alternativas.map((alternative, index) => (
+            <Text key={`${alternative.tipo}-${index}`} style={styles.analysisListItem}>
+              - {alternative.tipo}: {alternative.motivo} ({alternative.confianca}%)
+            </Text>
+          ))}
+        </View>
+      ) : null}
+
+      <AnalysisList
+        title="Nao confirmado"
+        items={result.informacoes_nao_confirmadas}
+      />
+      <AnalysisList
+        title="Para confirmar"
+        items={result.recomendacoes_para_confirmar}
+      />
+    </View>
+  );
+}
+
+function AnalysisItem({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.analysisItem}>
+      <Text style={styles.analysisItemLabel}>{label}</Text>
+      <Text style={styles.analysisItemValue}>{value || '-'}</Text>
+    </View>
+  );
+}
+
+function AnalysisList({ title, items }: { title: string; items: string[] }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <View style={styles.analysisSection}>
+      <Text style={styles.analysisSectionTitle}>{title}</Text>
+      {items.map((item, index) => (
+        <Text key={`${title}-${index}`} style={styles.analysisListItem}>
+          - {item}
+        </Text>
+      ))}
     </View>
   );
 }
@@ -1906,6 +2309,248 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   matchEmpty: {
+    color: COLORS.muted,
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  photoChatCard: {
+    marginTop: 16,
+    borderRadius: 30,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    padding: 18,
+    gap: 16,
+  },
+  photoChatHeader: {
+    flexDirection: 'row',
+    gap: 14,
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  photoChatHeaderCopy: {
+    flex: 1,
+    gap: 6,
+  },
+  photoChatLabel: {
+    color: COLORS.red,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.3,
+    textTransform: 'uppercase',
+  },
+  photoChatTitle: {
+    color: COLORS.textDark,
+    fontSize: 22,
+    lineHeight: 25,
+    fontWeight: '900',
+  },
+  photoChatText: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 19,
+  },
+  photoChatClose: {
+    width: 38,
+    height: 38,
+    borderRadius: 14,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  photoUploadArea: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  photoPickButton: {
+    flex: 1,
+    minWidth: 190,
+    minHeight: 164,
+    borderRadius: 24,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.32)',
+    borderStyle: 'dashed',
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  photoPickTitle: {
+    color: COLORS.textDark,
+    fontSize: 16,
+    fontWeight: '900',
+    textAlign: 'center',
+  },
+  photoPickText: {
+    color: COLORS.muted,
+    fontSize: 12,
+    lineHeight: 17,
+    textAlign: 'center',
+  },
+  photoPreview: {
+    flex: 1,
+    minWidth: 190,
+    height: 164,
+    borderRadius: 24,
+    backgroundColor: COLORS.bg,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    overflow: 'hidden',
+  },
+  photoPreviewImage: {
+    width: '100%',
+    height: '100%',
+  },
+  photoPreviewEmpty: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  photoPreviewEmptyText: {
+    color: COLORS.muted,
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  photoFileName: {
+    color: COLORS.muted,
+    fontSize: 12,
+    marginTop: -4,
+  },
+  photoNoteBox: {
+    borderRadius: 22,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+    gap: 8,
+  },
+  photoNoteLabel: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  photoNoteInput: {
+    minHeight: 70,
+    color: COLORS.textDark,
+    fontSize: 14,
+    lineHeight: 20,
+    textAlignVertical: 'top',
+  },
+  photoSendButton: {
+    minHeight: 54,
+    borderRadius: 999,
+    backgroundColor: COLORS.red,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 10,
+    paddingHorizontal: 18,
+  },
+  photoSendButtonDisabled: {
+    opacity: 0.48,
+  },
+  photoSendText: {
+    color: COLORS.white,
+    fontSize: 14,
+    fontWeight: '900',
+  },
+  photoMessages: {
+    gap: 12,
+  },
+  photoEmptyChat: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 19,
+    textAlign: 'center',
+    paddingVertical: 12,
+  },
+  photoBubble: {
+    borderRadius: 24,
+    borderWidth: 1,
+    padding: 14,
+    gap: 10,
+  },
+  photoBubbleUser: {
+    backgroundColor: COLORS.silverSoft,
+    borderColor: COLORS.borderSoft,
+  },
+  photoBubbleAssistant: {
+    backgroundColor: COLORS.bg,
+    borderColor: 'rgba(215,25,32,0.28)',
+  },
+  photoBubbleRole: {
+    color: COLORS.red,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  photoBubbleImage: {
+    width: '100%',
+    height: 190,
+    borderRadius: 18,
+  },
+  photoBubbleText: {
+    color: COLORS.textDark,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  analysisCard: {
+    borderRadius: 20,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+    gap: 12,
+  },
+  analysisTitle: {
+    color: COLORS.textDark,
+    fontSize: 16,
+    fontWeight: '900',
+  },
+  analysisGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  analysisItem: {
+    flexGrow: 1,
+    minWidth: '45%',
+    borderRadius: 16,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 10,
+  },
+  analysisItemLabel: {
+    color: COLORS.muted,
+    fontSize: 10,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  analysisItemValue: {
+    color: COLORS.textDark,
+    fontSize: 13,
+    fontWeight: '900',
+    marginTop: 4,
+  },
+  analysisSection: {
+    gap: 6,
+  },
+  analysisSectionTitle: {
+    color: COLORS.redDeep,
+    fontSize: 12,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  analysisListItem: {
     color: COLORS.muted,
     fontSize: 12,
     lineHeight: 18,
