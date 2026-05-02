@@ -97,7 +97,6 @@ type PhotoChatMessage = {
   id: string;
   role: 'user' | 'assistant';
   text: string;
-  imageUri?: string;
   result?: PhotoAnalysisResult;
 };
 
@@ -607,13 +606,19 @@ export default function App() {
       return;
     }
 
+    const imageDataUrl = photoImageUri;
+    const userNote = photoUserNote.trim();
+
     setPhotoLoading(true);
+    setPhotoImageUri(null);
+    setPhotoFileName('');
 
     const userMessage: PhotoChatMessage = {
       id: createMessageId(),
       role: 'user',
-      text: photoUserNote.trim() || 'Analise esta peca pela imagem.',
-      imageUri: photoImageUri,
+      text: userNote
+        ? `Foto enviada para analise. Observacao: ${userNote}`
+        : 'Foto enviada para analise.',
     };
 
     setPhotoMessages((current) => [...current, userMessage]);
@@ -625,8 +630,8 @@ export default function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          imageDataUrl: photoImageUri,
-          userNote: photoUserNote,
+          imageDataUrl,
+          userNote,
         }),
       });
       const payload = await response.json().catch(() => null);
@@ -668,6 +673,8 @@ export default function App() {
       Alert.alert('Leitura por foto', message);
     } finally {
       setPhotoLoading(false);
+      setPhotoImageUri(null);
+      setPhotoFileName('');
     }
   };
 
@@ -1480,14 +1487,6 @@ function PhotoMessageBubble({ message }: { message: PhotoChatMessage }) {
       <Text style={styles.photoBubbleRole}>
         {isUser ? 'Voce' : 'ChatGPT'}
       </Text>
-
-      {message.imageUri ? (
-        <Image
-          source={{ uri: message.imageUri }}
-          style={styles.photoBubbleImage}
-          resizeMode="cover"
-        />
-      ) : null}
 
       <Text style={styles.photoBubbleText}>{message.text}</Text>
 
@@ -2466,11 +2465,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.8,
     textTransform: 'uppercase',
-  },
-  photoBubbleImage: {
-    width: '100%',
-    height: 190,
-    borderRadius: 18,
   },
   photoBubbleText: {
     color: COLORS.textDark,
