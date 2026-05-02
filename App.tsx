@@ -774,16 +774,6 @@ export default function App() {
               <Menu color={COLORS.white} size={22} />
             </Pressable>
 
-            <View style={styles.headerBrand}>
-              <View style={styles.headerLogoCard}>
-                <Image
-                  source={require('./assets/alta-press-logo-banner.png')}
-                  style={styles.headerLogoImage}
-                  resizeMode="contain"
-                />
-              </View>
-            </View>
-
             <Pressable
               style={styles.headerCta}
               onPress={() => {
@@ -1752,26 +1742,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.borderStrong,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  headerBrand: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    flex: 1,
-  },
-  headerLogoCard: {
-    width: 112,
-    height: 56,
-    borderRadius: 8,
-    backgroundColor: 'transparent',
-    overflow: 'hidden',
-    justifyContent: 'center',
-  },
-  headerLogoImage: {
-    width: '96%',
-    height: '96%',
-    alignSelf: 'center',
-    borderRadius: 8,
   },
   headerCta: {
     borderRadius: 999,
