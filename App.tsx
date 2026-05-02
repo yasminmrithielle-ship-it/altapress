@@ -18,7 +18,6 @@ import {
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import {
-  Building2,
   ChevronLeft,
   ChevronRight,
   CircleGauge,
@@ -1000,37 +999,6 @@ export default function App() {
         </View>
       </View>
 
-      {selected ? (
-        <View style={styles.sectionBlock}>
-          <SectionHeading
-            icon={<Building2 color={COLORS.red} size={18} />}
-            title="Configuracao selecionada"
-            text="Visual tecnico com foco nas medidas principais."
-          />
-          <DetailsCard item={selected} />
-        </View>
-      ) : null}
-
-      <View style={styles.sectionBlock}>
-        <View style={styles.bannerCard}>
-          <Text style={styles.bannerEyebrow}>ALTA PRESS</Text>
-          <Text style={styles.bannerTitle}>
-            Base visual alinhada ao site institucional.
-          </Text>
-          <Text style={styles.bannerText}>
-            O app agora usa a paleta da marca: preto grafite, vermelho forte e
-            tons metalicos para um catalogo tecnico mais fiel a ALTA PRESS.
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.sectionBlock}>
-        <SectionHeading
-          icon={<Info color={COLORS.red} size={18} />}
-          title="Resultados"
-          text={`${filtered.length} item(ns) encontrados para sua consulta.`}
-        />
-      </View>
     </>
   );
 
@@ -1082,7 +1050,7 @@ export default function App() {
     ) : null;
 
   const header = activeTool === 'home' ? homeHeader : toolHeader;
-  const visibleResults = activeTool === 'home' ? filtered : [];
+  const visibleResults: Flange[] = [];
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -1123,13 +1091,6 @@ export default function App() {
           );
         }}
         ListHeaderComponent={header}
-        ListEmptyComponent={
-          activeTool === 'home' ? (
-          <Text style={styles.empty}>
-            Nenhuma peca encontrada com esses filtros.
-          </Text>
-          ) : null
-        }
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
       />
