@@ -178,21 +178,6 @@ const FLANGES: Flange[] = [
   },
 ];
 
-const classes: FlangeClass[] = [
-  '150lbs',
-  '300lbs',
-  '600lbs',
-  'PN10',
-  'PN16',
-  'PN25',
-  'PN40',
-];
-
-const standards: Standard[] = ['ANSI / ASME B16.5', 'DIN / EN 1092-1'];
-
-type ClassFilter = FlangeClass | 'Todas';
-type StandardFilter = Standard | 'Todas';
-
 function formatCode(item: Flange) {
   return `${item.dn ?? '-'}${item.nps ? ` / ${item.nps}` : ''}`;
 }
@@ -386,15 +371,11 @@ const WHATSAPP_MESSAGE = 'Ola, quero falar com a ALTA PRESS.';
 
 export default function App() {
   const { width } = useWindowDimensions();
-  const [query, setQuery] = useState('');
   const [catalogQuery, setCatalogQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [catalogRoute, setCatalogRoute] = useState<CatalogCategory | null>(
     null,
   );
-  const [selectedClass, setSelectedClass] = useState<ClassFilter>('Todas');
-  const [selectedStandard, setSelectedStandard] =
-    useState<StandardFilter>('Todas');
   const [selected, setSelected] = useState<Flange | null>(FLANGES[0] ?? null);
   const [inchInput, setInchInput] = useState('2');
   const [millimeterInput, setMillimeterInput] = useState('50,8');
@@ -425,17 +406,6 @@ export default function App() {
     }).start();
   }, [drawerProgress, menuOpen]);
 
-  const categoryCounts = useMemo(() => {
-    return CATALOG_CATEGORIES.reduce(
-      (counts, category) => ({
-        ...counts,
-        [category]: CATALOG_ITEMS.filter((item) => item.category === category)
-          .length,
-      }),
-      {} as Record<CatalogCategory, number>,
-    );
-  }, []);
-
   const categoryProducts = useMemo(() => {
     const q = catalogQuery.trim().toLowerCase();
 
@@ -465,27 +435,6 @@ export default function App() {
       );
     });
   }, [catalogQuery, catalogRoute]);
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-
-    return FLANGES.filter((item) => {
-      const matchSearch =
-        !q ||
-        item.nps?.toLowerCase().includes(q) ||
-        item.dn?.toLowerCase().includes(q) ||
-        item.tipo.toLowerCase().includes(q) ||
-        item.classe.toLowerCase().includes(q) ||
-        item.standard.toLowerCase().includes(q);
-
-      const matchClass =
-        selectedClass === 'Todas' || item.classe === selectedClass;
-      const matchStandard =
-        selectedStandard === 'Todas' || item.standard === selectedStandard;
-
-      return Boolean(matchSearch && matchClass && matchStandard);
-    });
-  }, [query, selectedClass, selectedStandard]);
 
   const inchValue = useMemo(() => parseInchValue(inchInput), [inchInput]);
   const millimeterValue = useMemo(
@@ -804,21 +753,6 @@ export default function App() {
     await Linking.openURL(webUrl);
   };
 
-  useEffect(() => {
-    if (!filtered.length) {
-      setSelected(null);
-      return;
-    }
-
-    setSelected((current) => {
-      if (current && filtered.some((item) => item.id === current.id)) {
-        return current;
-      }
-
-      return filtered[0];
-    });
-  }, [filtered]);
-
   const homeHeader = (
     <>
       <View style={styles.heroShell}>
@@ -855,7 +789,7 @@ export default function App() {
               onPress={() =>
                 Alert.alert(
                   'ALTA PRESS',
-                  'Consulte normas, classes e medidas com rapidez.',
+                  'Abra o catalogo rapido ou fale pelo WhatsApp para atendimento.',
                 )
               }
             >
@@ -885,7 +819,6 @@ export default function App() {
                 <HeroCatalogShortcut
                   key={category}
                   category={category}
-                  count={categoryCounts[category]}
                   compact={width < 520}
                   onPress={() => {
                     setCatalogRoute(category);
@@ -897,82 +830,6 @@ export default function App() {
             </View>
           </View>
         </View>
-      </View>
-
-      <View style={styles.introWrap}>
-        <View style={styles.introCard}>
-          <View style={styles.introTop}>
-            <View style={styles.introCopy}>
-              <Text style={styles.introLabel}>Base tecnica ALTA PRESS</Text>
-              <Text style={styles.introTitle}>
-                Localize medidas de forma clara no balcao, oficina ou
-                manutencao.
-              </Text>
-              <Text style={styles.introText}>
-                O app foi redesenhado para seguir a linguagem da ALTA PRESS:
-                grafite intenso, vermelho de impacto, prata metalica e leitura
-                limpa.
-              </Text>
-            </View>
-
-            <View style={styles.metricGrid}>
-              <MetricCard label="Normas" value="2" />
-              <MetricCard label="Classes" value="7" />
-              <MetricCard label="Consulta" value="Rapida" />
-            </View>
-          </View>
-
-          <View style={styles.searchPanel}>
-            <View style={styles.searchBox}>
-              <Search color={COLORS.red} size={18} />
-              <TextInput
-                style={styles.input}
-                placeholder="Buscar por DN, NPS, norma, tipo ou classe..."
-                placeholderTextColor={COLORS.muted}
-                value={query}
-                onChangeText={setQuery}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-
-      <View style={styles.sectionBlock}>
-        <SectionHeading
-          icon={<Filter color={COLORS.red} size={18} />}
-          title="Filtros tecnicos"
-          text="Refine rapidamente por classe e norma."
-        />
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsLine}
-        >
-          {(['Todas', ...classes] as const).map((value) => (
-            <Chip
-              key={value}
-              label={value}
-              active={selectedClass === value}
-              onPress={() => setSelectedClass(value)}
-            />
-          ))}
-        </ScrollView>
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsLine}
-        >
-          {(['Todas', ...standards] as const).map((value) => (
-            <Chip
-              key={value}
-              label={value}
-              active={selectedStandard === value}
-              onPress={() => setSelectedStandard(value)}
-            />
-          ))}
-        </ScrollView>
       </View>
 
       <View style={styles.sectionBlock}>
@@ -1193,7 +1050,6 @@ export default function App() {
                   <CategoryTile
                     key={category}
                     category={category}
-                    count={categoryCounts[category]}
                     onPress={() => {
                       setCatalogRoute(category);
                       setCatalogQuery('');
@@ -1237,36 +1093,6 @@ function SectionHeading({
       </View>
       <Text style={styles.sectionText}>{text}</Text>
     </View>
-  );
-}
-
-function MetricCard({ label, value }: { label: string; value: string }) {
-  return (
-    <View style={styles.metricCard}>
-      <Text style={styles.metricLabel}>{label}</Text>
-      <Text style={styles.metricValue}>{value}</Text>
-    </View>
-  );
-}
-
-function Chip({
-  label,
-  active,
-  onPress,
-}: {
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={[styles.chip, active && styles.chipActive]}
-    >
-      <Text style={[styles.chipText, active && styles.chipTextActive]}>
-        {label}
-      </Text>
-    </Pressable>
   );
 }
 
@@ -1700,12 +1526,10 @@ function renderCategoryIcon(category: CatalogCategory) {
 
 function HeroCatalogShortcut({
   category,
-  count,
   compact,
   onPress,
 }: {
   category: CatalogCategory;
-  count: number;
   compact: boolean;
   onPress: () => void;
 }) {
@@ -1724,7 +1548,6 @@ function HeroCatalogShortcut({
       </View>
       <View style={styles.heroCatalogCopy}>
         <Text style={styles.heroCatalogTitle}>{category}</Text>
-        <Text style={styles.heroCatalogCount}>{count} produtos</Text>
       </View>
     </Pressable>
   );
@@ -1732,11 +1555,9 @@ function HeroCatalogShortcut({
 
 function CategoryTile({
   category,
-  count,
   onPress,
 }: {
   category: CatalogCategory;
-  count: number;
   onPress: () => void;
 }) {
   return (
@@ -1746,7 +1567,6 @@ function CategoryTile({
       </View>
       <View style={styles.categoryTileCopy}>
         <Text style={styles.categoryTileTitle}>{category}</Text>
-        <Text style={styles.categoryTileCount}>{count} produtos</Text>
       </View>
       <ChevronRight color={COLORS.redDeep} size={18} />
     </Pressable>
@@ -2028,7 +1848,7 @@ const styles = StyleSheet.create({
   },
   heroCatalogShortcut: {
     minWidth: 128,
-    minHeight: 68,
+    minHeight: 58,
     flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -2056,109 +1876,8 @@ const styles = StyleSheet.create({
   },
   heroCatalogTitle: {
     color: COLORS.textOnDark,
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '900',
-  },
-  heroCatalogCount: {
-    color: COLORS.mutedOnDark,
-    fontSize: 10,
-    fontWeight: '700',
-    marginTop: 3,
-  },
-  introWrap: {
-    marginTop: -70,
-    paddingHorizontal: 18,
-  },
-  introCard: {
-    borderRadius: 32,
-    backgroundColor: COLORS.ink,
-    borderWidth: 1,
-    borderColor: COLORS.borderSoft,
-    padding: 24,
-    shadowColor: COLORS.bg,
-    shadowOpacity: 0.12,
-    shadowRadius: 18,
-    shadowOffset: { width: 0, height: 12 },
-    elevation: 6,
-  },
-  introTop: {
-    gap: 20,
-    alignItems: 'center',
-  },
-  introCopy: {
-    gap: 10,
-    alignItems: 'center',
-  },
-  introLabel: {
-    color: COLORS.red,
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 1.2,
-    textAlign: 'center',
-    textTransform: 'uppercase',
-  },
-  introTitle: {
-    color: COLORS.textDark,
-    fontSize: 28,
-    lineHeight: 30,
-    fontWeight: '900',
-    textAlign: 'center',
-  },
-  introText: {
-    color: COLORS.muted,
-    fontSize: 15,
-    lineHeight: 23,
-    textAlign: 'center',
-  },
-  metricGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    justifyContent: 'center',
-  },
-  metricCard: {
-    minWidth: '30%',
-    flexGrow: 1,
-    borderRadius: 22,
-    paddingHorizontal: 18,
-    paddingVertical: 16,
-    backgroundColor: COLORS.silverStrong,
-    borderWidth: 1,
-    borderColor: COLORS.borderSoft,
-    alignItems: 'center',
-  },
-  metricLabel: {
-    color: COLORS.redDeep,
-    fontSize: 11,
-    fontWeight: '800',
-    textAlign: 'center',
-    textTransform: 'uppercase',
-  },
-  metricValue: {
-    color: COLORS.textDark,
-    fontSize: 20,
-    fontWeight: '900',
-    marginTop: 8,
-    textAlign: 'center',
-  },
-  searchPanel: {
-    marginTop: 20,
-  },
-  searchBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    backgroundColor: COLORS.silverSoft,
-    borderRadius: 18,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: COLORS.borderStrong,
-  },
-  input: {
-    flex: 1,
-    height: 54,
-    color: COLORS.textDark,
-    fontSize: 15,
   },
   sectionBlock: {
     paddingHorizontal: 18,
@@ -2187,31 +1906,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     textAlign: 'center',
-  },
-  chipsLine: {
-    marginBottom: 10,
-  },
-  chip: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 999,
-    backgroundColor: COLORS.inkSoft,
-    borderWidth: 1,
-    borderColor: COLORS.borderStrong,
-    marginRight: 8,
-    alignItems: 'center',
-  },
-  chipActive: {
-    backgroundColor: COLORS.red,
-    borderColor: COLORS.red,
-  },
-  chipText: {
-    color: COLORS.textDark,
-    fontWeight: '700',
-    textAlign: 'center',
-  },
-  chipTextActive: {
-    color: COLORS.white,
   },
   toolsGrid: {
     gap: 14,
@@ -2874,7 +2568,7 @@ const styles = StyleSheet.create({
   },
   categoryTile: {
     width: '100%',
-    minHeight: 74,
+    minHeight: 64,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
@@ -2903,12 +2597,6 @@ const styles = StyleSheet.create({
     color: COLORS.redDeep,
     fontSize: 15,
     fontWeight: '900',
-  },
-  categoryTileCount: {
-    color: COLORS.muted,
-    fontSize: 12,
-    fontWeight: '700',
-    marginTop: 4,
   },
   whatsappButton: {
     flexDirection: 'row',
