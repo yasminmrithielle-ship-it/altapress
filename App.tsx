@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   Linking,
+  Platform,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -15,6 +16,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import {
   Building2,
   ChevronLeft,
@@ -233,6 +235,29 @@ function getPhotoReadingEndpoint() {
   }
 
   return PHOTO_API_FALLBACK_URL;
+}
+
+function getImageMimeType(asset: ImagePicker.ImagePickerAsset) {
+  if (asset.mimeType) {
+    return asset.mimeType;
+  }
+
+  const uri = asset.uri.toLowerCase();
+
+  if (uri.endsWith('.png')) {
+    return 'image/png';
+  }
+
+  if (uri.endsWith('.webp')) {
+    return 'image/webp';
+  }
+
+  return 'image/jpeg';
+}
+
+function estimateBase64Bytes(base64: string) {
+  const padding = base64.endsWith('==') ? 2 : base64.endsWith('=') ? 1 : 0;
+  return Math.floor((base64.length * 3) / 4) - padding;
 }
 
 function parseDecimalMeasure(value: string) {
@@ -550,14 +575,102 @@ export default function App() {
     setMillimeterInput(formatNumber(parsed * MILLIMETERS_PER_INCH));
   };
 
+  const pickNativePhoto = async (source: 'camera' | 'library') => {
+    try {
+      const permission =
+        source === 'camera'
+          ? await ImagePicker.requestCameraPermissionsAsync()
+          : await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+      if (!permission.granted) {
+        Alert.alert(
+          'Permissao necessaria',
+          source === 'camera'
+            ? 'Autorize o uso da camera para fotografar a peca.'
+            : 'Autorize o acesso as imagens para selecionar a foto da peca.',
+        );
+        return;
+      }
+
+      const options: ImagePicker.ImagePickerOptions = {
+        mediaTypes: ['images'],
+        allowsEditing: false,
+        base64: true,
+        quality: 0.78,
+        exif: false,
+      };
+      const result =
+        source === 'camera'
+          ? await ImagePicker.launchCameraAsync(options)
+          : await ImagePicker.launchImageLibraryAsync(options);
+
+      if (result.canceled) {
+        return;
+      }
+
+      const asset = result.assets[0];
+
+      if (!asset?.base64) {
+        Alert.alert(
+          'Imagem indisponivel',
+          'Nao consegui preparar essa foto para analise. Tente novamente.',
+        );
+        return;
+      }
+
+      if (estimateBase64Bytes(asset.base64) > PHOTO_MAX_BYTES) {
+        Alert.alert(
+          'Imagem muito grande',
+          'Envie uma foto com ate 10 MB para manter a analise rapida.',
+        );
+        return;
+      }
+
+      setPhotoImageUri(`data:${getImageMimeType(asset)};base64,${asset.base64}`);
+      setPhotoFileName(
+        asset.fileName ||
+          (source === 'camera' ? 'foto-da-camera.jpg' : 'foto-da-galeria.jpg'),
+      );
+    } catch (error) {
+      Alert.alert(
+        'Leitura por foto',
+        error instanceof Error
+          ? error.message
+          : 'Nao consegui abrir a camera ou galeria.',
+      );
+    }
+  };
+
   const handlePickPhoto = () => {
+    if (Platform.OS !== 'web') {
+      Alert.alert('Leitura por foto', 'Escolha como enviar a imagem da peca.', [
+        {
+          text: 'Camera',
+          onPress: () => {
+            void pickNativePhoto('camera');
+          },
+        },
+        {
+          text: 'Galeria',
+          onPress: () => {
+            void pickNativePhoto('library');
+          },
+        },
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+      ]);
+      return;
+    }
+
     const documentRef = (globalThis as any).document;
     const FileReaderRef = (globalThis as any).FileReader;
 
     if (!documentRef || !FileReaderRef) {
       Alert.alert(
         'Leitura por foto',
-        'No APK nativo vamos precisar adicionar o seletor de camera. No navegador do smartphone, use o site publicado para enviar a foto.',
+        'Nao consegui abrir o seletor de imagem neste dispositivo.',
       );
       return;
     }

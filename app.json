@@ -16,6 +16,11 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "READ_MEDIA_IMAGES"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/alta-press-logo.png",
         "backgroundColor": "#090a0c"
