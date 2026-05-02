@@ -1,3 +1,9 @@
+import {
+  CATALOG_TECHNICAL_DATA,
+  CatalogTechnicalSection,
+  CatalogTechnicalSourcePage,
+} from './catalog-technical-data';
+
 export type CatalogCategory =
   | 'Valvulas'
   | 'Flanges'
@@ -22,6 +28,9 @@ export type CatalogItem = {
   tags: string[];
   specs: CatalogSpec[];
   localAsset?: string;
+  sourceUrl?: string;
+  sourcePages?: CatalogTechnicalSourcePage[];
+  technicalSections?: CatalogTechnicalSection[];
 };
 
 function normalizeTitle(slug: string) {
@@ -66,21 +75,30 @@ function tagsFromSlug(slug: string, category: CatalogCategory) {
 }
 
 function makeCatalogPlaceholder(category: CatalogCategory, slug: string): CatalogItem {
+  const id = `${category.toLowerCase()}-${slug.replace(/[^a-z0-9]+/gi, '-').replace(/-$/g, '')}`;
   const title = normalizeTitle(slug);
+  const technicalData = CATALOG_TECHNICAL_DATA[id];
+  const fallbackSpecs = [
+    { label: 'Imagem', value: 'Em breve' },
+    { label: 'Ficha tecnica', value: 'Aguardando dados autorizados' },
+    { label: 'Status', value: 'Preparado para cadastro Alta Press' },
+  ];
 
   return {
-    id: `${category.toLowerCase()}-${slug.replace(/[^a-z0-9]+/gi, '-').replace(/-$/g, '')}`,
+    id,
     title,
     category,
     status: 'catalog-placeholder',
     summary:
+      technicalData?.summary ??
       'Produto cadastrado como estrutura inicial do catalogo. Imagem e especificacoes autorizadas serao inseridas futuramente.',
     tags: tagsFromSlug(slug, category),
-    specs: [
-      { label: 'Imagem', value: 'Em breve' },
-      { label: 'Ficha tecnica', value: 'Aguardando dados autorizados' },
-      { label: 'Status', value: 'Preparado para cadastro Alta Press' },
-    ],
+    specs: technicalData?.specs?.length
+      ? [{ label: 'Imagem', value: 'Em breve' }, ...technicalData.specs]
+      : fallbackSpecs,
+    sourceUrl: technicalData?.sourceUrl,
+    sourcePages: technicalData?.sourcePages,
+    technicalSections: technicalData?.technicalSections,
   };
 }
 

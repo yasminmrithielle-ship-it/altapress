@@ -1635,16 +1635,31 @@ function CatalogCard({
 }
 
 function CatalogDetailView({ item }: { item: CatalogItem }) {
-  const technicalRows = [
-    { label: 'Categoria', value: item.category },
-    { label: 'Status', value: getCatalogStatusLabel(item.status) },
-    ...item.specs,
+  const fallbackSections = [
+    {
+      title: 'Caracteristicas',
+      rows: item.tags.slice(0, 7).map((tag, index) => ({
+        label: index === 0 ? 'Familia' : `Referencia ${index}`,
+        value: tag,
+      })),
+    },
+    {
+      title: 'Especificacoes tecnicas',
+      rows: [
+        { label: 'Categoria', value: item.category },
+        { label: 'Status', value: getCatalogStatusLabel(item.status) },
+        ...item.specs,
+      ],
+    },
   ];
-
-  const characteristicRows = item.tags.slice(0, 7).map((tag, index) => ({
-    label: index === 0 ? 'Familia' : `Referencia ${index}`,
-    value: tag,
-  }));
+  const technicalSections = item.technicalSections?.length
+    ? item.technicalSections
+    : fallbackSections;
+  const sourcePages = item.sourcePages?.length
+    ? item.sourcePages
+    : item.sourceUrl
+      ? [{ title: item.title, url: item.sourceUrl }]
+      : [];
 
   return (
     <View style={styles.catalogDetailCard}>
@@ -1667,31 +1682,35 @@ function CatalogDetailView({ item }: { item: CatalogItem }) {
         </View>
       </View>
 
-      <View style={styles.catalogTechnicalSheet}>
-        <Text style={styles.catalogSheetTitle}>Caracteristicas</Text>
-        <View style={styles.catalogSheetRows}>
-          {characteristicRows.map((row) => (
-            <CatalogDetailRow
-              key={`${item.id}-feature-${row.label}-${row.value}`}
-              label={row.label}
-              value={row.value}
-            />
-          ))}
+      {technicalSections.map((section) => (
+        <View key={`${item.id}-${section.title}`} style={styles.catalogTechnicalSheet}>
+          <Text style={styles.catalogSheetTitle}>{section.title}</Text>
+          <View style={styles.catalogSheetRows}>
+            {section.rows.map((row, index) => (
+              <CatalogDetailRow
+                key={`${item.id}-${section.title}-${row.label}-${index}`}
+                label={row.label}
+                value={row.value}
+              />
+            ))}
+          </View>
         </View>
-      </View>
+      ))}
 
-      <View style={styles.catalogTechnicalSheet}>
-        <Text style={styles.catalogSheetTitle}>Especificacoes tecnicas</Text>
-        <View style={styles.catalogSheetRows}>
-          {technicalRows.map((row) => (
-            <CatalogDetailRow
-              key={`${item.id}-spec-${row.label}-${row.value}`}
-              label={row.label}
-              value={row.value}
-            />
-          ))}
+      {sourcePages.length ? (
+        <View style={styles.catalogTechnicalSheet}>
+          <Text style={styles.catalogSheetTitle}>Origem textual autorizada</Text>
+          <View style={styles.catalogSheetRows}>
+            {sourcePages.map((page, index) => (
+              <CatalogDetailRow
+                key={`${item.id}-source-${index}`}
+                label={page.title}
+                value={page.url}
+              />
+            ))}
+          </View>
         </View>
-      </View>
+      ) : null}
 
       <View style={styles.catalogDetailNote}>
         <Text style={styles.catalogDetailNoteTitle}>Validacao tecnica</Text>
