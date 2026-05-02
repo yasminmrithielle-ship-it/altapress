@@ -701,7 +701,7 @@ export default function App() {
       if (!response.ok) {
         throw new Error(
           payload?.error ||
-            'Nao consegui consultar a OpenAI agora. Tente novamente.',
+            'Nao consegui consultar a IA agora. Tente novamente.',
         );
       }
 
@@ -786,12 +786,10 @@ export default function App() {
 
             <Pressable
               style={styles.headerCta}
-              onPress={() =>
-                Alert.alert(
-                  'ALTA PRESS',
-                  'Abra o catalogo rapido ou fale pelo WhatsApp para atendimento.',
-                )
-              }
+              onPress={() => {
+                setMenuOpen(false);
+                setActiveTool('photo');
+              }}
             >
               <Text style={styles.headerCtaText}>Consulta rapida</Text>
             </Pressable>
@@ -848,7 +846,7 @@ export default function App() {
           />
           <ToolCard
             icon={<ImageIcon color={COLORS.red} size={22} />}
-            title="Leitura por foto"
+            title="Analisando foto com IA"
             text="Sugestao visual para acelerar a identificacao da peca."
             onPress={() => setActiveTool('photo')}
           />
@@ -897,8 +895,8 @@ export default function App() {
       <View style={styles.toolScreen}>
         <ToolScreenHeader
           icon={<ImageIcon color={COLORS.red} size={20} />}
-          title="Leitura por foto"
-          text="Envie a imagem da peca para o chat tecnico da IA."
+          title="Analisando foto com IA"
+          text="Envie a imagem da peca para identificacao tecnica pela IA."
           onBack={() => setActiveTool('home')}
         />
 
@@ -1338,8 +1336,8 @@ function PhotoReadingChat({
     <View style={styles.photoChatCard}>
       <View style={styles.photoChatHeader}>
         <View style={styles.photoChatHeaderCopy}>
-          <Text style={styles.photoChatLabel}>OpenAI Vision</Text>
-          <Text style={styles.photoChatTitle}>Chat por foto da peca</Text>
+          <Text style={styles.photoChatLabel}>Leitura por foto</Text>
+          <Text style={styles.photoChatTitle}>Analisando foto com IA</Text>
           <Text style={styles.photoChatText}>
             Envie uma foto, detalhe qualquer gravacao visivel e receba a
             identificacao tecnica com nivel de confianca.
@@ -1406,7 +1404,7 @@ function PhotoReadingChat({
           <Send color={COLORS.white} size={18} />
         )}
         <Text style={styles.photoSendText}>
-          {loading ? 'Analisando com ChatGPT...' : 'Analisar foto'}
+          {loading ? 'Analisando foto com IA...' : 'Analisar foto'}
         </Text>
       </Pressable>
 
@@ -1417,8 +1415,7 @@ function PhotoReadingChat({
           ))
         ) : (
           <Text style={styles.photoEmptyChat}>
-            O chat ainda esta vazio. Envie a primeira foto para comecar a
-            identificacao.
+            Envie a primeira foto para comecar a identificacao.
           </Text>
         )}
       </View>
@@ -1437,7 +1434,7 @@ function PhotoMessageBubble({ message }: { message: PhotoChatMessage }) {
       ]}
     >
       <Text style={styles.photoBubbleRole}>
-        {isUser ? 'Voce' : 'ChatGPT'}
+        {isUser ? 'Voce' : 'Analisando foto com IA'}
       </Text>
 
       <Text style={styles.photoBubbleText}>{message.text}</Text>

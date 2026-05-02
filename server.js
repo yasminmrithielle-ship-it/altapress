@@ -241,7 +241,7 @@ function parseJsonResult(text) {
       return JSON.parse(text.slice(start, end + 1));
     }
 
-    throw new Error('A OpenAI nao retornou JSON valido.');
+    throw new Error('A IA nao retornou JSON valido.');
   }
 }
 
@@ -273,7 +273,7 @@ async function handlePhotoReading(request, response) {
   if (!process.env.OPENAI_API_KEY) {
     sendJson(response, 500, {
       error:
-        'OPENAI_API_KEY nao configurada no servidor. Configure a variavel no Railway.',
+        'Chave da IA nao configurada no servidor.',
     });
     return;
   }
@@ -320,7 +320,7 @@ async function handlePhotoReading(request, response) {
       sendJson(response, 502, {
         error:
           data?.error?.message ||
-          'A OpenAI nao conseguiu analisar a imagem neste momento.',
+          'A IA nao conseguiu analisar a imagem neste momento.',
       });
       return;
     }
