@@ -743,7 +743,11 @@ export default function App() {
   };
 
   const openWhatsApp = async () => {
-    const message = encodeURIComponent(WHATSAPP_MESSAGE);
+    await openWhatsAppMessage(WHATSAPP_MESSAGE);
+  };
+
+  const openWhatsAppMessage = async (rawMessage: string) => {
+    const message = encodeURIComponent(rawMessage);
     const appUrl = `whatsapp://send?phone=${WHATSAPP_PHONE}&text=${message}`;
     const webUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`;
 
@@ -753,6 +757,12 @@ export default function App() {
     }
 
     await Linking.openURL(webUrl);
+  };
+
+  const openProductOrder = async (item: CatalogItem) => {
+    await openWhatsAppMessage(
+      `Ola, quero pedir o produto: ${item.title}. Categoria: ${item.category}.`,
+    );
   };
 
   const homeHeader = (
@@ -1032,6 +1042,7 @@ export default function App() {
                     key={item.id}
                     item={item}
                     onPress={() => setSelectedCatalogItem(item)}
+                    onOrder={() => openProductOrder(item)}
                   />
                 ))}
 
@@ -1075,6 +1086,7 @@ export default function App() {
         <CatalogQuickView
           item={selectedCatalogItem}
           onClose={() => setSelectedCatalogItem(null)}
+          onOrder={() => openProductOrder(selectedCatalogItem)}
         />
       ) : null}
     </SafeAreaView>
@@ -1584,61 +1596,91 @@ function getCatalogStatusLabel(status: CatalogItem['status']) {
     case 'authorized-ready':
       return 'Pronto para autorizados';
     case 'catalog-placeholder':
-      return 'Imagem em breve';
+      return 'Ficha preparada';
   }
 }
 
 function CatalogCard({
   item,
   onPress,
+  onOrder,
 }: {
   item: CatalogItem;
   onPress: () => void;
+  onOrder: () => void;
 }) {
+  const displaySpecs = getCatalogDisplaySpecs(item);
+
   return (
-    <Pressable
-      style={styles.catalogCard}
-      onPress={onPress}
-      accessibilityRole="button"
-      accessibilityLabel={`Abrir ficha tecnica de ${item.title}`}
-    >
-      <View style={styles.catalogCardTop}>
-        <View style={styles.catalogImageSlot}>
-          <ImageIcon color={COLORS.redDeep} size={18} />
-        </View>
-        <View style={styles.catalogCopy}>
-          <Text style={styles.catalogCategory}>{item.category}</Text>
-          <Text style={styles.catalogTitle}>{item.title}</Text>
-        </View>
-        <ChevronRight color={COLORS.muted} size={18} />
-      </View>
-
-      <Text style={styles.catalogSummary}>{item.summary}</Text>
-
-      <View style={styles.catalogSpecGrid}>
-        {item.specs.slice(0, 3).map((spec) => (
-          <View key={`${item.id}-${spec.label}`} style={styles.catalogSpec}>
-            <Text style={styles.catalogSpecLabel}>{spec.label}</Text>
-            <Text style={styles.catalogSpecValue}>{spec.value}</Text>
+    <View style={styles.catalogCard}>
+      <Pressable
+        style={styles.catalogCardOpenArea}
+        onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={`Abrir ficha tecnica de ${item.title}`}
+      >
+        <View style={styles.catalogCardTop}>
+          <View style={styles.catalogImageSlot}>
+            <ImageIcon color={COLORS.redDeep} size={18} />
           </View>
-        ))}
-      </View>
+          <View style={styles.catalogCopy}>
+            <Text style={styles.catalogCategory}>{item.category}</Text>
+            <Text style={styles.catalogTitle}>{item.title}</Text>
+          </View>
+          <ChevronRight color={COLORS.muted} size={18} />
+        </View>
+
+        <Text style={styles.catalogSummary}>{item.summary}</Text>
+
+        <View style={styles.catalogSpecGrid}>
+          {displaySpecs.map((spec) => (
+            <View key={`${item.id}-${spec.label}`} style={styles.catalogSpec}>
+              <Text style={styles.catalogSpecLabel}>{spec.label}</Text>
+              <Text style={styles.catalogSpecValue}>{spec.value}</Text>
+            </View>
+          ))}
+        </View>
+      </Pressable>
 
       <View style={styles.catalogFooter}>
-        <Text style={styles.catalogStatus}>
-          {getCatalogStatusLabel(item.status)}
-        </Text>
+        <Pressable
+          style={styles.catalogOrderButton}
+          onPress={onOrder}
+          accessibilityRole="button"
+          accessibilityLabel={`Pedir produto ${item.title}`}
+        >
+          <Send color={COLORS.white} size={16} />
+          <Text style={styles.catalogOrderText}>Pedir produto</Text>
+        </Pressable>
       </View>
-    </Pressable>
+    </View>
   );
+}
+
+function getCatalogDisplaySpecs(item: CatalogItem) {
+  const pagesSpec = item.specs.find(
+    (spec) => spec.label.toLowerCase() === 'paginas tecnicas',
+  );
+
+  if (pagesSpec) {
+    return [pagesSpec];
+  }
+
+  if (item.sourcePages?.length) {
+    return [{ label: 'Paginas tecnicas', value: String(item.sourcePages.length) }];
+  }
+
+  return [{ label: 'Paginas tecnicas', value: 'Em breve' }];
 }
 
 function CatalogQuickView({
   item,
   onClose,
+  onOrder,
 }: {
   item: CatalogItem;
   onClose: () => void;
+  onOrder: () => void;
 }) {
   return (
     <View style={styles.catalogQuickLayer}>
@@ -1669,14 +1711,20 @@ function CatalogQuickView({
           contentContainerStyle={styles.catalogQuickContent}
           showsVerticalScrollIndicator
         >
-          <CatalogDetailView item={item} />
+          <CatalogDetailView item={item} onOrder={onOrder} />
         </ScrollView>
       </View>
     </View>
   );
 }
 
-function CatalogDetailView({ item }: { item: CatalogItem }) {
+function CatalogDetailView({
+  item,
+  onOrder,
+}: {
+  item: CatalogItem;
+  onOrder: () => void;
+}) {
   const fallbackSections = [
     {
       title: 'Caracteristicas',
@@ -1697,12 +1745,6 @@ function CatalogDetailView({ item }: { item: CatalogItem }) {
   const technicalSections = item.technicalSections?.length
     ? item.technicalSections
     : fallbackSections;
-  const sourcePages = item.sourcePages?.length
-    ? item.sourcePages
-    : item.sourceUrl
-      ? [{ title: item.title, url: item.sourceUrl }]
-      : [];
-
   return (
     <View style={styles.catalogDetailCard}>
       <View style={styles.catalogDetailHero}>
@@ -1739,20 +1781,21 @@ function CatalogDetailView({ item }: { item: CatalogItem }) {
         </View>
       ))}
 
-      {sourcePages.length ? (
-        <View style={styles.catalogTechnicalSheet}>
-          <Text style={styles.catalogSheetTitle}>Origem textual autorizada</Text>
-          <View style={styles.catalogSheetRows}>
-            {sourcePages.map((page, index) => (
-              <CatalogDetailRow
-                key={`${item.id}-source-${index}`}
-                label={page.title}
-                value={page.url}
-              />
-            ))}
-          </View>
+      <Pressable
+        style={styles.catalogDetailOrderButton}
+        onPress={onOrder}
+        accessibilityRole="button"
+        accessibilityLabel={`Pedir produto ${item.title}`}
+      >
+        <Send color={COLORS.white} size={18} />
+        <View style={styles.catalogDetailOrderCopy}>
+          <Text style={styles.catalogDetailOrderTitle}>Pedir produto</Text>
+          <Text style={styles.catalogDetailOrderText}>
+            Enviar consulta desse item pelo WhatsApp.
+          </Text>
         </View>
-      ) : null}
+        <ChevronRight color={COLORS.white} size={18} />
+      </Pressable>
 
       <View style={styles.catalogDetailNote}>
         <Text style={styles.catalogDetailNoteTitle}>Validacao tecnica</Text>
@@ -2828,6 +2871,9 @@ const styles = StyleSheet.create({
     padding: 14,
     marginBottom: 10,
   },
+  catalogCardOpenArea: {
+    gap: 0,
+  },
   catalogCardTop: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -2893,15 +2939,28 @@ const styles = StyleSheet.create({
   catalogFooter: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     gap: 10,
     marginTop: 12,
   },
-  catalogStatus: {
-    color: COLORS.silver,
-    fontSize: 12,
-    fontWeight: '800',
+  catalogOrderButton: {
     flex: 1,
+    minHeight: 46,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    borderRadius: 14,
+    backgroundColor: '#13a047',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.16)',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
+  catalogOrderText: {
+    color: COLORS.white,
+    fontSize: 13,
+    fontWeight: '900',
   },
   catalogQuickLayer: {
     ...StyleSheet.absoluteFillObject,
@@ -3094,6 +3153,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 18,
     marginTop: 6,
+  },
+  catalogDetailOrderButton: {
+    minHeight: 62,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    borderRadius: 18,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: '#13a047',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.16)',
+  },
+  catalogDetailOrderCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  catalogDetailOrderTitle: {
+    color: COLORS.white,
+    fontSize: 16,
+    fontWeight: '900',
+  },
+  catalogDetailOrderText: {
+    color: 'rgba(255,255,255,0.82)',
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 3,
   },
   detailsCard: {
     borderRadius: 30,

@@ -68,6 +68,7 @@ const BOILERPLATE_PATTERNS = [
   /^home$/i,
   /^produtos?$/i,
   /todos os desenhos e imagens/i,
+  /imagem para efeito meramente ilustrativo/i,
   /^imprimir$/i,
   /esta p[aá]gina/i,
   /n[aã]o encontrou/i,
@@ -358,11 +359,7 @@ async function buildRecord(item) {
     sourceUrl: baseUrl,
     sourcePages: pageRecords.map((page) => ({ title: page.title, url: page.url })),
     summary,
-    specs: [
-      { label: 'Fonte textual', value: 'Valaço - texto autorizado' },
-      { label: 'Paginas tecnicas', value: `${pageRecords.length}` },
-      { label: 'Imagem', value: 'Inserir imagem propria futuramente' },
-    ],
+    specs: [{ label: 'Paginas tecnicas', value: `${pageRecords.length}` }],
     technicalSections,
   };
 }

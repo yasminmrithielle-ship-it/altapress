@@ -79,10 +79,14 @@ function makeCatalogPlaceholder(category: CatalogCategory, slug: string): Catalo
   const title = normalizeTitle(slug);
   const technicalData = CATALOG_TECHNICAL_DATA[id];
   const fallbackSpecs = [
-    { label: 'Imagem', value: 'Em breve' },
     { label: 'Ficha tecnica', value: 'Aguardando dados autorizados' },
     { label: 'Status', value: 'Preparado para cadastro Alta Press' },
   ];
+  const technicalSpecs =
+    technicalData?.specs?.filter(
+      (spec) =>
+        !['imagem', 'fonte textual'].includes(spec.label.toLowerCase()),
+    ) ?? [];
 
   return {
     id,
@@ -91,11 +95,9 @@ function makeCatalogPlaceholder(category: CatalogCategory, slug: string): Catalo
     status: 'catalog-placeholder',
     summary:
       technicalData?.summary ??
-      'Produto cadastrado como estrutura inicial do catalogo. Imagem e especificacoes autorizadas serao inseridas futuramente.',
+      'Produto cadastrado como estrutura inicial do catalogo. Especificacoes autorizadas serao inseridas futuramente.',
     tags: tagsFromSlug(slug, category),
-    specs: technicalData?.specs?.length
-      ? [{ label: 'Imagem', value: 'Em breve' }, ...technicalData.specs]
-      : fallbackSpecs,
+    specs: technicalSpecs.length ? technicalSpecs : fallbackSpecs,
     sourceUrl: technicalData?.sourceUrl,
     sourcePages: technicalData?.sourcePages,
     technicalSections: technicalData?.technicalSections,

@@ -45,16 +45,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Entrada e saída; do fluido no ângulo de 90°;; Fecho cônico; permitindo maior estanqueidade;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "4"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -475,16 +467,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "estreita;; Corpo Monobloco;; Facilmente desmontável para; manutenção;; Indicada para aplicações; genéricas e agressivos por corrosão,; abrasão, ou com sólidos; em suspensão;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "3"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -762,16 +746,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Vedação; plana tipo corrediça;; Flanges pelo padrão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -891,16 +867,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Simples funcionamento;; Menor tempo de Manutenção;; Evita contaminação do; fluído tanto com a atmosféra; quanto com o lubrificante;; Estanqueidade absoluta;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -1069,16 +1037,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Acionamento; por 1/4 de volta (90°);; Fluxo; direto, com mínima; perda de pressão;; Indicada; para bloqueio de fluxo para; água, óleo; ou gás;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "3"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -1329,16 +1289,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Acionamento; por 1/4 de volta (90°);; Fluxo direto,; com mínima perda de pressão;; Flanges padrão ANSI; B 16.5 ou outros sob consulta;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -1458,16 +1410,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Acionamento; por 1/4 de volta (90°);; Fluxo direto,; com mínima perda de pressão;; Indicada para; bloqueio de fluxo de diversos; líquidos, gases e vapores;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -1744,16 +1688,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Em Aço Forjado; • Em; Aço Fundido; Bronze; Ferro Fundido",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "3"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -1879,16 +1815,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "• Extremidade:; Rosca, SW e BW; Extremidade: Flanges Adaptados",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "8"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2490,16 +2418,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Ideal para fluidos líquidos,; sólidos e gasosos como:; - água;; - massa;; - pasta;; - granulado;; - pó, etc;; Castelo roscado;; Acionamento manual por Volante e haste; ascendentes, podendo ser fornecida com; atuador p...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2579,16 +2499,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Gaxeta em PTFE;; Tampa roscada internamente ao corpo;; Rosca de entrada BSP; ou NPT; e rosca de saída NBR; 5667 ou ANSI",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2681,16 +2593,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "• Em; Aço Fundido; Ferro Fundido; Bronze",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2729,16 +2633,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Passagem livre sem obstruções;; Fechamento positivo; mesmo sobre sólidos;; Ausência; de gaxeta;; Baixíssima; perda de carga;; Manutenção rápida; e simples;; Corpo em Ferro Fundido ASTM; A 126;; Suporta pressões até 17...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2881,16 +2777,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "conforme ANSI ou DIN.; Construídas; de tubos e peças usinadas de; barras sólidas, não estão; sujeitas a falhas ou porosidades;; Fluxo direto, com; mínima perda de pressão;; Ideais para óleo; térmico, vapor saturado e ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -2988,16 +2876,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre; válvulas redutora de pressão, entre em contato; com nosso departamento comercial através do telefone; 031 3361-6106 ou por e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3043,16 +2923,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Construídas; de tubos e peças usinadas de; barras sólidas, não estão; sujeitas a falhas ou porosidades;; Fluxo direto, com; mínima perda de pressão;; Ideais para óleo; térmico, vapor saturado e superaquecido,; ar comp...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3276,16 +3148,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "( BSP; / NPT; Estas válvulas foram desenvolvidas; para proporcionar o alívio da sobrepressão; em linhas ou vasos de pressão que; operam com água ou outros líquidos.; Embora estas válvulas não; tenham a ação de abertur...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3338,16 +3202,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre; válvulas redutora de pressão, entre em contato; com nosso departamento comercial através do telefone; 031 3361-6106 ou por e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3373,16 +3229,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre; válvulas Start Up, entre em contato com nosso departamento; comercial através do telefone 031 3361-6106 ou por; e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3428,16 +3276,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -3806,16 +3646,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "4"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4071,16 +3903,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4106,16 +3930,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4141,16 +3957,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4225,16 +4033,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4309,16 +4109,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4393,16 +4185,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4477,16 +4261,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4557,16 +4333,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4637,16 +4405,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4725,16 +4485,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4804,16 +4556,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4892,16 +4636,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -4980,16 +4716,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5069,16 +4797,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5167,16 +4887,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5256,16 +4968,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5354,16 +5058,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5443,16 +5139,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5541,16 +5229,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5630,16 +5310,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 5k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5723,16 +5395,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 10k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5816,16 +5480,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 16k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -5909,16 +5565,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 20k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6002,16 +5650,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 30k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6091,16 +5731,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 40k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6180,16 +5812,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 63k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6289,16 +5913,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6713,16 +6329,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6806,16 +6414,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6899,16 +6499,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -6992,16 +6584,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7085,16 +6669,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7178,16 +6754,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7267,16 +6835,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "(Welding Neck) - DIN",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7311,16 +6871,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7408,16 +6960,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7510,16 +7054,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7603,16 +7139,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7705,16 +7233,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7798,16 +7318,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7896,16 +7408,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; - Macho",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -7989,16 +7493,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "(Welding Neck) - JIS",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8033,16 +7529,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 30k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8126,16 +7614,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 40k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8219,16 +7699,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 63k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8332,16 +7804,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8698,16 +8162,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8782,16 +8238,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8866,16 +8314,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -8950,16 +8390,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9034,16 +8466,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9114,16 +8538,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9198,16 +8614,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "C207-07 Tabela 3 - Classe D (175-150 PSI ) (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9356,16 +8764,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "C207-07 Tabela 3 - Classe D (175-150 PSI ) (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9448,16 +8848,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Liso;; - Ranhura; Standard;; Espiral;; Tipo 125 RMS;; Concên...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9540,16 +8932,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- JIS",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9584,16 +8968,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 5k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9682,16 +9058,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 10k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9784,16 +9152,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 16k (1); Tipos de acabamento da face de junção:; - Conforme KS B1519 (JIS B2202).",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9881,16 +9241,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 20k (1); Tipos de acabamento da face de junção:; - Conforme KS B1519 (JIS B2202).",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -9974,16 +9326,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 30k (1); Tipos de acabamento da face de junção:; - Conforme KS B1519 (JIS B2202).",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10083,16 +9427,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "5"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10395,16 +9731,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10479,16 +9807,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10563,16 +9883,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10647,16 +9959,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10731,16 +10035,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10811,16 +10107,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão; 150; Lbs; 300; 600; 900; 1500; 2500",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10846,16 +10134,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -10926,16 +10206,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11006,16 +10278,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11086,16 +10350,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11166,16 +10422,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11246,16 +10494,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11326,16 +10566,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11361,16 +10593,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526).; Tipos de acabamento da face de junção para flanges de faceamento com ressalto:; ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11441,16 +10665,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "2566; - Classe de pressão PN 10 / PN 16 (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11521,16 +10737,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "2567; - Classe de pressão PN 25 / PN 40 (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11601,16 +10809,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526).; Tipos de acabamento da face de junção para flanges de faceamento com ressalto:; ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11690,16 +10890,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526).; Tipos de acabamento da face de junção para flanges de faceamento com ressalto:; ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -11790,16 +10982,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12160,16 +11344,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12244,16 +11420,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12328,16 +11496,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12412,16 +11572,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12496,16 +11648,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12580,16 +11724,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipo de faceamento:; - Lap Joint;; Tipo de acabamento da face de Junção:; - Liso.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12660,16 +11796,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12695,16 +11823,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Classe de pressão PN 6 (1); Tipos de faceamento:; - Forma F: flange solto (representado pelo tubo rebordeado);; - Forma B: colar plano;; - Forma G: borda para solda de topo.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12779,16 +11899,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Classe de pressão PN 10 (1); Tipos de faceamento:; - Forma F: flange solto (representado pelo tubo rebordeado);; - Forma B: colar plano;; - Forma G: borda para solda de topo.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12863,16 +11975,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Forma F: flange solto;; - Forma B: colar plano.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -12947,16 +12051,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Forma F: flange solto;; - Forma B: colar plano.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13031,16 +12127,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Forma F: flange solto;; - Forma B: colar plano.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13120,16 +12208,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Forma F: flange solto;; - Forma B: colar plano.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13224,16 +12304,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13590,16 +12662,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13674,16 +12738,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13758,16 +12814,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13842,16 +12890,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -13926,16 +12966,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14006,16 +13038,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14098,16 +13122,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Sobreposto Plano;; - Ranhura; Standard;; Espiral;; Tipo 125 ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "4"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14375,16 +13391,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Sobreposto Plano;; - Ranhura; Standard;; Espiral;; Tipo 125 ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14467,16 +13475,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Sobreposto Plano;; - Ranhura; Standard;; Espiral;; Tipo 125 ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14550,16 +13550,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Sobreposto Plano;; - Ranhura; Standard;; Espiral;; Tipo 125 ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14642,16 +13634,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 283 Gr. C;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Plano; (FF - Flat Face);; Tipos de acabamento da face de Junção:; - Sobreposto Plano;; - Ranhura; Standard;; Espiral;; Tipo 125 ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14730,16 +13714,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14765,16 +13741,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; Tipos de acabamento da face de junção para flanges de face...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14849,16 +13817,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (DIN 2526);; - Plano; (DIN 2526);; Tipos de acabamento da face de junção para flanges de face...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14933,16 +13893,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de Pressão",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -14968,16 +13920,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 5k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15061,16 +14005,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Sobreposto Plano - JIS B2220-1995 B2238-1996 - CLASSE 10K",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15163,16 +14099,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 16k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15256,16 +14184,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 20k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15349,16 +14269,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2220-1995 B2238-1996; - Classe de pressão 30k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15442,16 +14354,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 40k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15535,16 +14439,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- B2238-1996; - Classe de pressão 63k (1)",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -15660,16 +14556,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "9"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16136,16 +15024,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16216,16 +15096,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16287,16 +15159,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16358,16 +15222,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16429,16 +15285,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16500,16 +15348,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F309; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16580,16 +15420,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F309; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16660,16 +15492,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F309; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16740,16 +15564,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F309; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16820,16 +15636,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F307; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16900,16 +15708,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F307; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -16980,16 +15780,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -17060,16 +15852,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "F306; • Rosca NPT 1/2\";; • 12,7mm de furo para diâmetro nominal 4\" e maior;; • 9,5mm de furo para diâmetro nominal 3\"; • 6,4mm de furo para diâmetro nominal 2.1/2\" e menor.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -17140,16 +15924,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -17247,16 +16023,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "- Aço; Carbono ASTM A 181 Gr. I;; Carbono ASTM A 105;; - Outras; Ligas Sob Consulta;; Tipos de faceamento:; - Com; Ressalto (RF - Raised Face);; - Plano; (FF - Flat Face);; - RTJ; (Ring Type Joint);; - Macho; e Fêmea ...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -17358,16 +16126,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Tê; 90°; 90° de Redução; 45°; Propriedades; 3.000; lbs; 6.000; Cruzeta; Luva; Luva de Redução; Meia Luva; Cap; União; Cotovelo 90°; Cotovelo 45°",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -17595,16 +16355,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Galvanizado; Polegada; Milímetro; 3/8\"; 10; 48; 0,102; 1/2\"; 15; 55; 0,150; 3/4\"; 20; 69; 0,268; 1\"; 25; 58; 0,493; 1.1/4\"; 32; 105; 0,737; 1.1/2\"; 40; 116; 0,915; 2\"; 50; 140; 1,469; 2.1/2\"; 65; 176; 2,329; 3\"; 80; 2...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "47"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -21452,16 +20204,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de materiais para conexões:; - Aço; Carbono ASTM A 105;; Inoxidável AISI 304 ou 304L;; Inoxidável AISI 316 ou 316L;; - Outras; Ligas;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "6"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -21874,16 +20618,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "de materiais para conexões:; - Aço; Carbono ASTM A 234 Gr. WPB;; Inoxidável AISI 304 ou 304L;; Inoxidável AISI 316 ou 316L;; - Outras; Ligas;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "13"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -22830,16 +21566,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Dispensa ferramentas para manutenção;; Elemento; filtrante substituível;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23013,16 +21741,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Em Aço Forjado e Ferro; Fundido; • Em; Bronze",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23129,16 +21849,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Indicado como opção para; drenagens de linhas de vapor e traceamentos; onde não se justifica a instalação; de linha de retorno de condensado; Pode ser instalado em equipamentos sem; a necessidade de controle preciso d...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23182,16 +21894,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Extremamente robustos e resistente a golpes; de aríete;; Largamente utilizado para a remoção; de condensado de cilindros secadores em; indústrias de papel e celulose e; linhas gerais de vapor em petroquímicas; e refin...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23235,16 +21939,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Por possuírem descarga contínua,; são indicados como melhor opção; para remoção de condensado; de equipamentos que utilizam vapor, como; tanques, serpentinas, trocadores de calor,; digestores, secadores, cilindros, et...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23288,16 +21984,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Indicado para a remoção; de água e óleo de redes e; pulmões de ar comprimido e outros; gases inertes;; Possui alta capacidade de descarga impedindo; o entupimento normalmente ocasionado por; sujeira ou óleo;; Fabricad...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23341,16 +22029,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Recomendado para remoção; de condensado de linhas gerais de distribuição; de vapor e linhas de traceamento;; Pode ser utilizado para a remoção; de umidade de linhas de ar comprimido;; Fabricado em aço inoxidável; para...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23394,16 +22074,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Indicado para remoção de; ar de finais de linhas de distribuição; de vapor ou equipamentos encamisados;; Pode ser utilizado para drenagem de condensado; de linhas de vapor e traceamentos com descarga; para a atmosfera...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23447,16 +22119,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre Anel O'Ring,; entre em contato com nosso departamento comercial através; do telefone 031 3361-6106 ou por e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23482,16 +22146,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Facilidade de manuseio, economia de; tempo e acabamento mais limpo;; Completa vedação no aperto; das roscas;; Facilidade de desmontagem após; vários anos de utilização;; Proteção contra oxidações,; ferrugens, etc.;; R...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23526,16 +22182,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre Gaxeta, entre; em contato com nosso departamento comercial através; do telefone 031 3361-6106 ou por e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23561,16 +22209,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Para obter informações sobre Junta de Vedação,; entre em contato com nosso departamento comercial através; do telefone 031 3361-6106 ou por e-mail: vendas@valaco.com.br.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23596,16 +22236,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Comuns; Industriais; Com; Caixa Hermético ou C/Glicerina; Propriedades; Especificações; De Aço; Inoxidável; Petroquímicos; De Aferição; (Teste); De Baixa Pressão; (mmCA); De Mostrador; Quadrado; De Dupla Ação; Diferen...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23631,16 +22263,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Bimetálico; Comum; em Aço Inoxidável; de Ângulo Ajustável; Propriedades; Especificações; de Motores Marítimos; Motores Navais; De Expansão; à Gás; Para Transformador; Elétrico; Digital",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23666,16 +22290,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Destinadas a absorver vibrações; mecânicas originadas em fontes; como: bombas, turbinas, compressores,; motores, etc. evitando a propagação; destas para o restante da tubulação;; Fole em aço inoxidável;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23746,16 +22362,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Indicado para remoção; de \"bolsões\" de ar em; tubulações que impedem o; fluxo normal e causam bloqueio;; Fabricado em ferro fundido nodular e; aço inoxidável;; Trabalha à pressões de; até 22 kgf/cm²; e 250°C de temper...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23782,7 +22390,7 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
         "rows": [
           {
             "label": "Dados",
-            "value": "1.; Veja também opção de ventosa; para remoção de ar na linha;; 2.; Veja Tabela de Resistência; à Corrosão;; 3.; Para converter unidades de temperatura e pressão; acesse a seção de Conversão; de Medidas;; 4.; Imagem para efeito meramente ilustrativo."
+            "value": "1.; Veja também opção de ventosa; para remoção de ar na linha;; 2.; Veja Tabela de Resistência; à Corrosão;; 3.; Para converter unidades de temperatura e pressão; acesse a seção de Conversão; de Medidas;; 4."
           }
         ]
       }
@@ -23799,16 +22407,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Fabricado em Aço Galvanizado, Aço Inoxidável 304L ou 316L, com porcas e arruela; de pressão para fixação; de tubulação em diversos; ângulos;; Diâmetros de 3/8\" à; 48\";; Diâmetro da Rosca pode ser fabricado de acordo c...",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23861,16 +22461,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "( BSP; / NPT; Para uso em tanques, reservatórios,; caldeiras, autoclaves e outras instalações; similares;; Vedação tipo agulha;; Válvula de purga de 1/8 BSPT;; Extremidade com rosca;; Diâmetro nominal de 3/8\" a; 2\".",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23941,16 +22533,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "• Axial; Fole; • De Borracha",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -23976,16 +22560,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Indicado para remoção; da umidade e gotículas d'água; em suspensão de sistemas de vapor; e ar comprimido;; Fabricado em ferro fundido nodular e; aço carbono;; Trabalha à pressões de; até 21 kgf/cm²;",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -24033,16 +22609,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "Destinada à canalizações; de pequenas vazões, pois; a admissão ou vazão; máxima de ar é de; 2 litros por segundo para um diferencial; de pressão de 5 métros; de coluna d'água.",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "2"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
@@ -24221,16 +22789,8 @@ export const CATALOG_TECHNICAL_DATA: Record<string, CatalogTechnicalRecord> = {
     "summary": "( BSP; / NPT; Corpo de bronze e visor de vidro temperado; de alta resistência, para usos em; linhas de vapor condensado;; Diâmetro nominal de 3/8\" a; 2\".",
     "specs": [
       {
-        "label": "Fonte textual",
-        "value": "Valaço - texto autorizado"
-      },
-      {
         "label": "Paginas tecnicas",
         "value": "1"
-      },
-      {
-        "label": "Imagem",
-        "value": "Inserir imagem propria futuramente"
       }
     ],
     "technicalSections": [
