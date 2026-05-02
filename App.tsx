@@ -382,7 +382,7 @@ const COLORS = {
   borderStrong: 'rgba(255,255,255,0.14)',
 };
 
-const WHATSAPP_PHONE = '5531997284376';
+const WHATSAPP_PHONE = '553191878767';
 const WHATSAPP_MESSAGE = 'Ola, quero falar com a ALTA PRESS.';
 
 export default function App() {
