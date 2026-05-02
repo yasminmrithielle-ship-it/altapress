@@ -352,12 +352,11 @@ export default function App() {
             </View>
             <Text style={styles.eyebrow}>ALTA PRESS</Text>
             <Text style={styles.heroTitle}>
-              Flanges e conexoes para alta pressao com visual de catalogo
-              profissional.
+              ALTA PRESS SIMPLIFICANDO SUA VIDA!
             </Text>
             <Text style={styles.heroText}>
-              Pesquise DN, NPS, normas, classes, furacao e parafusos no mesmo
-              clima visual do site institucional da ALTA PRESS.
+              Consulte produtos, categorias e informacoes tecnicas com rapidez
+              no balcao, oficina ou atendimento.
             </Text>
 
             <View style={styles.highlightRow}>
@@ -936,8 +935,8 @@ const styles = StyleSheet.create({
   },
   heroShell: {
     backgroundColor: COLORS.bg,
-    paddingTop: 16,
-    paddingBottom: 112,
+    paddingTop: 14,
+    paddingBottom: 94,
     overflow: 'hidden',
   },
   heroInner: {
@@ -949,15 +948,15 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.redGlow,
   },
   heroGlowRight: {
-    width: 280,
-    height: 280,
-    top: 34,
-    right: -110,
+    width: 320,
+    height: 320,
+    top: 88,
+    right: -130,
   },
   heroGlowLeft: {
     width: 240,
     height: 240,
-    top: 210,
+    top: 270,
     left: -120,
   },
   headerBar: {
@@ -971,7 +970,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.borderOnDark,
     backgroundColor: 'rgba(18,20,24,0.84)',
     borderRadius: 24,
-    marginBottom: 22,
+    marginBottom: 14,
   },
   menuButton: {
     width: 46,
@@ -1018,25 +1017,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   heroCard: {
-    borderRadius: 32,
+    borderRadius: 28,
     backgroundColor: COLORS.inkSoft,
     borderWidth: 1,
     borderColor: COLORS.borderOnDark,
-    padding: 28,
+    paddingHorizontal: 18,
+    paddingTop: 20,
+    paddingBottom: 24,
     alignItems: 'center',
   },
   heroLogoPanel: {
     width: '100%',
-    height: 164,
+    height: 224,
     borderRadius: 10,
     backgroundColor: 'transparent',
-    marginBottom: 20,
+    marginBottom: 12,
     overflow: 'hidden',
     justifyContent: 'center',
   },
   heroLogoImage: {
-    width: '98%',
-    height: '98%',
+    width: '112%',
+    height: '112%',
     alignSelf: 'center',
     borderRadius: 10,
   },
@@ -1051,16 +1052,16 @@ const styles = StyleSheet.create({
   },
   heroTitle: {
     color: COLORS.textOnDark,
-    fontSize: 36,
-    lineHeight: 38,
+    fontSize: 31,
+    lineHeight: 35,
     fontWeight: '900',
     textAlign: 'center',
   },
   heroText: {
     color: COLORS.mutedOnDark,
     fontSize: 15,
-    lineHeight: 24,
-    marginTop: 16,
+    lineHeight: 22,
+    marginTop: 14,
     textAlign: 'center',
   },
   highlightRow: {
@@ -1085,7 +1086,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   introWrap: {
-    marginTop: -84,
+    marginTop: -70,
     paddingHorizontal: 18,
   },
   introCard: {
