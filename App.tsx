@@ -78,25 +78,19 @@ type Flange = {
 };
 
 type PhotoAnalysisResult = {
-  identificacao_principal: {
-    tipo_peca: string;
-    tipo_flange: string;
-    nome_tecnico: string;
-    norma_provavel: string;
-    classe_provavel: string;
-    material_provavel: string;
-    face: string;
-    confianca: number;
-  };
-  caracteristicas_observadas: string[];
-  possiveis_alternativas: {
-    tipo: string;
-    motivo: string;
-    confianca: number;
-  }[];
-  informacoes_nao_confirmadas: string[];
-  recomendacoes_para_confirmar: string[];
-  resumo_para_usuario: string;
+  tipo_peca: string;
+  tipo_flange: string;
+  nome_tecnico: string;
+  norma_provavel: string;
+  classe_provavel: string;
+  material_provavel: string;
+  face: string;
+  confianca: number;
+  caracteristicas: string[];
+  alternativas: string[];
+  nao_confirmado: string[];
+  recomendacoes: string[];
+  resumo: string;
 };
 
 type PhotoChatMessage = {
@@ -649,7 +643,7 @@ export default function App() {
         id: createMessageId(),
         role: 'assistant',
         text:
-          result?.resumo_para_usuario ||
+          result?.resumo ||
           payload?.rawText ||
           'Analise concluida.',
         result,
@@ -1503,47 +1497,28 @@ function PhotoMessageBubble({ message }: { message: PhotoChatMessage }) {
 }
 
 function PhotoAnalysisCard({ result }: { result: PhotoAnalysisResult }) {
-  const main = result.identificacao_principal;
-
   return (
     <View style={styles.analysisCard}>
       <Text style={styles.analysisTitle}>Identificacao principal</Text>
 
       <View style={styles.analysisGrid}>
-        <AnalysisItem label="Peca" value={main.tipo_peca} />
-        <AnalysisItem label="Flange" value={main.tipo_flange} />
-        <AnalysisItem label="Nome tecnico" value={main.nome_tecnico} />
-        <AnalysisItem label="Norma" value={main.norma_provavel} />
-        <AnalysisItem label="Classe" value={main.classe_provavel} />
-        <AnalysisItem label="Material" value={main.material_provavel} />
-        <AnalysisItem label="Face" value={main.face} />
-        <AnalysisItem label="Confianca" value={`${main.confianca}%`} />
+        <AnalysisItem label="Peca" value={result.tipo_peca} />
+        <AnalysisItem label="Flange" value={result.tipo_flange} />
+        <AnalysisItem label="Nome tecnico" value={result.nome_tecnico} />
+        <AnalysisItem label="Norma" value={result.norma_provavel} />
+        <AnalysisItem label="Classe" value={result.classe_provavel} />
+        <AnalysisItem label="Material" value={result.material_provavel} />
+        <AnalysisItem label="Face" value={result.face} />
+        <AnalysisItem label="Confianca" value={`${result.confianca}%`} />
       </View>
 
       <AnalysisList
         title="Caracteristicas observadas"
-        items={result.caracteristicas_observadas}
+        items={result.caracteristicas}
       />
-
-      {result.possiveis_alternativas.length ? (
-        <View style={styles.analysisSection}>
-          <Text style={styles.analysisSectionTitle}>Possiveis alternativas</Text>
-          {result.possiveis_alternativas.map((alternative, index) => (
-            <Text key={`${alternative.tipo}-${index}`} style={styles.analysisListItem}>
-              - {alternative.tipo}: {alternative.motivo} ({alternative.confianca}%)
-            </Text>
-          ))}
-        </View>
-      ) : null}
-
-      <AnalysisList
-        title="Nao confirmado"
-        items={result.informacoes_nao_confirmadas}
-      />
-      <AnalysisList
-        title="Para confirmar"
-        items={result.recomendacoes_para_confirmar}
-      />
+      <AnalysisList title="Possiveis alternativas" items={result.alternativas} />
+      <AnalysisList title="Nao confirmado" items={result.nao_confirmado} />
+      <AnalysisList title="Para confirmar" items={result.recomendacoes} />
     </View>
   );
 }

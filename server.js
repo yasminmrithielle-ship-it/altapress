@@ -46,137 +46,74 @@ function loadLocalEnv() {
   }
 }
 
-const PHOTO_ANALYSIS_PROMPT = `Voce e um especialista tecnico em conexoes industriais, flanges e pecas de alta pressao.
+const PHOTO_ANALYSIS_PROMPT = `Analise a imagem como especialista em flanges e conexoes industriais de alta pressao.
 
-Sua funcao e analisar a imagem enviada pelo usuario e identificar a peca com o maior nivel de precisao possivel.
+Identifique o tipo da peca, tipo de flange, norma provavel, classe provavel, material provavel, face, caracteristicas visuais, alternativas possiveis e nivel de confianca.
 
-Analise visualmente:
-- formato geral da peca
-- presenca ou ausencia de furo central
-- quantidade de furos para parafusos
-- existencia de pescoco/neck
-- face elevada, face plana ou encaixe RTJ
-- tipo de acabamento
-- sinais de rosca, solda ou encaixe
-- proporcao entre diametro externo, furo central e furos dos parafusos
-- possiveis gravacoes visiveis na peca
+Nao invente medidas, DN, classe ou material quando nao houver escala, gravacao ou dados suficientes. Quando houver incerteza, informe como "nao confirmado".
 
-Identifique, quando possivel:
-- tipo da peca
-- tipo do flange: WN, SO/SORF, BL, LJ, SW, TH, RTJ, FF, RF
-- norma provavel: ANSI/ASME B16.5, DIN, EN, JIS ou outra
-- classe provavel: 150, 300, 600, 900, 1500 ou 2500 lbs
-- material provavel: aco carbono, aco inox, galvanizado, ferro fundido ou outro
-- aplicacao comum
-- nivel de confianca da identificacao
-
-IMPORTANTE:
-- Nunca invente uma medida exata se ela nao estiver visivel.
-- Se nao houver escala, regua ou gravacao, informe que a classe e o DN sao apenas estimativas.
-- Se houver duvida entre dois tipos, retorne as possibilidades.
-- De prioridade para seguranca: informe que a validacao final deve ser feita por medicao, gravacao da peca ou tabela tecnica.
-- Nao afirme compatibilidade para uso em pressao sem confirmacao tecnica.
-
-Retorne sempre em JSON valido, sem texto fora do JSON.
-
-Formato obrigatorio:
+Retorne somente JSON valido no formato:
 
 {
-  "identificacao_principal": {
-    "tipo_peca": "",
-    "tipo_flange": "",
-    "nome_tecnico": "",
-    "norma_provavel": "",
-    "classe_provavel": "",
-    "material_provavel": "",
-    "face": "",
-    "confianca": 0
-  },
-  "caracteristicas_observadas": [
-    ""
-  ],
-  "possiveis_alternativas": [
-    {
-      "tipo": "",
-      "motivo": "",
-      "confianca": 0
-    }
-  ],
-  "informacoes_nao_confirmadas": [
-    ""
-  ],
-  "recomendacoes_para_confirmar": [
-    "Enviar foto da gravacao da peca",
-    "Enviar medida do diametro externo",
-    "Enviar medida do furo central",
-    "Enviar quantidade e diametro dos furos dos parafusos",
-    "Enviar espessura da peca"
-  ],
-  "resumo_para_usuario": ""
+  "tipo_peca": "",
+  "tipo_flange": "",
+  "nome_tecnico": "",
+  "norma_provavel": "",
+  "classe_provavel": "",
+  "material_provavel": "",
+  "face": "",
+  "confianca": 0,
+  "caracteristicas": [],
+  "alternativas": [],
+  "nao_confirmado": [],
+  "recomendacoes": [],
+  "resumo": ""
 }`;
 
 const PHOTO_RESULT_SCHEMA = {
   type: 'object',
   additionalProperties: false,
   required: [
-    'identificacao_principal',
-    'caracteristicas_observadas',
-    'possiveis_alternativas',
-    'informacoes_nao_confirmadas',
-    'recomendacoes_para_confirmar',
-    'resumo_para_usuario',
+    'tipo_peca',
+    'tipo_flange',
+    'nome_tecnico',
+    'norma_provavel',
+    'classe_provavel',
+    'material_provavel',
+    'face',
+    'confianca',
+    'caracteristicas',
+    'alternativas',
+    'nao_confirmado',
+    'recomendacoes',
+    'resumo',
   ],
   properties: {
-    identificacao_principal: {
-      type: 'object',
-      additionalProperties: false,
-      required: [
-        'tipo_peca',
-        'tipo_flange',
-        'nome_tecnico',
-        'norma_provavel',
-        'classe_provavel',
-        'material_provavel',
-        'face',
-        'confianca',
-      ],
-      properties: {
-        tipo_peca: { type: 'string' },
-        tipo_flange: { type: 'string' },
-        nome_tecnico: { type: 'string' },
-        norma_provavel: { type: 'string' },
-        classe_provavel: { type: 'string' },
-        material_provavel: { type: 'string' },
-        face: { type: 'string' },
-        confianca: { type: 'number' },
-      },
-    },
-    caracteristicas_observadas: {
+    tipo_peca: { type: 'string' },
+    tipo_flange: { type: 'string' },
+    nome_tecnico: { type: 'string' },
+    norma_provavel: { type: 'string' },
+    classe_provavel: { type: 'string' },
+    material_provavel: { type: 'string' },
+    face: { type: 'string' },
+    confianca: { type: 'number' },
+    caracteristicas: {
       type: 'array',
       items: { type: 'string' },
     },
-    possiveis_alternativas: {
-      type: 'array',
-      items: {
-        type: 'object',
-        additionalProperties: false,
-        required: ['tipo', 'motivo', 'confianca'],
-        properties: {
-          tipo: { type: 'string' },
-          motivo: { type: 'string' },
-          confianca: { type: 'number' },
-        },
-      },
-    },
-    informacoes_nao_confirmadas: {
+    alternativas: {
       type: 'array',
       items: { type: 'string' },
     },
-    recomendacoes_para_confirmar: {
+    nao_confirmado: {
       type: 'array',
       items: { type: 'string' },
     },
-    resumo_para_usuario: { type: 'string' },
+    recomendacoes: {
+      type: 'array',
+      items: { type: 'string' },
+    },
+    resumo: { type: 'string' },
   },
 };
 
