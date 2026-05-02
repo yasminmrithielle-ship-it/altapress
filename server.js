@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const http = require('node:http');
 const path = require('node:path');
 
+loadLocalEnv();
+
 const PORT = Number(process.env.PORT || 8080);
 const DIST_DIR = path.join(__dirname, 'dist');
 const MAX_BODY_BYTES = Number(process.env.MAX_UPLOAD_BYTES || 12 * 1024 * 1024);
@@ -9,6 +11,40 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = Number(process.env.PHOTO_RATE_LIMIT_MAX || 8);
 const rateLimitBuckets = new Map();
+
+function loadLocalEnv() {
+  const envPath = path.join(__dirname, '.env');
+
+  if (!fs.existsSync(envPath)) {
+    return;
+  }
+
+  const lines = fs.readFileSync(envPath, 'utf8').split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith('#')) {
+      continue;
+    }
+
+    const separatorIndex = trimmed.indexOf('=');
+
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    const value = trimmed
+      .slice(separatorIndex + 1)
+      .trim()
+      .replace(/^["']|["']$/g, '');
+
+    if (key && process.env[key] === undefined) {
+      process.env[key] = value;
+    }
+  }
+}
 
 const PHOTO_ANALYSIS_PROMPT = `Voce e um especialista tecnico em conexoes industriais, flanges e pecas de alta pressao.
 
