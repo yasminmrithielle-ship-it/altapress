@@ -877,13 +877,23 @@ export default function App() {
             </Text>
             <Text style={styles.heroText}>
               Consulte produtos, categorias e informacoes tecnicas com rapidez
-              no balcao, oficina ou atendimento.
+              no app, ou atendimento via telefone e whatsapp.
             </Text>
 
-            <View style={styles.highlightRow}>
-              <HighlightPill label="ANSI / ASME B16.5" />
-              <HighlightPill label="DIN / EN 1092-1" />
-              <HighlightPill label="Consulta em campo" />
+            <View style={styles.heroCatalogGrid}>
+              {CATALOG_CATEGORIES.map((category) => (
+                <HeroCatalogShortcut
+                  key={category}
+                  category={category}
+                  count={categoryCounts[category]}
+                  compact={width < 520}
+                  onPress={() => {
+                    setCatalogRoute(category);
+                    setCatalogQuery('');
+                    setMenuOpen(true);
+                  }}
+                />
+              ))}
             </View>
           </View>
         </View>
@@ -1226,14 +1236,6 @@ function SectionHeading({
         <Text style={styles.sectionTitle}>{title}</Text>
       </View>
       <Text style={styles.sectionText}>{text}</Text>
-    </View>
-  );
-}
-
-function HighlightPill({ label }: { label: string }) {
-  return (
-    <View style={styles.highlightPill}>
-      <Text style={styles.highlightPillText}>{label}</Text>
     </View>
   );
 }
@@ -1696,6 +1698,38 @@ function renderCategoryIcon(category: CatalogCategory) {
   }
 }
 
+function HeroCatalogShortcut({
+  category,
+  count,
+  compact,
+  onPress,
+}: {
+  category: CatalogCategory;
+  count: number;
+  compact: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      style={[
+        styles.heroCatalogShortcut,
+        { flexBasis: compact ? '47%' : '23%' },
+      ]}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`Abrir catalogo de ${category}`}
+    >
+      <View style={styles.heroCatalogIcon}>
+        {renderCategoryIcon(category)}
+      </View>
+      <View style={styles.heroCatalogCopy}>
+        <Text style={styles.heroCatalogTitle}>{category}</Text>
+        <Text style={styles.heroCatalogCount}>{count} produtos</Text>
+      </View>
+    </Pressable>
+  );
+}
+
 function CategoryTile({
   category,
   count,
@@ -1984,26 +2018,52 @@ const styles = StyleSheet.create({
     marginTop: 14,
     textAlign: 'center',
   },
-  highlightRow: {
+  heroCatalogGrid: {
+    width: '100%',
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 10,
-    marginTop: 20,
+    marginTop: 22,
     justifyContent: 'center',
   },
-  highlightPill: {
-    borderRadius: 999,
-    paddingHorizontal: 14,
+  heroCatalogShortcut: {
+    minWidth: 128,
+    minHeight: 68,
+    flexGrow: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    borderRadius: 16,
+    paddingHorizontal: 12,
     paddingVertical: 10,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(255,255,255,0.07)',
     borderWidth: 1,
-    borderColor: 'rgba(215,25,32,0.28)',
+    borderColor: 'rgba(215,25,32,0.34)',
   },
-  highlightPillText: {
+  heroCatalogIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    backgroundColor: 'rgba(215,25,32,0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.24)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroCatalogCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  heroCatalogTitle: {
     color: COLORS.textOnDark,
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: '900',
+  },
+  heroCatalogCount: {
+    color: COLORS.mutedOnDark,
+    fontSize: 10,
     fontWeight: '700',
-    textAlign: 'center',
+    marginTop: 3,
   },
   introWrap: {
     marginTop: -70,
