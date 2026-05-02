@@ -4,6 +4,7 @@ import {
   Animated,
   FlatList,
   Image,
+  Linking,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -29,6 +30,7 @@ import {
   Nut,
   Ruler,
   Search,
+  Send,
   Wrench,
   X,
 } from 'lucide-react-native';
@@ -190,6 +192,9 @@ const COLORS = {
   borderStrong: 'rgba(255,255,255,0.14)',
 };
 
+const WHATSAPP_PHONE = '5531997284376';
+const WHATSAPP_MESSAGE = 'Ola, quero falar com a ALTA PRESS.';
+
 export default function App() {
   const { width } = useWindowDimensions();
   const [query, setQuery] = useState('');
@@ -282,6 +287,19 @@ export default function App() {
       return Boolean(matchSearch && matchClass && matchStandard);
     });
   }, [query, selectedClass, selectedStandard]);
+
+  const openWhatsApp = async () => {
+    const message = encodeURIComponent(WHATSAPP_MESSAGE);
+    const appUrl = `whatsapp://send?phone=${WHATSAPP_PHONE}&text=${message}`;
+    const webUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`;
+
+    if (await Linking.canOpenURL(appUrl)) {
+      await Linking.openURL(appUrl);
+      return;
+    }
+
+    await Linking.openURL(webUrl);
+  };
 
   useEffect(() => {
     if (!filtered.length) {
@@ -668,6 +686,17 @@ export default function App() {
               </View>
             )}
           </ScrollView>
+
+          <Pressable style={styles.whatsappButton} onPress={openWhatsApp}>
+            <View style={styles.whatsappIconWrap}>
+              <Send color={COLORS.white} size={18} />
+            </View>
+            <View style={styles.whatsappCopy}>
+              <Text style={styles.whatsappTitle}>WhatsApp</Text>
+              <Text style={styles.whatsappText}>Falar com a ALTA PRESS</Text>
+            </View>
+            <ChevronRight color={COLORS.white} size={18} />
+          </Pressable>
         </Animated.View>
       </View>
     </SafeAreaView>
@@ -1290,6 +1319,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: COLORS.borderStrong,
     paddingTop: 16,
+    paddingBottom: 16,
     paddingHorizontal: 16,
     shadowColor: COLORS.bg,
     shadowOpacity: 0.22,
@@ -1361,14 +1391,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   drawerScrollContent: {
-    paddingBottom: 28,
+    flexGrow: 1,
+    paddingBottom: 14,
   },
   categoryMenuGrid: {
-    gap: 8,
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    gap: 10,
   },
   categoryTile: {
     width: '100%',
-    minHeight: 58,
+    minHeight: 74,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
@@ -1380,8 +1413,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.borderStrong,
   },
   categoryTileIcon: {
-    width: 38,
-    height: 38,
+    width: 44,
+    height: 44,
     borderRadius: 8,
     backgroundColor: 'rgba(215,25,32,0.12)',
     borderWidth: 1,
@@ -1395,12 +1428,46 @@ const styles = StyleSheet.create({
   },
   categoryTileTitle: {
     color: COLORS.redDeep,
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: '900',
   },
   categoryTileCount: {
     color: COLORS.muted,
-    fontSize: 11,
+    fontSize: 12,
+    fontWeight: '700',
+    marginTop: 4,
+  },
+  whatsappButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: '#13a047',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.16)',
+  },
+  whatsappIconWrap: {
+    width: 42,
+    height: 42,
+    borderRadius: 8,
+    backgroundColor: 'rgba(255,255,255,0.16)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  whatsappCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  whatsappTitle: {
+    color: COLORS.white,
+    fontSize: 15,
+    fontWeight: '900',
+  },
+  whatsappText: {
+    color: 'rgba(255,255,255,0.82)',
+    fontSize: 12,
     fontWeight: '700',
     marginTop: 3,
   },
