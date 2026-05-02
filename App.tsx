@@ -376,6 +376,8 @@ export default function App() {
   const [catalogRoute, setCatalogRoute] = useState<CatalogCategory | null>(
     null,
   );
+  const [selectedCatalogItem, setSelectedCatalogItem] =
+    useState<CatalogItem | null>(null);
   const [selected, setSelected] = useState<Flange | null>(FLANGES[0] ?? null);
   const [inchInput, setInchInput] = useState('2');
   const [millimeterInput, setMillimeterInput] = useState('50,8');
@@ -766,6 +768,7 @@ export default function App() {
               onPress={() => {
                 setCatalogRoute(null);
                 setCatalogQuery('');
+                setSelectedCatalogItem(null);
                 setMenuOpen(true);
               }}
               accessibilityRole="button"
@@ -811,6 +814,7 @@ export default function App() {
                   onPress={() => {
                     setCatalogRoute(category);
                     setCatalogQuery('');
+                    setSelectedCatalogItem(null);
                     setMenuOpen(true);
                   }}
                 />
@@ -975,7 +979,7 @@ export default function App() {
             <View>
               <Text style={styles.drawerEyebrow}>ALTA PRESS</Text>
               <Text style={styles.drawerTitle}>
-                {catalogRoute ?? 'Catalogo'}
+                {selectedCatalogItem?.title ?? catalogRoute ?? 'Catalogo'}
               </Text>
             </View>
 
@@ -993,16 +997,23 @@ export default function App() {
             <Pressable
               style={styles.drawerBackButton}
               onPress={() => {
+                if (selectedCatalogItem) {
+                  setSelectedCatalogItem(null);
+                  return;
+                }
+
                 setCatalogRoute(null);
                 setCatalogQuery('');
               }}
             >
               <ChevronLeft color={COLORS.redDeep} size={18} />
-              <Text style={styles.drawerBackText}>Categorias</Text>
+              <Text style={styles.drawerBackText}>
+                {selectedCatalogItem ? 'Produtos' : 'Categorias'}
+              </Text>
             </Pressable>
           ) : null}
 
-          {catalogRoute ? (
+          {catalogRoute && !selectedCatalogItem ? (
             <View style={styles.drawerSearchBox}>
               <Search color={COLORS.red} size={18} />
               <TextInput
@@ -1020,10 +1031,16 @@ export default function App() {
             contentContainerStyle={styles.drawerScrollContent}
             showsVerticalScrollIndicator={false}
           >
-            {catalogRoute ? (
+            {selectedCatalogItem ? (
+              <CatalogDetailView item={selectedCatalogItem} />
+            ) : catalogRoute ? (
               <View style={styles.drawerGroup}>
                 {categoryProducts.map((item) => (
-                  <CatalogCard key={item.id} item={item} />
+                  <CatalogCard
+                    key={item.id}
+                    item={item}
+                    onPress={() => setSelectedCatalogItem(item)}
+                  />
                 ))}
 
                 {!categoryProducts.length ? (
@@ -1041,6 +1058,7 @@ export default function App() {
                     onPress={() => {
                       setCatalogRoute(category);
                       setCatalogQuery('');
+                      setSelectedCatalogItem(null);
                     }}
                   />
                 ))}
@@ -1571,9 +1589,20 @@ function getCatalogStatusLabel(status: CatalogItem['status']) {
   }
 }
 
-function CatalogCard({ item }: { item: CatalogItem }) {
+function CatalogCard({
+  item,
+  onPress,
+}: {
+  item: CatalogItem;
+  onPress: () => void;
+}) {
   return (
-    <View style={styles.catalogCard}>
+    <Pressable
+      style={styles.catalogCard}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`Abrir ficha tecnica de ${item.title}`}
+    >
       <View style={styles.catalogCardTop}>
         <View style={styles.catalogImageSlot}>
           <ImageIcon color={COLORS.redDeep} size={18} />
@@ -1601,6 +1630,85 @@ function CatalogCard({ item }: { item: CatalogItem }) {
           {getCatalogStatusLabel(item.status)}
         </Text>
       </View>
+    </Pressable>
+  );
+}
+
+function CatalogDetailView({ item }: { item: CatalogItem }) {
+  const technicalRows = [
+    { label: 'Categoria', value: item.category },
+    { label: 'Status', value: getCatalogStatusLabel(item.status) },
+    ...item.specs,
+  ];
+
+  const characteristicRows = item.tags.slice(0, 7).map((tag, index) => ({
+    label: index === 0 ? 'Familia' : `Referencia ${index}`,
+    value: tag,
+  }));
+
+  return (
+    <View style={styles.catalogDetailCard}>
+      <View style={styles.catalogDetailHero}>
+        <Text style={styles.catalogDetailCategory}>{item.category}</Text>
+        <Text style={styles.catalogDetailTitle}>{item.title}</Text>
+        <Text style={styles.catalogDetailSummary}>{item.summary}</Text>
+      </View>
+
+      <View style={styles.catalogDetailImagePanel}>
+        <View style={styles.catalogDetailImagePlaceholder}>
+          <ImageIcon color={COLORS.redDeep} size={42} />
+          <Text style={styles.catalogDetailImageTitle}>
+            Foto ou desenho tecnico
+          </Text>
+          <Text style={styles.catalogDetailImageText}>
+            Espaco reservado para imagem autorizada, desenho tecnico, corte ou
+            vista do produto.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.catalogTechnicalSheet}>
+        <Text style={styles.catalogSheetTitle}>Caracteristicas</Text>
+        <View style={styles.catalogSheetRows}>
+          {characteristicRows.map((row) => (
+            <CatalogDetailRow
+              key={`${item.id}-feature-${row.label}-${row.value}`}
+              label={row.label}
+              value={row.value}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.catalogTechnicalSheet}>
+        <Text style={styles.catalogSheetTitle}>Especificacoes tecnicas</Text>
+        <View style={styles.catalogSheetRows}>
+          {technicalRows.map((row) => (
+            <CatalogDetailRow
+              key={`${item.id}-spec-${row.label}-${row.value}`}
+              label={row.label}
+              value={row.value}
+            />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.catalogDetailNote}>
+        <Text style={styles.catalogDetailNoteTitle}>Validacao tecnica</Text>
+        <Text style={styles.catalogDetailNoteText}>
+          Confirme medidas, classe, material e norma em ficha oficial antes de
+          aplicar em linha pressurizada.
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+function CatalogDetailRow({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.catalogDetailRow}>
+      <Text style={styles.catalogDetailRowLabel}>{label}</Text>
+      <Text style={styles.catalogDetailRowValue}>{value}</Text>
     </View>
   );
 }
@@ -2733,6 +2841,130 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '800',
     flex: 1,
+  },
+  catalogDetailCard: {
+    borderRadius: 20,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 14,
+    gap: 14,
+  },
+  catalogDetailHero: {
+    gap: 8,
+  },
+  catalogDetailCategory: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  catalogDetailTitle: {
+    color: COLORS.textDark,
+    fontSize: 23,
+    lineHeight: 27,
+    fontWeight: '900',
+  },
+  catalogDetailSummary: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 20,
+  },
+  catalogDetailImagePanel: {
+    minHeight: 220,
+    borderRadius: 18,
+    backgroundColor: '#f4f0bb',
+    borderWidth: 1,
+    borderColor: '#d6ce36',
+    padding: 12,
+    justifyContent: 'center',
+  },
+  catalogDetailImagePlaceholder: {
+    minHeight: 190,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: 'rgba(55,55,20,0.42)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 18,
+    backgroundColor: 'rgba(255,255,255,0.24)',
+  },
+  catalogDetailImageTitle: {
+    color: '#23240c',
+    fontSize: 17,
+    fontWeight: '900',
+    marginTop: 12,
+    textAlign: 'center',
+  },
+  catalogDetailImageText: {
+    color: '#4d4d26',
+    fontSize: 12,
+    lineHeight: 18,
+    marginTop: 8,
+    textAlign: 'center',
+  },
+  catalogTechnicalSheet: {
+    borderRadius: 14,
+    overflow: 'hidden',
+    backgroundColor: '#f7f3bd',
+    borderWidth: 1,
+    borderColor: '#d5ca21',
+  },
+  catalogSheetTitle: {
+    color: '#171707',
+    backgroundColor: '#c7c300',
+    fontSize: 13,
+    fontWeight: '900',
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+  },
+  catalogSheetRows: {
+    padding: 8,
+    gap: 6,
+  },
+  catalogDetailRow: {
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(58,58,18,0.24)',
+    backgroundColor: 'rgba(255,255,255,0.34)',
+    paddingHorizontal: 10,
+    paddingVertical: 9,
+  },
+  catalogDetailRowLabel: {
+    color: '#b31820',
+    fontSize: 10,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  catalogDetailRowValue: {
+    color: '#161707',
+    fontSize: 12,
+    lineHeight: 17,
+    fontWeight: '800',
+    marginTop: 4,
+  },
+  catalogDetailNote: {
+    borderRadius: 16,
+    padding: 12,
+    backgroundColor: 'rgba(215,25,32,0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.24)',
+  },
+  catalogDetailNoteTitle: {
+    color: COLORS.redDeep,
+    fontSize: 12,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  catalogDetailNoteText: {
+    color: COLORS.muted,
+    fontSize: 12,
+    lineHeight: 18,
+    marginTop: 6,
   },
   detailsCard: {
     borderRadius: 30,
