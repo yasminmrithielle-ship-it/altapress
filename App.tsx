@@ -979,7 +979,7 @@ export default function App() {
             <View>
               <Text style={styles.drawerEyebrow}>ALTA PRESS</Text>
               <Text style={styles.drawerTitle}>
-                {selectedCatalogItem?.title ?? catalogRoute ?? 'Catalogo'}
+                {catalogRoute ?? 'Catalogo'}
               </Text>
             </View>
 
@@ -997,23 +997,17 @@ export default function App() {
             <Pressable
               style={styles.drawerBackButton}
               onPress={() => {
-                if (selectedCatalogItem) {
-                  setSelectedCatalogItem(null);
-                  return;
-                }
-
                 setCatalogRoute(null);
                 setCatalogQuery('');
+                setSelectedCatalogItem(null);
               }}
             >
               <ChevronLeft color={COLORS.redDeep} size={18} />
-              <Text style={styles.drawerBackText}>
-                {selectedCatalogItem ? 'Produtos' : 'Categorias'}
-              </Text>
+              <Text style={styles.drawerBackText}>Categorias</Text>
             </Pressable>
           ) : null}
 
-          {catalogRoute && !selectedCatalogItem ? (
+          {catalogRoute ? (
             <View style={styles.drawerSearchBox}>
               <Search color={COLORS.red} size={18} />
               <TextInput
@@ -1031,9 +1025,7 @@ export default function App() {
             contentContainerStyle={styles.drawerScrollContent}
             showsVerticalScrollIndicator={false}
           >
-            {selectedCatalogItem ? (
-              <CatalogDetailView item={selectedCatalogItem} />
-            ) : catalogRoute ? (
+            {catalogRoute ? (
               <View style={styles.drawerGroup}>
                 {categoryProducts.map((item) => (
                   <CatalogCard
@@ -1078,6 +1070,13 @@ export default function App() {
           </Pressable>
         </Animated.View>
       </View>
+
+      {selectedCatalogItem ? (
+        <CatalogQuickView
+          item={selectedCatalogItem}
+          onClose={() => setSelectedCatalogItem(null)}
+        />
+      ) : null}
     </SafeAreaView>
   );
 }
@@ -1634,6 +1633,49 @@ function CatalogCard({
   );
 }
 
+function CatalogQuickView({
+  item,
+  onClose,
+}: {
+  item: CatalogItem;
+  onClose: () => void;
+}) {
+  return (
+    <View style={styles.catalogQuickLayer}>
+      <Pressable style={styles.catalogQuickBackdrop} onPress={onClose} />
+
+      <View style={styles.catalogQuickPanel}>
+        <View style={styles.catalogQuickHeader}>
+          <View style={styles.catalogQuickHeaderCopy}>
+            <Text style={styles.catalogQuickEyebrow}>Visualizacao rapida</Text>
+            <Text style={styles.catalogQuickTitle}>{item.title}</Text>
+            <Text style={styles.catalogQuickSubtitle}>
+              Foto do produto e especificacoes tecnicas em tela cheia.
+            </Text>
+          </View>
+
+          <Pressable
+            style={styles.catalogQuickClose}
+            onPress={onClose}
+            accessibilityRole="button"
+            accessibilityLabel="Fechar ficha tecnica"
+          >
+            <X color={COLORS.white} size={22} />
+          </Pressable>
+        </View>
+
+        <ScrollView
+          style={styles.catalogQuickScroll}
+          contentContainerStyle={styles.catalogQuickContent}
+          showsVerticalScrollIndicator
+        >
+          <CatalogDetailView item={item} />
+        </ScrollView>
+      </View>
+    </View>
+  );
+}
+
 function CatalogDetailView({ item }: { item: CatalogItem }) {
   const fallbackSections = [
     {
@@ -1673,11 +1715,11 @@ function CatalogDetailView({ item }: { item: CatalogItem }) {
         <View style={styles.catalogDetailImagePlaceholder}>
           <ImageIcon color={COLORS.redDeep} size={42} />
           <Text style={styles.catalogDetailImageTitle}>
-            Foto ou desenho tecnico
+            Foto do produto
           </Text>
           <Text style={styles.catalogDetailImageText}>
-            Espaco reservado para imagem autorizada, desenho tecnico, corte ou
-            vista do produto.
+            Espaco reservado para imagem propria da ALTA PRESS, desenho tecnico,
+            corte ou vista do produto.
           </Text>
         </View>
       </View>
@@ -2861,6 +2903,74 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     flex: 1,
   },
+  catalogQuickLayer: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 80,
+    elevation: 80,
+  },
+  catalogQuickBackdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.74)',
+  },
+  catalogQuickPanel: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+  },
+  catalogQuickHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 16,
+    paddingHorizontal: 18,
+    paddingTop: 16,
+    paddingBottom: 14,
+    backgroundColor: COLORS.bg,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.borderStrong,
+  },
+  catalogQuickHeaderCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  catalogQuickEyebrow: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.2,
+    textTransform: 'uppercase',
+  },
+  catalogQuickTitle: {
+    color: COLORS.textDark,
+    fontSize: 24,
+    lineHeight: 28,
+    fontWeight: '900',
+    marginTop: 4,
+  },
+  catalogQuickSubtitle: {
+    color: COLORS.muted,
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 4,
+  },
+  catalogQuickClose: {
+    width: 46,
+    height: 46,
+    borderRadius: 15,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  catalogQuickScroll: {
+    flex: 1,
+  },
+  catalogQuickContent: {
+    padding: 16,
+    paddingBottom: 34,
+  },
   catalogDetailCard: {
     borderRadius: 20,
     backgroundColor: COLORS.silverSoft,
@@ -2891,7 +3001,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   catalogDetailImagePanel: {
-    minHeight: 220,
+    minHeight: 300,
     borderRadius: 18,
     backgroundColor: '#f4f0bb',
     borderWidth: 1,
