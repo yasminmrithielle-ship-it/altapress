@@ -15,14 +15,21 @@ import {
 } from 'react-native';
 import {
   Building2,
+  ChevronLeft,
   ChevronRight,
+  CircleGauge,
+  Cog,
+  Disc3,
+  Droplets,
   Filter,
+  Gauge,
   Image as ImageIcon,
   Info,
   Menu,
-  PackageSearch,
+  Nut,
   Ruler,
   Search,
+  Wrench,
   X,
 } from 'lucide-react-native';
 import {
@@ -188,6 +195,9 @@ export default function App() {
   const [query, setQuery] = useState('');
   const [catalogQuery, setCatalogQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [catalogRoute, setCatalogRoute] = useState<CatalogCategory | null>(
+    null,
+  );
   const [selectedClass, setSelectedClass] = useState<ClassFilter>('Todas');
   const [selectedStandard, setSelectedStandard] =
     useState<StandardFilter>('Todas');
@@ -211,20 +221,34 @@ export default function App() {
     }).start();
   }, [drawerProgress, menuOpen]);
 
-  const catalogGroups = useMemo(() => {
+  const categoryCounts = useMemo(() => {
+    return CATALOG_CATEGORIES.reduce(
+      (counts, category) => ({
+        ...counts,
+        [category]: CATALOG_ITEMS.filter((item) => item.category === category)
+          .length,
+      }),
+      {} as Record<CatalogCategory, number>,
+    );
+  }, []);
+
+  const categoryProducts = useMemo(() => {
     const q = catalogQuery.trim().toLowerCase();
 
-    return CATALOG_CATEGORIES.map((category) => {
-      const items = CATALOG_ITEMS.filter((item) => {
-        if (item.category !== category) {
-          return false;
-        }
+    if (!catalogRoute) {
+      return [];
+    }
 
-        if (!q) {
-          return true;
-        }
+    return CATALOG_ITEMS.filter((item) => {
+      if (item.category !== catalogRoute) {
+        return false;
+      }
 
-        return (
+      if (!q) {
+        return true;
+      }
+
+      return (
         item.title.toLowerCase().includes(q) ||
         item.category.toLowerCase().includes(q) ||
         item.summary.toLowerCase().includes(q) ||
@@ -234,12 +258,9 @@ export default function App() {
             spec.label.toLowerCase().includes(q) ||
             spec.value.toLowerCase().includes(q),
         )
-        );
-      });
-
-      return { category, items };
-    }).filter((group) => group.items.length > 0);
-  }, [catalogQuery]);
+      );
+    });
+  }, [catalogQuery, catalogRoute]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -287,7 +308,11 @@ export default function App() {
           <View style={styles.headerBar}>
             <Pressable
               style={styles.menuButton}
-              onPress={() => setMenuOpen(true)}
+              onPress={() => {
+                setCatalogRoute(null);
+                setCatalogQuery('');
+                setMenuOpen(true);
+              }}
               accessibilityRole="button"
               accessibilityLabel="Abrir catalogo"
             >
@@ -570,7 +595,9 @@ export default function App() {
           <View style={styles.drawerHeader}>
             <View>
               <Text style={styles.drawerEyebrow}>ALTA PRESS</Text>
-              <Text style={styles.drawerTitle}>Catalogo</Text>
+              <Text style={styles.drawerTitle}>
+                {catalogRoute ?? 'Catalogo'}
+              </Text>
             </View>
 
             <Pressable
@@ -583,36 +610,64 @@ export default function App() {
             </Pressable>
           </View>
 
-          <View style={styles.drawerSearchBox}>
-            <Search color={COLORS.red} size={18} />
-            <TextInput
-              style={styles.drawerInput}
-              placeholder="Buscar produto..."
-              placeholderTextColor={COLORS.muted}
-              value={catalogQuery}
-              onChangeText={setCatalogQuery}
-            />
-          </View>
+          {catalogRoute ? (
+            <Pressable
+              style={styles.drawerBackButton}
+              onPress={() => {
+                setCatalogRoute(null);
+                setCatalogQuery('');
+              }}
+            >
+              <ChevronLeft color={COLORS.redDeep} size={18} />
+              <Text style={styles.drawerBackText}>Categorias</Text>
+            </Pressable>
+          ) : null}
+
+          {catalogRoute ? (
+            <View style={styles.drawerSearchBox}>
+              <Search color={COLORS.red} size={18} />
+              <TextInput
+                style={styles.drawerInput}
+                placeholder="Buscar produto..."
+                placeholderTextColor={COLORS.muted}
+                value={catalogQuery}
+                onChangeText={setCatalogQuery}
+              />
+            </View>
+          ) : null}
 
           <ScrollView
             style={styles.drawerScroll}
             contentContainerStyle={styles.drawerScrollContent}
             showsVerticalScrollIndicator={false}
           >
-            {catalogGroups.map((group) => (
-              <View key={group.category} style={styles.drawerGroup}>
-                <View style={styles.drawerGroupHeader}>
-                  <Text style={styles.drawerGroupTitle}>{group.category}</Text>
-                  <Text style={styles.drawerGroupCount}>
-                    {group.items.length}
-                  </Text>
-                </View>
-
-                {group.items.map((item) => (
+            {catalogRoute ? (
+              <View style={styles.drawerGroup}>
+                {categoryProducts.map((item) => (
                   <CatalogCard key={item.id} item={item} />
                 ))}
+
+                {!categoryProducts.length ? (
+                  <Text style={styles.drawerEmpty}>
+                    Nenhum produto encontrado nesta categoria.
+                  </Text>
+                ) : null}
               </View>
-            ))}
+            ) : (
+              <View style={styles.categoryMenuGrid}>
+                {CATALOG_CATEGORIES.map((category) => (
+                  <CategoryTile
+                    key={category}
+                    category={category}
+                    count={categoryCounts[category]}
+                    onPress={() => {
+                      setCatalogRoute(category);
+                      setCatalogQuery('');
+                    }}
+                  />
+                ))}
+              </View>
+            )}
           </ScrollView>
         </Animated.View>
       </View>
@@ -694,6 +749,53 @@ function ToolCard({
       <View style={styles.toolIconWrap}>{icon}</View>
       <Text style={styles.toolTitle}>{title}</Text>
       <Text style={styles.toolText}>{text}</Text>
+    </Pressable>
+  );
+}
+
+function renderCategoryIcon(category: CatalogCategory) {
+  const iconColor = COLORS.red;
+  const size = 24;
+
+  switch (category) {
+    case 'Valvulas':
+      return <Gauge color={iconColor} size={size} />;
+    case 'Flanges':
+      return <Disc3 color={iconColor} size={size} />;
+    case 'Conexoes':
+      return <Wrench color={iconColor} size={size} />;
+    case 'Filtros':
+      return <Filter color={iconColor} size={size} />;
+    case 'Purgadores':
+      return <Droplets color={iconColor} size={size} />;
+    case 'Vedacoes':
+      return <Nut color={iconColor} size={size} />;
+    case 'Instrumentos':
+      return <CircleGauge color={iconColor} size={size} />;
+    case 'Acessorios':
+      return <Cog color={iconColor} size={size} />;
+  }
+}
+
+function CategoryTile({
+  category,
+  count,
+  onPress,
+}: {
+  category: CatalogCategory;
+  count: number;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable style={styles.categoryTile} onPress={onPress}>
+      <View style={styles.categoryTileIcon}>
+        {renderCategoryIcon(category)}
+      </View>
+      <View style={styles.categoryTileCopy}>
+        <Text style={styles.categoryTileTitle}>{category}</Text>
+        <Text style={styles.categoryTileCount}>{count} produtos</Text>
+      </View>
+      <ChevronRight color={COLORS.redDeep} size={18} />
     </Pressable>
   );
 }
@@ -1241,11 +1343,66 @@ const styles = StyleSheet.create({
     color: COLORS.textDark,
     fontSize: 14,
   },
+  drawerBackButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    alignSelf: 'flex-start',
+    paddingVertical: 8,
+    marginBottom: 10,
+  },
+  drawerBackText: {
+    color: COLORS.redDeep,
+    fontSize: 13,
+    fontWeight: '900',
+  },
   drawerScroll: {
     flex: 1,
   },
   drawerScrollContent: {
     paddingBottom: 28,
+  },
+  categoryMenuGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+  },
+  categoryTile: {
+    width: '48%',
+    minHeight: 66,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    borderRadius: 8,
+    padding: 10,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+  },
+  categoryTileIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 8,
+    backgroundColor: 'rgba(215,25,32,0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(215,25,32,0.28)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryTileCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  categoryTileTitle: {
+    color: COLORS.redDeep,
+    fontSize: 13,
+    fontWeight: '900',
+  },
+  categoryTileCount: {
+    color: COLORS.muted,
+    fontSize: 11,
+    fontWeight: '700',
+    marginTop: 3,
   },
   drawerGroup: {
     marginBottom: 18,
@@ -1271,6 +1428,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '900',
     textAlign: 'center',
+  },
+  drawerEmpty: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 20,
+    textAlign: 'center',
+    paddingVertical: 24,
   },
   catalogNotice: {
     flexDirection: 'row',
