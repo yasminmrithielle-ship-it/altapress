@@ -211,6 +211,7 @@ const QUICK_INCH_SIZES = [
 ];
 
 type ConverterInput = 'inch' | 'millimeter';
+type ToolRoute = 'home' | 'converter' | 'photo';
 
 const PHOTO_API_FALLBACK_URL =
   'https://altapress-production.up.railway.app/api/photo-reading';
@@ -375,7 +376,7 @@ export default function App() {
   const [millimeterInput, setMillimeterInput] = useState('50,8');
   const [activeConverterInput, setActiveConverterInput] =
     useState<ConverterInput>('inch');
-  const [photoChatOpen, setPhotoChatOpen] = useState(false);
+  const [activeTool, setActiveTool] = useState<ToolRoute>('home');
   const [photoImageUri, setPhotoImageUri] = useState<string | null>(null);
   const [photoFileName, setPhotoFileName] = useState('');
   const [photoUserNote, setPhotoUserNote] = useState('');
@@ -706,7 +707,7 @@ export default function App() {
     });
   }, [filtered]);
 
-  const header = (
+  const homeHeader = (
     <>
       <View style={styles.heroShell}>
         <View style={[styles.heroGlow, styles.heroGlowRight]} />
@@ -864,18 +865,13 @@ export default function App() {
             icon={<Ruler color={COLORS.red} size={22} />}
             title="Comparador"
             text="Converta polegadas e milimetros para identificar a peca."
-            onPress={() =>
-              Alert.alert(
-                'Comparador',
-                'Use o conversor abaixo para transformar polegadas em milimetros e conferir pecas cadastradas.',
-              )
-            }
+            onPress={() => setActiveTool('converter')}
           />
           <ToolCard
             icon={<ImageIcon color={COLORS.red} size={22} />}
             title="Leitura por foto"
             text="Sugestao visual para acelerar a identificacao da peca."
-            onPress={() => setPhotoChatOpen(true)}
+            onPress={() => setActiveTool('photo')}
           />
           <ToolCard
             icon={<Search color={COLORS.red} size={22} />}
@@ -889,34 +885,6 @@ export default function App() {
             }
           />
         </View>
-
-        <InchMillimeterConverter
-          activeInput={activeConverterInput}
-          inchInput={inchInput}
-          inchValue={inchValue}
-          millimeterInput={millimeterInput}
-          millimeterValue={millimeterValue}
-          matches={converterMatches}
-          target={converterTarget}
-          onInchChange={handleInchInputChange}
-          onMillimeterChange={handleMillimeterInputChange}
-          onQuickSize={handleQuickInchSize}
-          onSelectMatch={setSelected}
-        />
-
-        {photoChatOpen ? (
-          <PhotoReadingChat
-            imageUri={photoImageUri}
-            fileName={photoFileName}
-            loading={photoLoading}
-            messages={photoMessages}
-            userNote={photoUserNote}
-            onClose={() => setPhotoChatOpen(false)}
-            onPickPhoto={handlePickPhoto}
-            onSendPhoto={handleSendPhoto}
-            onUserNoteChange={setPhotoUserNote}
-          />
-        ) : null}
       </View>
 
       {selected ? (
@@ -953,11 +921,61 @@ export default function App() {
     </>
   );
 
+  const toolHeader =
+    activeTool === 'converter' ? (
+      <View style={styles.toolScreen}>
+        <ToolScreenHeader
+          icon={<Ruler color={COLORS.red} size={20} />}
+          title="Comparador"
+          text="Converta polegadas e milimetros em uma aba dedicada."
+          onBack={() => setActiveTool('home')}
+        />
+
+        <InchMillimeterConverter
+          activeInput={activeConverterInput}
+          inchInput={inchInput}
+          inchValue={inchValue}
+          millimeterInput={millimeterInput}
+          millimeterValue={millimeterValue}
+          matches={converterMatches}
+          target={converterTarget}
+          onInchChange={handleInchInputChange}
+          onMillimeterChange={handleMillimeterInputChange}
+          onQuickSize={handleQuickInchSize}
+          onSelectMatch={setSelected}
+        />
+      </View>
+    ) : activeTool === 'photo' ? (
+      <View style={styles.toolScreen}>
+        <ToolScreenHeader
+          icon={<ImageIcon color={COLORS.red} size={20} />}
+          title="Leitura por foto"
+          text="Envie a imagem da peca para o chat tecnico da IA."
+          onBack={() => setActiveTool('home')}
+        />
+
+        <PhotoReadingChat
+          imageUri={photoImageUri}
+          fileName={photoFileName}
+          loading={photoLoading}
+          messages={photoMessages}
+          userNote={photoUserNote}
+          onClose={() => setActiveTool('home')}
+          onPickPhoto={handlePickPhoto}
+          onSendPhoto={handleSendPhoto}
+          onUserNoteChange={setPhotoUserNote}
+        />
+      </View>
+    ) : null;
+
+  const header = activeTool === 'home' ? homeHeader : toolHeader;
+  const visibleResults = activeTool === 'home' ? filtered : [];
+
   return (
     <SafeAreaView style={styles.safe}>
       <FlatList
         style={styles.list}
-        data={filtered}
+        data={visibleResults}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           const isActive = selected?.id === item.id;
@@ -993,9 +1011,11 @@ export default function App() {
         }}
         ListHeaderComponent={header}
         ListEmptyComponent={
+          activeTool === 'home' ? (
           <Text style={styles.empty}>
             Nenhuma peca encontrada com esses filtros.
           </Text>
+          ) : null
         }
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
@@ -1191,6 +1211,36 @@ function ToolCard({
       <Text style={styles.toolTitle}>{title}</Text>
       <Text style={styles.toolText}>{text}</Text>
     </Pressable>
+  );
+}
+
+function ToolScreenHeader({
+  icon,
+  title,
+  text,
+  onBack,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+  onBack: () => void;
+}) {
+  return (
+    <View style={styles.toolScreenHeader}>
+      <Pressable style={styles.toolBackButton} onPress={onBack}>
+        <ChevronLeft color={COLORS.white} size={20} />
+        <Text style={styles.toolBackText}>Voltar</Text>
+      </Pressable>
+
+      <View style={styles.toolScreenTitleRow}>
+        <View style={styles.toolScreenIcon}>{icon}</View>
+        <View style={styles.toolScreenCopy}>
+          <Text style={styles.toolScreenLabel}>Ferramenta rapida</Text>
+          <Text style={styles.toolScreenTitle}>{title}</Text>
+          <Text style={styles.toolScreenText}>{text}</Text>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -2067,8 +2117,73 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
+  toolScreen: {
+    paddingHorizontal: 18,
+    paddingTop: 18,
+    paddingBottom: 36,
+    gap: 16,
+  },
+  toolScreenHeader: {
+    borderRadius: 30,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+    padding: 16,
+    gap: 16,
+  },
+  toolBackButton: {
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 9,
+    backgroundColor: COLORS.silverStrong,
+    borderWidth: 1,
+    borderColor: COLORS.borderStrong,
+  },
+  toolBackText: {
+    color: COLORS.white,
+    fontSize: 12,
+    fontWeight: '900',
+  },
+  toolScreenTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  toolScreenIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 18,
+    backgroundColor: 'rgba(215,25,32,0.12)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  toolScreenCopy: {
+    flex: 1,
+    gap: 5,
+  },
+  toolScreenLabel: {
+    color: COLORS.red,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.1,
+    textTransform: 'uppercase',
+  },
+  toolScreenTitle: {
+    color: COLORS.textDark,
+    fontSize: 26,
+    lineHeight: 29,
+    fontWeight: '900',
+  },
+  toolScreenText: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 19,
+  },
   converterCard: {
-    marginTop: 16,
     borderRadius: 30,
     backgroundColor: COLORS.ink,
     borderWidth: 1,
