@@ -195,7 +195,6 @@ function makeOpenAiPayload({ imageDataUrl, userNote, structuredOutput }) {
         ],
       },
     ],
-    temperature: 0.2,
     max_output_tokens: 1600,
   };
 
