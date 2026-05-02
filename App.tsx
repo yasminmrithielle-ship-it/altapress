@@ -3,6 +3,7 @@ import {
   Alert,
   FlatList,
   Image,
+  Linking,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -13,12 +14,21 @@ import {
 } from 'react-native';
 import {
   Building2,
+  ExternalLink,
   Filter,
   Image as ImageIcon,
   Info,
+  PackageSearch,
   Ruler,
   Search,
+  ShieldCheck,
 } from 'lucide-react-native';
+import {
+  CATALOG_CATEGORIES,
+  CATALOG_ITEMS,
+  CatalogCategory,
+  CatalogItem,
+} from './catalog';
 
 type FlangeClass =
   | '150lbs'
@@ -146,6 +156,7 @@ const standards: Standard[] = ['ANSI / ASME B16.5', 'DIN / EN 1092-1'];
 
 type ClassFilter = FlangeClass | 'Todas';
 type StandardFilter = Standard | 'Todas';
+type CategoryFilter = CatalogCategory | 'Todas';
 
 function formatCode(item: Flange) {
   return `${item.dn ?? '-'}${item.nps ? ` / ${item.nps}` : ''}`;
@@ -176,7 +187,31 @@ export default function App() {
   const [selectedClass, setSelectedClass] = useState<ClassFilter>('Todas');
   const [selectedStandard, setSelectedStandard] =
     useState<StandardFilter>('Todas');
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryFilter>('Todas');
   const [selected, setSelected] = useState<Flange | null>(FLANGES[0] ?? null);
+
+  const catalogFiltered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+
+    return CATALOG_ITEMS.filter((item) => {
+      const matchCategory =
+        selectedCategory === 'Todas' || item.category === selectedCategory;
+      const matchSearch =
+        !q ||
+        item.title.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
+        item.summary.toLowerCase().includes(q) ||
+        item.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+        item.specs.some(
+          (spec) =>
+            spec.label.toLowerCase().includes(q) ||
+            spec.value.toLowerCase().includes(q),
+        );
+
+      return Boolean(matchCategory && matchSearch);
+    });
+  }, [query, selectedCategory]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -198,6 +233,25 @@ export default function App() {
       return Boolean(matchSearch && matchClass && matchStandard);
     });
   }, [query, selectedClass, selectedStandard]);
+
+  const openCatalogSource = async (item: CatalogItem) => {
+    if (!item.sourceUrl) {
+      Alert.alert(
+        'Conteudo autorizado',
+        'Este espaco esta pronto para receber imagens, desenhos e tabelas autorizadas da Alta Press.',
+      );
+      return;
+    }
+
+    const canOpen = await Linking.canOpenURL(item.sourceUrl);
+
+    if (!canOpen) {
+      Alert.alert('Link indisponivel', item.sourceUrl);
+      return;
+    }
+
+    await Linking.openURL(item.sourceUrl);
+  };
 
   useEffect(() => {
     if (!filtered.length) {
@@ -392,6 +446,47 @@ export default function App() {
         </View>
       </View>
 
+      <View style={styles.sectionBlock}>
+        <SectionHeading
+          icon={<PackageSearch color={COLORS.red} size={18} />}
+          title="Catalogo de produtos"
+          text={`${catalogFiltered.length} referencia(s) organizadas por familia.`}
+        />
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.chipsLine}
+        >
+          {(['Todas', ...CATALOG_CATEGORIES] as const).map((value) => (
+            <Chip
+              key={value}
+              label={value}
+              active={selectedCategory === value}
+              onPress={() => setSelectedCategory(value)}
+            />
+          ))}
+        </ScrollView>
+
+        <View style={styles.catalogNotice}>
+          <ShieldCheck color={COLORS.redDeep} size={18} />
+          <Text style={styles.catalogNoticeText}>
+            O app esta pronto para fichas autorizadas da Alta Press. As fichas
+            Val Aco ficam como links externos para consulta da pagina original.
+          </Text>
+        </View>
+
+        <View style={styles.catalogGrid}>
+          {catalogFiltered.map((item) => (
+            <CatalogCard
+              key={item.id}
+              item={item}
+              onOpen={() => openCatalogSource(item)}
+            />
+          ))}
+        </View>
+      </View>
+
       {selected ? (
         <View style={styles.sectionBlock}>
           <SectionHeading
@@ -552,6 +647,62 @@ function ToolCard({
       <Text style={styles.toolTitle}>{title}</Text>
       <Text style={styles.toolText}>{text}</Text>
     </Pressable>
+  );
+}
+
+function getCatalogStatusLabel(status: CatalogItem['status']) {
+  switch (status) {
+    case 'alta-press':
+      return 'Alta Press';
+    case 'authorized-ready':
+      return 'Pronto para autorizados';
+    case 'external-reference':
+      return 'Referencia externa';
+  }
+}
+
+function CatalogCard({
+  item,
+  onOpen,
+}: {
+  item: CatalogItem;
+  onOpen: () => void;
+}) {
+  return (
+    <View style={styles.catalogCard}>
+      <View style={styles.catalogCardTop}>
+        <View style={styles.catalogIconWrap}>
+          <PackageSearch color={COLORS.red} size={20} />
+        </View>
+        <View style={styles.catalogCopy}>
+          <Text style={styles.catalogCategory}>{item.category}</Text>
+          <Text style={styles.catalogTitle}>{item.title}</Text>
+        </View>
+      </View>
+
+      <Text style={styles.catalogSummary}>{item.summary}</Text>
+
+      <View style={styles.catalogSpecGrid}>
+        {item.specs.slice(0, 3).map((spec) => (
+          <View key={`${item.id}-${spec.label}`} style={styles.catalogSpec}>
+            <Text style={styles.catalogSpecLabel}>{spec.label}</Text>
+            <Text style={styles.catalogSpecValue}>{spec.value}</Text>
+          </View>
+        ))}
+      </View>
+
+      <View style={styles.catalogFooter}>
+        <Text style={styles.catalogStatus}>
+          {getCatalogStatusLabel(item.status)}
+        </Text>
+        <Pressable style={styles.catalogLinkButton} onPress={onOpen}>
+          <ExternalLink color={COLORS.white} size={16} />
+          <Text style={styles.catalogLinkText}>
+            {item.sourceUrl ? 'Abrir ficha' : 'Ver slot'}
+          </Text>
+        </Pressable>
+      </View>
+    </View>
   );
 }
 
@@ -969,6 +1120,120 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginTop: 8,
     textAlign: 'center',
+  },
+  catalogNotice: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+    borderRadius: 20,
+    padding: 16,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    marginBottom: 14,
+  },
+  catalogNoticeText: {
+    flex: 1,
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 20,
+  },
+  catalogGrid: {
+    gap: 12,
+  },
+  catalogCard: {
+    borderRadius: 22,
+    backgroundColor: COLORS.ink,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+    padding: 18,
+  },
+  catalogCardTop: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+  },
+  catalogIconWrap: {
+    width: 42,
+    height: 42,
+    borderRadius: 14,
+    backgroundColor: 'rgba(215,25,32,0.12)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  catalogCopy: {
+    flex: 1,
+    minWidth: 0,
+  },
+  catalogCategory: {
+    color: COLORS.redDeep,
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  catalogTitle: {
+    color: COLORS.textDark,
+    fontSize: 18,
+    lineHeight: 22,
+    fontWeight: '900',
+    marginTop: 4,
+  },
+  catalogSummary: {
+    color: COLORS.muted,
+    fontSize: 13,
+    lineHeight: 20,
+    marginTop: 12,
+  },
+  catalogSpecGrid: {
+    gap: 8,
+    marginTop: 14,
+  },
+  catalogSpec: {
+    borderRadius: 14,
+    padding: 12,
+    backgroundColor: COLORS.silverSoft,
+    borderWidth: 1,
+    borderColor: COLORS.borderSoft,
+  },
+  catalogSpecLabel: {
+    color: COLORS.redDeep,
+    fontSize: 10,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  catalogSpecValue: {
+    color: COLORS.textDark,
+    fontSize: 12,
+    lineHeight: 18,
+    fontWeight: '700',
+    marginTop: 4,
+  },
+  catalogFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 14,
+  },
+  catalogStatus: {
+    color: COLORS.silver,
+    fontSize: 12,
+    fontWeight: '800',
+    flex: 1,
+  },
+  catalogLinkButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    backgroundColor: COLORS.red,
+  },
+  catalogLinkText: {
+    color: COLORS.white,
+    fontSize: 12,
+    fontWeight: '900',
   },
   detailsCard: {
     borderRadius: 30,
