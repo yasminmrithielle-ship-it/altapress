@@ -1059,7 +1059,6 @@ export default function App() {
                       setSelectedCatalogItem(item);
                       setMenuOpen(false);
                     }}
-                    onOrder={() => openProductOrder(item)}
                   />
                 ))}
 
@@ -1785,69 +1784,34 @@ function CatalogAssetImage({
 function CatalogCard({
   item,
   onPress,
-  onOrder,
 }: {
   item: CatalogItem;
   onPress: () => void;
-  onOrder: () => void;
 }) {
-  const displaySpecs = getCatalogDisplaySpecs(item);
   const catalogImage = getCatalogImageSource(item);
 
   return (
-    <View style={styles.catalogCard}>
-      <Pressable
-        style={styles.catalogCardOpenArea}
-        onPress={onPress}
-        accessibilityRole="button"
-        accessibilityLabel={`Abrir ficha tecnica de ${item.title}`}
-      >
-        <View style={styles.catalogCardTop}>
-          <View style={styles.catalogImageSlot}>
-            {catalogImage ? (
-              <CatalogAssetImage
-                accessibilityLabel={`Imagem de ${item.title}`}
-                source={catalogImage}
-                style={styles.catalogCardImage}
-                resizeMode="contain"
-              />
-            ) : (
-              <ImageIcon color={COLORS.redDeep} size={18} />
-            )}
-          </View>
-          <View style={styles.catalogCopy}>
-            <Text style={styles.catalogCategory}>{item.category}</Text>
-            <Text style={styles.catalogTitle}>{item.title}</Text>
-          </View>
-          <ChevronRight color={COLORS.muted} size={18} />
-        </View>
-
-        <Text style={styles.catalogSummary}>
-          {formatCatalogText(item.summary)}
-        </Text>
-
-        <View style={styles.catalogSpecGrid}>
-          {displaySpecs.map((spec) => (
-            <View key={`${item.id}-${spec.label}`} style={styles.catalogSpec}>
-              <Text style={styles.catalogSpecLabel}>{formatCatalogText(spec.label)}</Text>
-              <Text style={styles.catalogSpecValue}>{formatCatalogText(spec.value)}</Text>
-            </View>
-          ))}
-        </View>
-      </Pressable>
-
-      <View style={styles.catalogFooter}>
-        <Pressable
-          style={styles.catalogOrderButton}
-          onPress={onOrder}
-          accessibilityRole="button"
-          accessibilityLabel={`Pedir produto ${item.title}`}
-        >
-          <Send color={COLORS.white} size={16} />
-          <Text style={styles.catalogOrderText}>Pedir produto</Text>
-        </Pressable>
+    <Pressable
+      style={styles.catalogCard}
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`Abrir ficha técnica de ${item.title}`}
+    >
+      <View style={styles.catalogImageSlot}>
+        {catalogImage ? (
+          <CatalogAssetImage
+            accessibilityLabel={`Imagem de ${item.title}`}
+            source={catalogImage}
+            style={styles.catalogCardImage}
+            resizeMode="contain"
+          />
+        ) : (
+          <ImageIcon color={COLORS.redDeep} size={28} />
+        )}
       </View>
-    </View>
+
+      <Text style={styles.catalogTitle}>{item.title}</Text>
+    </Pressable>
   );
 }
 
@@ -3111,6 +3075,9 @@ const styles = StyleSheet.create({
     borderColor: COLORS.borderSoft,
     padding: 14,
     marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 146,
   },
   catalogCardOpenArea: {
     gap: 0,
@@ -3121,9 +3088,9 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   catalogImageSlot: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
+    width: 88,
+    height: 88,
+    borderRadius: 18,
     backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: 1,
     borderColor: 'rgba(215,25,32,0.28)',
@@ -3148,10 +3115,11 @@ const styles = StyleSheet.create({
   },
   catalogTitle: {
     color: COLORS.textDark,
-    fontSize: 18,
-    lineHeight: 22,
+    fontSize: 16,
+    lineHeight: 20,
     fontWeight: '900',
-    marginTop: 4,
+    marginTop: 10,
+    textAlign: 'center',
   },
   catalogSummary: {
     color: COLORS.muted,
