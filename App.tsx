@@ -37,6 +37,10 @@ import {
   X,
 } from 'lucide-react-native';
 import {
+  CATALOG_IMAGE_ASSETS,
+  CATALOG_PRODUCT_IMAGES,
+} from './catalog-images';
+import {
   CATALOG_CATEGORIES,
   CATALOG_ITEMS,
   CatalogCategory,
@@ -1600,6 +1604,12 @@ function getCatalogStatusLabel(status: CatalogItem['status']) {
   }
 }
 
+function getCatalogImageSource(item: CatalogItem) {
+  const imageKey = CATALOG_PRODUCT_IMAGES[item.id];
+
+  return imageKey ? CATALOG_IMAGE_ASSETS[imageKey] : undefined;
+}
+
 function CatalogCard({
   item,
   onPress,
@@ -1610,6 +1620,7 @@ function CatalogCard({
   onOrder: () => void;
 }) {
   const displaySpecs = getCatalogDisplaySpecs(item);
+  const catalogImage = getCatalogImageSource(item);
 
   return (
     <View style={styles.catalogCard}>
@@ -1621,7 +1632,15 @@ function CatalogCard({
       >
         <View style={styles.catalogCardTop}>
           <View style={styles.catalogImageSlot}>
-            <ImageIcon color={COLORS.redDeep} size={18} />
+            {catalogImage ? (
+              <Image
+                source={catalogImage}
+                style={styles.catalogCardImage}
+                resizeMode="contain"
+              />
+            ) : (
+              <ImageIcon color={COLORS.redDeep} size={18} />
+            )}
           </View>
           <View style={styles.catalogCopy}>
             <Text style={styles.catalogCategory}>{item.category}</Text>
@@ -1745,6 +1764,8 @@ function CatalogDetailView({
   const technicalSections = item.technicalSections?.length
     ? item.technicalSections
     : fallbackSections;
+  const catalogImage = getCatalogImageSource(item);
+
   return (
     <View style={styles.catalogDetailCard}>
       <View style={styles.catalogDetailHero}>
@@ -1754,16 +1775,24 @@ function CatalogDetailView({
       </View>
 
       <View style={styles.catalogDetailImagePanel}>
-        <View style={styles.catalogDetailImagePlaceholder}>
-          <ImageIcon color={COLORS.redDeep} size={42} />
-          <Text style={styles.catalogDetailImageTitle}>
-            Foto do produto
-          </Text>
-          <Text style={styles.catalogDetailImageText}>
-            Espaco reservado para imagem propria da ALTA PRESS, desenho tecnico,
-            corte ou vista do produto.
-          </Text>
-        </View>
+        {catalogImage ? (
+          <Image
+            source={catalogImage}
+            style={styles.catalogDetailProductImage}
+            resizeMode="contain"
+          />
+        ) : (
+          <View style={styles.catalogDetailImagePlaceholder}>
+            <ImageIcon color={COLORS.redDeep} size={42} />
+            <Text style={styles.catalogDetailImageTitle}>
+              Foto do produto em breve
+            </Text>
+            <Text style={styles.catalogDetailImageText}>
+              Espaco reservado para imagem propria da ALTA PRESS, desenho tecnico,
+              corte ou vista do produto.
+            </Text>
+          </View>
+        )}
       </View>
 
       {technicalSections.map((section) => (
@@ -2883,11 +2912,17 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 14,
-    backgroundColor: 'rgba(215,25,32,0.12)',
+    backgroundColor: 'rgba(255,255,255,0.92)',
     borderWidth: 1,
     borderColor: 'rgba(215,25,32,0.28)',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
+    padding: 4,
+  },
+  catalogCardImage: {
+    width: '100%',
+    height: '100%',
   },
   catalogCopy: {
     flex: 1,
@@ -3067,6 +3102,12 @@ const styles = StyleSheet.create({
     borderColor: '#d6ce36',
     padding: 12,
     justifyContent: 'center',
+  },
+  catalogDetailProductImage: {
+    width: '100%',
+    height: 276,
+    borderRadius: 14,
+    backgroundColor: 'rgba(255,255,255,0.72)',
   },
   catalogDetailImagePlaceholder: {
     minHeight: 190,
