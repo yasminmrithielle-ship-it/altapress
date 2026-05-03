@@ -4,6 +4,9 @@ import type {
   ImageSourcePropType,
   ImageStyle,
   StyleProp,
+  TextInputProps,
+  TextProps,
+  TextStyle,
 } from 'react-native';
 import {
   ActivityIndicator,
@@ -17,8 +20,8 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  TextInput,
+  Text as RNText,
+  TextInput as RNTextInput,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -56,6 +59,24 @@ import {
   CatalogCategory,
   CatalogItem,
 } from './catalog';
+
+const APP_FONT_FAMILY =
+  Platform.select({
+    web: 'Roboto, Arial, sans-serif',
+    default: 'Roboto',
+  }) ?? 'Roboto';
+
+const appTextBaseStyle: TextStyle = {
+  fontFamily: APP_FONT_FAMILY,
+};
+
+function Text({ style, ...props }: TextProps) {
+  return <RNText {...props} style={[appTextBaseStyle, style]} />;
+}
+
+function TextInput({ style, ...props }: TextInputProps) {
+  return <RNTextInput {...props} style={[appTextBaseStyle, style]} />;
+}
 
 type FlangeClass =
   | '150lbs'
@@ -413,6 +434,25 @@ export default function App() {
     inputRange: [0, 1],
     outputRange: [0, 0.62],
   });
+
+  useEffect(() => {
+    if (Platform.OS !== 'web' || typeof document === 'undefined') {
+      return;
+    }
+
+    const fontLinkId = 'alta-press-roboto-font';
+
+    if (!document.getElementById(fontLinkId)) {
+      const link = document.createElement('link');
+      link.id = fontLinkId;
+      link.rel = 'stylesheet';
+      link.href =
+        'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap';
+      document.head.appendChild(link);
+    }
+
+    document.body.style.fontFamily = APP_FONT_FAMILY;
+  }, []);
 
   useEffect(() => {
     Animated.timing(drawerProgress, {
