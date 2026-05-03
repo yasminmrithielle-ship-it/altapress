@@ -1617,6 +1617,121 @@ function getCatalogStatusLabel(status: CatalogItem['status']) {
   }
 }
 
+const WINDOWS_1252_BYTES: Record<number, number> = {
+  0x20ac: 0x80,
+  0x201a: 0x82,
+  0x0192: 0x83,
+  0x201e: 0x84,
+  0x2026: 0x85,
+  0x2020: 0x86,
+  0x2021: 0x87,
+  0x02c6: 0x88,
+  0x2030: 0x89,
+  0x0160: 0x8a,
+  0x2039: 0x8b,
+  0x0152: 0x8c,
+  0x017d: 0x8e,
+  0x2018: 0x91,
+  0x2019: 0x92,
+  0x201c: 0x93,
+  0x201d: 0x94,
+  0x2022: 0x95,
+  0x2013: 0x96,
+  0x2014: 0x97,
+  0x02dc: 0x98,
+  0x2122: 0x99,
+  0x0161: 0x9a,
+  0x203a: 0x9b,
+  0x0153: 0x9c,
+  0x017e: 0x9e,
+  0x0178: 0x9f,
+};
+
+function decodeCatalogMojibake(value: string) {
+  if (!/[ÃÂâ]/.test(value)) {
+    return value;
+  }
+
+  const bytes = Array.from(value, (char) => {
+    const code = char.charCodeAt(0);
+    return code <= 0xff ? code : WINDOWS_1252_BYTES[code];
+  });
+
+  if (bytes.some((byte) => byte === undefined)) {
+    return value;
+  }
+
+  try {
+    return decodeURIComponent(
+      bytes
+        .map((byte) => `%${byte.toString(16).padStart(2, '0')}`)
+        .join(''),
+    );
+  } catch {
+    return value;
+  }
+}
+
+function decodeCatalogEntities(value: string) {
+  return value
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&reg;/gi, '®')
+    .replace(/&ordm;/gi, '°')
+    .replace(/&deg;/gi, '°')
+    .replace(/&Oslash;/gi, 'Ø');
+}
+
+function capitalizeSentenceStarts(value: string) {
+  return value.replace(
+    /(^|[.!?]\s+)([a-záàâãéêíóôõúç])/giu,
+    (_, prefix: string, letter: string) =>
+      `${prefix}${letter.toLocaleUpperCase('pt-BR')}`,
+  );
+}
+
+function formatCatalogText(value: string) {
+  let text = decodeCatalogEntities(decodeCatalogMojibake(value));
+
+  text = text
+    .replace(/\s*;\s*/g, ', ')
+    .replace(/,{2,}/g, ',')
+    .replace(/\s+,/g, ',')
+    .replace(/,\s*/g, ', ')
+    .replace(/\b(\d+)\.,\s*/g, '$1. ')
+    .replace(/,\s*\./g, '.')
+    .replace(/\s+\./g, '.')
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')')
+    .replace(/\(\s*BSP,\s*\/\s*NPT,?\s*\)/gi, '(BSP/NPT)')
+    .replace(/\bANSI,\s*B\s*(\d+(?:\.\d+)?)/gi, 'ANSI B$1')
+    .replace(/\bANSI\s+B\s+(\d+(?:\.\d+)?)/gi, 'ANSI B$1')
+    .replace(/\bDIN,\s*(\d+)/gi, 'DIN $1')
+    .replace(/\bNBR,\s*(\d+)/gi, 'ABNT NBR $1')
+    .replace(/\bnorma\s+NBR\s+(\d+)/gi, 'norma ABNT NBR $1')
+    .replace(/\bABNT\s+ABNT\s+NBR\b/gi, 'ABNT NBR')
+    .replace(/\bABNT\s*2\b/gi, 'ABNT NBR')
+    .replace(/\bconforme norma\b/gi, 'Conforme as normas')
+    .replace(/\bconforme ANSI\b/gi, 'Conforme as normas ANSI')
+    .replace(/\bflanges padrão\b/gi, 'Flanges padrão')
+    .replace(/\bflange padrão\b/gi, 'Flange padrão')
+    .replace(/\bcorpo em aço/gi, 'Corpo em aço')
+    .replace(/\bCaracteristicas\b/g, 'Características')
+    .replace(/\bEspecificacoes tecnicas\b/gi, 'Especificações técnicas')
+    .replace(/\bPaginas tecnicas\b/gi, 'Páginas técnicas')
+    .replace(/\bReferencia\b/g, 'Referência')
+    .replace(/\bFamilia\b/g, 'Família')
+    .replace(/\bValidacao tecnica\b/gi, 'Validação técnica')
+    .replace(/\bDesenhos tecnicos\b/gi, 'Desenhos técnicos')
+    .replace(/(^|[-•]\s+)([a-záàâãéêíóôõúç])/giu, (_, prefix: string, letter: string) =>
+      `${prefix}${letter.toLocaleUpperCase('pt-BR')}`,
+    )
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  return capitalizeSentenceStarts(text);
+}
+
 function getCatalogImageSource(item: CatalogItem) {
   const imageKey = CATALOG_PRODUCT_IMAGES[item.id];
 
@@ -1707,13 +1822,15 @@ function CatalogCard({
           <ChevronRight color={COLORS.muted} size={18} />
         </View>
 
-        <Text style={styles.catalogSummary}>{item.summary}</Text>
+        <Text style={styles.catalogSummary}>
+          {formatCatalogText(item.summary)}
+        </Text>
 
         <View style={styles.catalogSpecGrid}>
           {displaySpecs.map((spec) => (
             <View key={`${item.id}-${spec.label}`} style={styles.catalogSpec}>
-              <Text style={styles.catalogSpecLabel}>{spec.label}</Text>
-              <Text style={styles.catalogSpecValue}>{spec.value}</Text>
+              <Text style={styles.catalogSpecLabel}>{formatCatalogText(spec.label)}</Text>
+              <Text style={styles.catalogSpecValue}>{formatCatalogText(spec.value)}</Text>
             </View>
           ))}
         </View>
@@ -1769,7 +1886,7 @@ function CatalogQuickView({
             <Text style={styles.catalogQuickEyebrow}>Visualizacao rapida</Text>
             <Text style={styles.catalogQuickTitle}>{item.title}</Text>
             <Text style={styles.catalogQuickSubtitle}>
-              Foto, desenhos tecnicos e especificacoes em tela cheia.
+              Foto, desenhos técnicos e especificações em tela cheia.
             </Text>
           </View>
 
@@ -1777,7 +1894,7 @@ function CatalogQuickView({
             style={styles.catalogQuickClose}
             onPress={onClose}
             accessibilityRole="button"
-            accessibilityLabel="Fechar ficha tecnica"
+            accessibilityLabel="Fechar ficha técnica"
           >
             <X color={COLORS.white} size={22} />
           </Pressable>
@@ -1830,13 +1947,15 @@ function CatalogDetailView({
       <View style={styles.catalogDetailHero}>
         <Text style={styles.catalogDetailCategory}>{item.category}</Text>
         <Text style={styles.catalogDetailTitle}>{item.title}</Text>
-        <Text style={styles.catalogDetailSummary}>{item.summary}</Text>
+        <Text style={styles.catalogDetailSummary}>
+          {formatCatalogText(item.summary)}
+        </Text>
       </View>
 
       <View style={styles.catalogDetailImagePanel}>
         {catalogImage ? (
           <CatalogAssetImage
-            accessibilityLabel={`Imagem tecnica de ${item.title}`}
+            accessibilityLabel={`Imagem técnica de ${item.title}`}
             source={catalogImage}
             style={styles.catalogDetailProductImage}
             resizeMode="contain"
@@ -1848,7 +1967,7 @@ function CatalogDetailView({
               Foto do produto em breve
             </Text>
             <Text style={styles.catalogDetailImageText}>
-              Espaco reservado para imagem propria da ALTA PRESS, desenho tecnico,
+              Espaço reservado para imagem própria da ALTA PRESS, desenho técnico,
               corte ou vista do produto.
             </Text>
           </View>
@@ -1859,11 +1978,10 @@ function CatalogDetailView({
         <View style={styles.catalogDrawingsSheet}>
           <View style={styles.catalogDrawingsHeader}>
             <View>
-              <Text style={styles.catalogDrawingsEyebrow}>Valaço</Text>
-              <Text style={styles.catalogDrawingsTitle}>Desenhos tecnicos</Text>
+              <Text style={styles.catalogDrawingsTitle}>Desenhos técnicos</Text>
             </View>
             <Text style={styles.catalogDrawingsCount}>
-              {catalogDrawings.length} imagem(ns)
+              {catalogDrawings.length} imagens
             </Text>
           </View>
 
@@ -1871,13 +1989,13 @@ function CatalogDetailView({
             {catalogDrawings.map((drawing, index) => (
               <View key={`${item.id}-${drawing.key}`} style={styles.catalogDrawingCard}>
                 <CatalogAssetImage
-                  accessibilityLabel={`Desenho tecnico ${index + 1} de ${item.title}`}
+                  accessibilityLabel={`Desenho técnico ${index + 1} de ${item.title}`}
                   source={drawing.source}
                   style={styles.catalogDrawingImage}
                   resizeMode="contain"
                 />
                 <Text style={styles.catalogDrawingCaption}>
-                  Desenho tecnico {index + 1}
+                  Desenho técnico {index + 1}
                 </Text>
               </View>
             ))}
@@ -1887,7 +2005,7 @@ function CatalogDetailView({
 
       {technicalSections.map((section) => (
         <View key={`${item.id}-${section.title}`} style={styles.catalogTechnicalSheet}>
-          <Text style={styles.catalogSheetTitle}>{section.title}</Text>
+          <Text style={styles.catalogSheetTitle}>{formatCatalogText(section.title)}</Text>
           <View style={styles.catalogSheetRows}>
             {section.rows.map((row, index) => (
               <CatalogDetailRow
@@ -1917,7 +2035,7 @@ function CatalogDetailView({
       </Pressable>
 
       <View style={styles.catalogDetailNote}>
-        <Text style={styles.catalogDetailNoteTitle}>Validacao tecnica</Text>
+        <Text style={styles.catalogDetailNoteTitle}>Validação técnica</Text>
         <Text style={styles.catalogDetailNoteText}>
           Confirme medidas, classe, material e norma em ficha oficial antes de
           aplicar em linha pressurizada.
@@ -1930,8 +2048,8 @@ function CatalogDetailView({
 function CatalogDetailRow({ label, value }: { label: string; value: string }) {
   return (
     <View style={styles.catalogDetailRow}>
-      <Text style={styles.catalogDetailRowLabel}>{label}</Text>
-      <Text style={styles.catalogDetailRowValue}>{value}</Text>
+      <Text style={styles.catalogDetailRowLabel}>{formatCatalogText(label)}</Text>
+      <Text style={styles.catalogDetailRowValue}>{formatCatalogText(value)}</Text>
     </View>
   );
 }
@@ -3191,9 +3309,9 @@ const styles = StyleSheet.create({
   catalogDetailImagePanel: {
     minHeight: 300,
     borderRadius: 18,
-    backgroundColor: '#f4f0bb',
+    backgroundColor: COLORS.inkSoft,
     borderWidth: 1,
-    borderColor: '#d6ce36',
+    borderColor: 'rgba(215,25,32,0.28)',
     padding: 12,
     justifyContent: 'center',
   },
@@ -3201,28 +3319,28 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 276,
     borderRadius: 14,
-    backgroundColor: 'rgba(255,255,255,0.72)',
+    backgroundColor: 'rgba(255,255,255,0.06)',
   },
   catalogDetailImagePlaceholder: {
     minHeight: 190,
     borderRadius: 14,
     borderWidth: 1,
     borderStyle: 'dashed',
-    borderColor: 'rgba(55,55,20,0.42)',
+    borderColor: 'rgba(215,25,32,0.36)',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 18,
-    backgroundColor: 'rgba(255,255,255,0.24)',
+    backgroundColor: 'rgba(255,255,255,0.04)',
   },
   catalogDetailImageTitle: {
-    color: '#23240c',
+    color: COLORS.textDark,
     fontSize: 17,
     fontWeight: '900',
     marginTop: 12,
     textAlign: 'center',
   },
   catalogDetailImageText: {
-    color: '#4d4d26',
+    color: COLORS.muted,
     fontSize: 12,
     lineHeight: 18,
     marginTop: 8,
@@ -3231,9 +3349,9 @@ const styles = StyleSheet.create({
   catalogDrawingsSheet: {
     borderRadius: 16,
     overflow: 'hidden',
-    backgroundColor: '#f7f3bd',
+    backgroundColor: COLORS.silverSoft,
     borderWidth: 1,
-    borderColor: '#d5ca21',
+    borderColor: COLORS.borderStrong,
   },
   catalogDrawingsHeader: {
     flexDirection: 'row',
@@ -3242,7 +3360,9 @@ const styles = StyleSheet.create({
     gap: 12,
     paddingHorizontal: 14,
     paddingVertical: 12,
-    backgroundColor: '#c7c300',
+    backgroundColor: 'rgba(215,25,32,0.14)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.08)',
   },
   catalogDrawingsEyebrow: {
     color: COLORS.redDeep,
@@ -3252,14 +3372,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   catalogDrawingsTitle: {
-    color: '#171707',
+    color: COLORS.textDark,
     fontSize: 16,
     lineHeight: 20,
     fontWeight: '900',
     marginTop: 2,
   },
   catalogDrawingsCount: {
-    color: '#171707',
+    color: COLORS.muted,
     fontSize: 11,
     fontWeight: '900',
     textTransform: 'uppercase',
@@ -3271,18 +3391,18 @@ const styles = StyleSheet.create({
   catalogDrawingCard: {
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#ded77b',
-    backgroundColor: '#fffde0',
+    borderColor: COLORS.borderSoft,
+    backgroundColor: COLORS.inkSoft,
     padding: 8,
   },
   catalogDrawingImage: {
     width: '100%',
     height: 300,
     borderRadius: 10,
-    backgroundColor: '#fffef0',
+    backgroundColor: 'rgba(255,255,255,0.06)',
   },
   catalogDrawingCaption: {
-    color: '#4d4d26',
+    color: COLORS.muted,
     fontSize: 11,
     fontWeight: '800',
     textAlign: 'center',
@@ -3291,13 +3411,13 @@ const styles = StyleSheet.create({
   catalogTechnicalSheet: {
     borderRadius: 14,
     overflow: 'hidden',
-    backgroundColor: '#f7f3bd',
+    backgroundColor: COLORS.silverSoft,
     borderWidth: 1,
-    borderColor: '#d5ca21',
+    borderColor: COLORS.borderStrong,
   },
   catalogSheetTitle: {
-    color: '#171707',
-    backgroundColor: '#c7c300',
+    color: COLORS.textDark,
+    backgroundColor: 'rgba(215,25,32,0.16)',
     fontSize: 13,
     fontWeight: '900',
     paddingHorizontal: 12,
@@ -3312,8 +3432,8 @@ const styles = StyleSheet.create({
   catalogDetailRow: {
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(58,58,18,0.24)',
-    backgroundColor: 'rgba(255,255,255,0.34)',
+    borderColor: COLORS.borderSoft,
+    backgroundColor: 'rgba(255,255,255,0.04)',
     paddingHorizontal: 10,
     paddingVertical: 9,
   },
@@ -3324,7 +3444,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   catalogDetailRowValue: {
-    color: '#161707',
+    color: COLORS.textDark,
     fontSize: 12,
     lineHeight: 17,
     fontWeight: '800',
