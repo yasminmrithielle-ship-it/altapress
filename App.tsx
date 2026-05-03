@@ -1,4 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import type {
+  ImageProps,
+  ImageSourcePropType,
+  ImageStyle,
+  StyleProp,
+} from 'react-native';
 import {
   ActivityIndicator,
   Alert,
@@ -1628,6 +1634,53 @@ function getCatalogDrawingSources(item: CatalogItem) {
   return drawings;
 }
 
+function CatalogAssetImage({
+  source,
+  style,
+  resizeMode = 'contain',
+  accessibilityLabel,
+}: {
+  source: ImageSourcePropType;
+  style: StyleProp<ImageStyle>;
+  resizeMode?: ImageProps['resizeMode'];
+  accessibilityLabel?: string;
+}) {
+  const resolvedSource = Image.resolveAssetSource(source);
+
+  if (Platform.OS === 'web' && resolvedSource?.uri) {
+    const WebImage = 'img' as any;
+
+    return (
+      <View
+        style={[style, styles.catalogAssetImageWebFrame]}
+        accessibilityRole="image"
+        accessibilityLabel={accessibilityLabel}
+      >
+        <WebImage
+          alt={accessibilityLabel ?? ''}
+          draggable={false}
+          src={resolvedSource.uri}
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'block',
+            objectFit: resizeMode === 'cover' ? 'cover' : 'contain',
+          }}
+        />
+      </View>
+    );
+  }
+
+  return (
+    <Image
+      accessibilityLabel={accessibilityLabel}
+      source={source}
+      style={style}
+      resizeMode={resizeMode}
+    />
+  );
+}
+
 function CatalogCard({
   item,
   onPress,
@@ -1651,7 +1704,8 @@ function CatalogCard({
         <View style={styles.catalogCardTop}>
           <View style={styles.catalogImageSlot}>
             {catalogImage ? (
-              <Image
+              <CatalogAssetImage
+                accessibilityLabel={`Imagem de ${item.title}`}
                 source={catalogImage}
                 style={styles.catalogCardImage}
                 resizeMode="contain"
@@ -1795,7 +1849,8 @@ function CatalogDetailView({
 
       <View style={styles.catalogDetailImagePanel}>
         {catalogImage ? (
-          <Image
+          <CatalogAssetImage
+            accessibilityLabel={`Imagem tecnica de ${item.title}`}
             source={catalogImage}
             style={styles.catalogDetailProductImage}
             resizeMode="contain"
@@ -1829,7 +1884,8 @@ function CatalogDetailView({
           <View style={styles.catalogDrawingsList}>
             {catalogDrawings.map((drawing, index) => (
               <View key={`${item.id}-${drawing.key}`} style={styles.catalogDrawingCard}>
-                <Image
+                <CatalogAssetImage
+                  accessibilityLabel={`Desenho tecnico ${index + 1} de ${item.title}`}
                   source={drawing.source}
                   style={styles.catalogDrawingImage}
                   resizeMode="contain"
@@ -2971,6 +3027,11 @@ const styles = StyleSheet.create({
   catalogCardImage: {
     width: '100%',
     height: '100%',
+  },
+  catalogAssetImageWebFrame: {
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   catalogCopy: {
     flex: 1,
