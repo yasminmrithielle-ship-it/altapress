@@ -41,6 +41,10 @@ import {
   CATALOG_PRODUCT_IMAGES,
 } from './catalog-images';
 import {
+  CATALOG_DRAWING_ASSETS,
+  CATALOG_PRODUCT_DRAWINGS,
+} from './catalog-drawings';
+import {
   CATALOG_CATEGORIES,
   CATALOG_ITEMS,
   CatalogCategory,
@@ -1610,6 +1614,20 @@ function getCatalogImageSource(item: CatalogItem) {
   return imageKey ? CATALOG_IMAGE_ASSETS[imageKey] : undefined;
 }
 
+function getCatalogDrawingSources(item: CatalogItem) {
+  const drawingKeys = CATALOG_PRODUCT_DRAWINGS[item.id] ?? [];
+  const drawings = [];
+
+  for (const key of drawingKeys) {
+    const source = CATALOG_DRAWING_ASSETS[key];
+    if (source) {
+      drawings.push({ key, source });
+    }
+  }
+
+  return drawings;
+}
+
 function CatalogCard({
   item,
   onPress,
@@ -1711,7 +1729,7 @@ function CatalogQuickView({
             <Text style={styles.catalogQuickEyebrow}>Visualizacao rapida</Text>
             <Text style={styles.catalogQuickTitle}>{item.title}</Text>
             <Text style={styles.catalogQuickSubtitle}>
-              Foto do produto e especificacoes tecnicas em tela cheia.
+              Foto, desenhos tecnicos e especificacoes em tela cheia.
             </Text>
           </View>
 
@@ -1765,6 +1783,7 @@ function CatalogDetailView({
     ? item.technicalSections
     : fallbackSections;
   const catalogImage = getCatalogImageSource(item);
+  const catalogDrawings = getCatalogDrawingSources(item);
 
   return (
     <View style={styles.catalogDetailCard}>
@@ -1794,6 +1813,35 @@ function CatalogDetailView({
           </View>
         )}
       </View>
+
+      {catalogDrawings.length ? (
+        <View style={styles.catalogDrawingsSheet}>
+          <View style={styles.catalogDrawingsHeader}>
+            <View>
+              <Text style={styles.catalogDrawingsEyebrow}>Valaço</Text>
+              <Text style={styles.catalogDrawingsTitle}>Desenhos tecnicos</Text>
+            </View>
+            <Text style={styles.catalogDrawingsCount}>
+              {catalogDrawings.length} imagem(ns)
+            </Text>
+          </View>
+
+          <View style={styles.catalogDrawingsList}>
+            {catalogDrawings.map((drawing, index) => (
+              <View key={`${item.id}-${drawing.key}`} style={styles.catalogDrawingCard}>
+                <Image
+                  source={drawing.source}
+                  style={styles.catalogDrawingImage}
+                  resizeMode="contain"
+                />
+                <Text style={styles.catalogDrawingCaption}>
+                  Desenho tecnico {index + 1}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      ) : null}
 
       {technicalSections.map((section) => (
         <View key={`${item.id}-${section.title}`} style={styles.catalogTechnicalSheet}>
@@ -3133,6 +3181,66 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginTop: 8,
     textAlign: 'center',
+  },
+  catalogDrawingsSheet: {
+    borderRadius: 16,
+    overflow: 'hidden',
+    backgroundColor: '#f7f3bd',
+    borderWidth: 1,
+    borderColor: '#d5ca21',
+  },
+  catalogDrawingsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: '#c7c300',
+  },
+  catalogDrawingsEyebrow: {
+    color: COLORS.redDeep,
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+  },
+  catalogDrawingsTitle: {
+    color: '#171707',
+    fontSize: 16,
+    lineHeight: 20,
+    fontWeight: '900',
+    marginTop: 2,
+  },
+  catalogDrawingsCount: {
+    color: '#171707',
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  catalogDrawingsList: {
+    gap: 10,
+    padding: 10,
+  },
+  catalogDrawingCard: {
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#ded77b',
+    backgroundColor: '#fffde0',
+    padding: 8,
+  },
+  catalogDrawingImage: {
+    width: '100%',
+    height: 300,
+    borderRadius: 10,
+    backgroundColor: '#fffef0',
+  },
+  catalogDrawingCaption: {
+    color: '#4d4d26',
+    fontSize: 11,
+    fontWeight: '800',
+    textAlign: 'center',
+    marginTop: 8,
   },
   catalogTechnicalSheet: {
     borderRadius: 14,

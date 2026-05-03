@@ -92,463 +92,463 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "title": "Valvula Sa Brz",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mipel/037038.gif",
     "pageUrl": "http://www.valaco.com.br/produtos/val_sa_brz.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "067-ephbwf": {
     "title": "Valvula Gaveta Fr Brz",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mipel/067.gif",
     "pageUrl": "http://www.valaco.com.br/produtos/val_gaveta_fr_brz.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "081-fk9t4n": {
     "title": "Indicador Nivel Brz",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mipel/081.gif",
     "pageUrl": "http://www.valaco.com.br/produtos/indicador_nivel_brz.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "088-fo4da6": {
     "title": "Acessorios Visor Brz",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mipel/088.gif",
     "pageUrl": "http://www.valaco.com.br/produtos/acessorios_visor_brz.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "091-g1bfiu": {
     "title": "Valvula Hidrante Brz",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mipel/091.gif",
     "pageUrl": "http://www.valaco.com.br/produtos/val_hidrante_brz.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "amortecedor-kh9ep0": {
     "title": "Amortecedor",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/amortecedor.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/amortecedor.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "angularacff-9f1fur": {
     "title": "Valvula Angular Ac",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/angularacff.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_angular_ac.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "awwa-cego-8cl7l7": {
     "title": "Flange Cego AWWA 86PSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwa_cego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_AWWA_86psi.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "awwa-liso-1c0vuu": {
     "title": "Flange SO Plano AWWA 86PSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwa_liso.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_AWWA_86psi.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "awwa-so-a00919": {
     "title": "Flange SO AWWA 175-150PSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwa_so.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_AWWA_175-150psi.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "awwacego-3w4rbi": {
     "title": "Flange Cego DIN",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwacego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_DIN.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "awwaliso-17kfel": {
     "title": "Flange SO Plano DIN",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwaliso.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_DIN.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "borboleta-lk4mgn": {
     "title": "Valvula Borboleta Wafer",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/borboleta.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_borboleta_wafer.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "cego-jkzscu": {
     "title": "Flange Cego JIS",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JIS.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "cegodin2527-bt-1f9c3g": {
     "title": "Flange Cego DIN2527 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cegoDIN2527-BT.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_DIN2527_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "cegodin2527-e-1idqzd": {
     "title": "Flange Cego DIN2527 PN64",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cegoDIN2527-E.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_DIN2527_PN64.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "cegojisb2220-19bbbm": {
     "title": "Flange Cego JISB2220 5K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cegoJISB2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JISB2220_5K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-b-cego-1xsx1r": {
     "title": "Flange Cego ANSI 600",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_B_cego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_ANSI_600.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-b-liso-12g3n2": {
     "title": "Flange SO Plano ANSI 600",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_B_liso.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_ANSI_600.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-b-rsc-y6vzoa": {
     "title": "Flange RSC ANSI 600",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_B_rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_ANSI_600.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-b-so-anlgne": {
     "title": "Flange SO ANSI 600",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_B_so.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_ANSI_600.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-cego-1drgkm": {
     "title": "Flange Cego ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_cego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-colarbw-18momm": {
     "title": "Colares Bw",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/des_colarbw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares_bw.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-curva-45-suv783": {
     "title": "Tb Curva 45",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/des_curva_45.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb_curva_45.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-curva-90-femea-9wzhuj": {
     "title": "Fm Bsp Curva 90 Femea",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/des_curva_90_femea.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm_bsp_curva_90_femea.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-diafragma-tpa-61xaii": {
     "title": "Valvula Diafragma Tpa",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/des_diafragma_tpa.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_diafragma_tpa.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-liso-ien5wq": {
     "title": "Flange SO Plano ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_liso.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-orificio-rsc-13fgq6": {
     "title": "Flange Orificio RSC ANSI 300",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_orificio_rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_rsc_ANSI_300.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-orificio-so-1knfgg": {
     "title": "Flange Orificio SO ANSI 300",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_orificio_so.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_so_ANSI_300.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-reducao-jcwfhe": {
     "title": "Flange Reducao ANSI 150-2500",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_reducao.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_reducao_ANSI_150-2500.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-rsc-zu3pw7": {
-    "title": "Flange RSC ANSI 300",
+    "title": "Flange RSC ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_rsc.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_ANSI_300.html",
-    "credit": "Valaço"
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_ANSI_150.html",
+    "credit": "Valaco"
   },
   "des-so-1tp7fj": {
     "title": "Flange SO ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_so.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-solto-8pcrs0": {
     "title": "Flange Solto ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_solto.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "des-sw-1ttlsa": {
     "title": "Flange SW ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_sw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_sw_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "descarga-6vuakj": {
     "title": "Valvula Descarga",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/descarga.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_descarga.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "eliminador-ar-1nvobk": {
     "title": "Eliminador",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/eliminador_ar.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/aces_eliminador.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "esfera-bip-14lt7w": {
     "title": "Valvula Esfera Bip",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/esfera_bip.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_bip.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "esfera-mon-400wog-10mc58": {
     "title": "Valvula Esfera Mon",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/esfera_mon_400wog.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_mon.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "esfera-tri-ou25f3": {
     "title": "Valvula Esfera Tri Rscswbw",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/esfera_tri.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_tri_rscswbw.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "esp-sob-encomenda-ujluwa": {
     "title": "Flange WN ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/esp_sob_encomenda.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "filtro-cesto-dx1e7w": {
     "title": "Filtro Cesto Simples",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/filtro_cesto.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/filtro_cesto_simples.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "filtro-y-flg-g7lsx7": {
     "title": "Filtro Y Flg",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/filtro_Y_flg.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/filtro_y_flg.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "fita-ptfe-16ys0a": {
     "title": "Fita",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/fita_PTFE.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/ved_fita.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "flg-rsc-sem-encaixe-lepjoy": {
     "title": "Flange RSC ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/flg_rsc_sem_encaixe.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_ANSI_150.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "globo-afd-1u8pqv": {
     "title": "Valvula Globo Afd",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/globo_afd.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_globo_afd.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "grampo-u-1jhd6b": {
     "title": "Grampou",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/grampo_u.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/aces_grampou.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "guilhotina-1tp6d0": {
     "title": "Valvula Guilhotina",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/guilhotina.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_guilhotina.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "liso-1n9afm": {
     "title": "Flange SO Plano JIS",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/liso.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_JIS.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "lisodin-1c3bpw": {
     "title": "Flange SO Plano DIN2573 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/lisoDIN.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_DIN2573_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "lisojis2220-186bpm": {
     "title": "Flange SO Plano JISB2220 5K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/lisoJIS2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_JISB2220_5K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "man-utilitarios-1gf5w9": {
     "title": "Manometro",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/instrumentos/menor/man_utilitarios.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/instr_manometro.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "mangote-ca-ciuowh": {
     "title": "Valvula Mangote Ca",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/mangote_ca.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_mangote_ca.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "passagem-reta-bw-1byaqx": {
     "title": "Valvula Passagem Reta",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/passagem_reta_bw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_passagem_reta.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "purg-balde-1vtp01": {
     "title": "Purgador Balde",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purg_balde.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_balde.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "purg-bimetalico-ivy2op": {
     "title": "Purgador Bimetalico",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purg_bimetalico.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_bimetalico.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "purg-boia-1wpccq": {
     "title": "Purgador Boia",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purg_boia.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_boia.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "purg-eletronico-ef8nry": {
     "title": "Purgador Eletronico",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purg_eletronico.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_eletronico.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "purgador-kla3qf": {
     "title": "Purgador Termodinamico",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purgador.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_termodinamico.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "retencao-passagem-reta-bw-gxqugb": {
     "title": "Valvula Retencao Passagem Reta",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/retencao_passagem_reta_bw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_retencao_passagem_reta.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "rsc-yv20lg": {
     "title": "RSC ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_rsc_ANSI.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "rscdin-2exzu3": {
     "title": "Flange RSC DIN2565 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/rscDIN.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_DIN2565_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "rscdinpn64100-obvieo": {
     "title": "Flange RSC DIN2568 PN64",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/rscDINPN64100.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_rsc_DIN2568_PN64.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "separador-umidade-357fxg": {
     "title": "Separador",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/separador_umidade.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/aces_separador.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "so-zvqkv4": {
     "title": "Flange SO JIS",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/so.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JIS.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "sojisb2220-6v1kks": {
     "title": "Flange SO JISB2220 5K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/SOJISB2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_5K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "sojisb222016k-ruink0": {
     "title": "Flange SO JISB2220 16K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/SOJISB222016k.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_16K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "sojisb222020k-13on7e": {
     "title": "Flange SO JISB2220 20K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/SOJISB222020k.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_20K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "sojisb222030k-1id1hm": {
     "title": "Flange SO JISB2220 30K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/SOJISB222030k.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_30K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "soltodin2641-1iiuqf": {
     "title": "Flange Solto DIN2641 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/soltoDIN2641.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_DIN2641_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "soltodin2652-1j0g5e": {
     "title": "Flange Solto DIN2652 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/soltoDIN2652.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_DIN2652_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "te-90-sw-vvnqtq": {
     "title": "Ap SW",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/te_90_sw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "ter-bimetalico-comercial-1s6b9t": {
     "title": "Termometro",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/instrumentos/menor/ter_bimetalico_comercial.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/instr_termometro.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "ventosa-flg-1xitki": {
     "title": "Acessorios Ventosa Simples",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/ventosa_flg.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/acessorios_ventosa_simples.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "wn-11rd9u": {
     "title": "Flange WN DIN",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/wn.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_WN_DIN.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "wndin-1jq6eu": {
     "title": "Flange WN DIN2631 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/WNDIN.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_WN_DIN2631_PN6.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "wnjisb2220-1gnqfs": {
     "title": "Flange WN JISB2220 30K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/wnJISB2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_JISB2220_30K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   },
   "wnjisb222040k-18rxom": {
     "title": "Flange WN JISB2238 40K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/wnJISB222040k.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_JISB2238_40K.html",
-    "credit": "Valaço"
+    "credit": "Valaco"
   }
 };
 
