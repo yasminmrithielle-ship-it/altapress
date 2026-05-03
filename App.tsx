@@ -1055,7 +1055,10 @@ export default function App() {
                   <CatalogCard
                     key={item.id}
                     item={item}
-                    onPress={() => setSelectedCatalogItem(item)}
+                    onPress={() => {
+                      setSelectedCatalogItem(item);
+                      setMenuOpen(false);
+                    }}
                     onOrder={() => openProductOrder(item)}
                   />
                 ))}
@@ -2781,9 +2784,12 @@ const styles = StyleSheet.create({
   },
   drawerLayer: {
     ...StyleSheet.absoluteFillObject,
+    zIndex: 50,
+    elevation: 50,
   },
   drawerScrimButton: {
     ...StyleSheet.absoluteFillObject,
+    zIndex: 1,
   },
   drawerScrim: {
     ...StyleSheet.absoluteFillObject,
@@ -2804,6 +2810,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 22,
     shadowOffset: { width: 10, height: 0 },
+    zIndex: 2,
     elevation: 16,
   },
   drawerHeader: {
