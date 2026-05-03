@@ -13,22 +13,43 @@ export const CATALOG_DRAWING_ASSETS: Record<string, ImageSourcePropType> = {
   "awwa-so-a00919": require("./assets/catalog/valaco/awwa-so-a00919.jpg"),
   "awwacego-3w4rbi": require("./assets/catalog/valaco/awwacego-3w4rbi.jpg"),
   "awwaliso-17kfel": require("./assets/catalog/valaco/awwaliso-17kfel.jpg"),
+  "bucha-1ohn29": require("./assets/catalog/valaco/bucha-1ohn29.jpg"),
   "bucha-rsc-1vy636": require("./assets/catalog/valaco/bucha-rsc-1vy636.jpg"),
   "bujao-cbqd-rsc-82kbbz": require("./assets/catalog/valaco/bujao-cbqd-rsc-82kbbz.jpg"),
   "bujao-cbsx-rsc-170cfq": require("./assets/catalog/valaco/bujao-cbsx-rsc-170cfq.jpg"),
+  "bujao-i2kpf7": require("./assets/catalog/valaco/bujao-i2kpf7.jpg"),
+  "cap-1x8al5": require("./assets/catalog/valaco/cap-1x8al5.jpg"),
   "cap-rsc-8bsamj": require("./assets/catalog/valaco/cap-rsc-8bsamj.jpg"),
   "cap-sw-1hh7zl": require("./assets/catalog/valaco/cap-sw-1hh7zl.jpg"),
   "cego-jkzscu": require("./assets/catalog/valaco/cego-jkzscu.jpg"),
   "cegodin2527-bt-1f9c3g": require("./assets/catalog/valaco/cegodin2527-bt-1f9c3g.jpg"),
   "cegodin2527-e-1idqzd": require("./assets/catalog/valaco/cegodin2527-e-1idqzd.jpg"),
   "cegojisb2220-19bbbm": require("./assets/catalog/valaco/cegojisb2220-19bbbm.jpg"),
+  "cnx-rsc-1e06d9": require("./assets/catalog/valaco/cnx-rsc-1e06d9.jpg"),
+  "cnx-sw-24eq3h": require("./assets/catalog/valaco/cnx-sw-24eq3h.jpg"),
+  "colarbw-1p9m20": require("./assets/catalog/valaco/colarbw-1p9m20.jpg"),
+  "colarrsc-22uthd": require("./assets/catalog/valaco/colarrsc-22uthd.jpg"),
+  "colarsw-1xbdmq": require("./assets/catalog/valaco/colarsw-1xbdmq.jpg"),
+  "cotovelo-45-osbf3p": require("./assets/catalog/valaco/cotovelo-45-osbf3p.jpg"),
   "cotovelo-45-rsc-ntrwrk": require("./assets/catalog/valaco/cotovelo-45-rsc-ntrwrk.jpg"),
   "cotovelo-45-sw-qhddho": require("./assets/catalog/valaco/cotovelo-45-sw-qhddho.jpg"),
+  "cotovelo-90-macho-femea-qom765": require("./assets/catalog/valaco/cotovelo-90-macho-femea-qom765.jpg"),
   "cotovelo-90-mf-rsc-1y8i1v": require("./assets/catalog/valaco/cotovelo-90-mf-rsc-1y8i1v.jpg"),
+  "cotovelo-90-r2sk3v": require("./assets/catalog/valaco/cotovelo-90-r2sk3v.jpg"),
   "cotovelo-90-rsc-ez42t2": require("./assets/catalog/valaco/cotovelo-90-rsc-ez42t2.jpg"),
   "cotovelo-90-sw-h15452": require("./assets/catalog/valaco/cotovelo-90-sw-h15452.jpg"),
+  "cruzeta-92e6a4": require("./assets/catalog/valaco/cruzeta-92e6a4.jpg"),
   "cruzeta-rsc-k3mrlj": require("./assets/catalog/valaco/cruzeta-rsc-k3mrlj.jpg"),
   "cruzeta-sw-1mfvaq": require("./assets/catalog/valaco/cruzeta-sw-1mfvaq.jpg"),
+  "curva-180-1wg9f0": require("./assets/catalog/valaco/curva-180-1wg9f0.jpg"),
+  "curva-45-femea-d6lt88": require("./assets/catalog/valaco/curva-45-femea-d6lt88.jpg"),
+  "curva-45-macho-femea-qqpq4v": require("./assets/catalog/valaco/curva-45-macho-femea-qqpq4v.jpg"),
+  "curva-45-xdbbk6": require("./assets/catalog/valaco/curva-45-xdbbk6.jpg"),
+  "curva-90-femea-udxob2": require("./assets/catalog/valaco/curva-90-femea-udxob2.jpg"),
+  "curva-90-macho-1lxb5m": require("./assets/catalog/valaco/curva-90-macho-1lxb5m.jpg"),
+  "curva-90-macho-femea-19h9o2": require("./assets/catalog/valaco/curva-90-macho-femea-19h9o2.jpg"),
+  "curva-90-znsgkc": require("./assets/catalog/valaco/curva-90-znsgkc.jpg"),
+  "curva-de-retorno-x3wbir": require("./assets/catalog/valaco/curva-de-retorno-x3wbir.jpg"),
   "des-amortecedor-11l8qy": require("./assets/catalog/valaco/des-amortecedor-11l8qy.jpg"),
   "des-angular-oiomlw": require("./assets/catalog/valaco/des-angular-oiomlw.jpg"),
   "des-angularacff-qj0s46": require("./assets/catalog/valaco/des-angularacff-qj0s46.jpg"),
@@ -122,17 +143,32 @@ export const CATALOG_DRAWING_ASSETS: Record<string, ImageSourcePropType> = {
   "des-ventosa-triplice-flg-1lwbky": require("./assets/catalog/valaco/des-ventosa-triplice-flg-1lwbky.jpg"),
   "des-wn-1vku4i": require("./assets/catalog/valaco/des-wn-1vku4i.jpg"),
   "esp-sob-encomenda-ujluwa": require("./assets/catalog/valaco/esp-sob-encomenda-ujluwa.jpg"),
+  "flange-com-sextavado-708hp1": require("./assets/catalog/valaco/flange-com-sextavado-708hp1.jpg"),
   "flg-rsc-sem-encaixe-lepjoy": require("./assets/catalog/valaco/flg-rsc-sem-encaixe-lepjoy.jpg"),
   "liso-1n9afm": require("./assets/catalog/valaco/liso-1n9afm.jpg"),
   "lisodin-1c3bpw": require("./assets/catalog/valaco/lisodin-1c3bpw.jpg"),
   "lisojis2220-186bpm": require("./assets/catalog/valaco/lisojis2220-186bpm.jpg"),
+  "luva-macho-femea-ha275a": require("./assets/catalog/valaco/luva-macho-femea-ha275a.jpg"),
+  "luva-reducao-macho-femea-p48c70": require("./assets/catalog/valaco/luva-reducao-macho-femea-p48c70.jpg"),
+  "luva-reducao-o592re": require("./assets/catalog/valaco/luva-reducao-o592re.jpg"),
   "luva-reducao-rsc-1lm13d": require("./assets/catalog/valaco/luva-reducao-rsc-1lm13d.jpg"),
   "luva-reducao-sw-1ehhau": require("./assets/catalog/valaco/luva-reducao-sw-1ehhau.jpg"),
   "luva-rsc-186rjn": require("./assets/catalog/valaco/luva-rsc-186rjn.jpg"),
+  "luva-so3mlo": require("./assets/catalog/valaco/luva-so3mlo.jpg"),
   "luva-sw-1kxcqo": require("./assets/catalog/valaco/luva-sw-1kxcqo.jpg"),
   "meia-luva-rsc-1ff3mq": require("./assets/catalog/valaco/meia-luva-rsc-1ff3mq.jpg"),
   "meia-luva-sw-1l5r2d": require("./assets/catalog/valaco/meia-luva-sw-1l5r2d.jpg"),
+  "niple-concentrico-1ilurb": require("./assets/catalog/valaco/niple-concentrico-1ilurb.jpg"),
+  "niple-duplo-d8imn3": require("./assets/catalog/valaco/niple-duplo-d8imn3.jpg"),
+  "niple-duplo-reducao-d9ek31": require("./assets/catalog/valaco/niple-duplo-reducao-d9ek31.jpg"),
+  "niple-excentrico-1sm2ym": require("./assets/catalog/valaco/niple-excentrico-1sm2ym.jpg"),
   "niple-rsc-xg0sqv": require("./assets/catalog/valaco/niple-rsc-xg0sqv.jpg"),
+  "orificioso-1ckte0": require("./assets/catalog/valaco/orificioso-1ckte0.jpg"),
+  "orificiown-1egg2z": require("./assets/catalog/valaco/orificiown-1egg2z.jpg"),
+  "pestana-1tvfn3": require("./assets/catalog/valaco/pestana-1tvfn3.jpg"),
+  "reducao-1bknkb": require("./assets/catalog/valaco/reducao-1bknkb.jpg"),
+  "reducao-concentrica-1mr2wj": require("./assets/catalog/valaco/reducao-concentrica-1mr2wj.jpg"),
+  "reducao-excentrica-1h30bp": require("./assets/catalog/valaco/reducao-excentrica-1h30bp.jpg"),
   "rsc-yv20lg": require("./assets/catalog/valaco/rsc-yv20lg.jpg"),
   "rscdin-2exzu3": require("./assets/catalog/valaco/rscdin-2exzu3.jpg"),
   "rscdinpn64100-obvieo": require("./assets/catalog/valaco/rscdinpn64100-obvieo.jpg"),
@@ -141,13 +177,24 @@ export const CATALOG_DRAWING_ASSETS: Record<string, ImageSourcePropType> = {
   "sojisb222016k-ruink0": require("./assets/catalog/valaco/sojisb222016k-ruink0.jpg"),
   "sojisb222020k-13on7e": require("./assets/catalog/valaco/sojisb222020k-13on7e.jpg"),
   "sojisb222030k-1id1hm": require("./assets/catalog/valaco/sojisb222030k-1id1hm.jpg"),
+  "solto-1vkh7g": require("./assets/catalog/valaco/solto-1vkh7g.jpg"),
   "soltodin2641-1iiuqf": require("./assets/catalog/valaco/soltodin2641-1iiuqf.jpg"),
   "soltodin2652-1j0g5e": require("./assets/catalog/valaco/soltodin2652-1j0g5e.jpg"),
+  "sw-1004xm": require("./assets/catalog/valaco/sw-1004xm.jpg"),
+  "tampao-1ext2b": require("./assets/catalog/valaco/tampao-1ext2b.jpg"),
+  "te-45-16q7h7": require("./assets/catalog/valaco/te-45-16q7h7.jpg"),
+  "te-45-18d0td": require("./assets/catalog/valaco/te-45-18d0td.jpg"),
+  "te-45-reducao-180jph": require("./assets/catalog/valaco/te-45-reducao-180jph.jpg"),
   "te-45-rsc-1lx545": require("./assets/catalog/valaco/te-45-rsc-1lx545.jpg"),
+  "te-90-190om7": require("./assets/catalog/valaco/te-90-190om7.jpg"),
+  "te-90-1anhye": require("./assets/catalog/valaco/te-90-1anhye.jpg"),
+  "te-90-reducao-qgzjvs": require("./assets/catalog/valaco/te-90-reducao-qgzjvs.jpg"),
   "te-90-reducao-rsc-1gce7z": require("./assets/catalog/valaco/te-90-reducao-rsc-1gce7z.jpg"),
   "te-90-reducao-sw-155evn": require("./assets/catalog/valaco/te-90-reducao-sw-155evn.jpg"),
   "te-90-rsc-1d2ha7": require("./assets/catalog/valaco/te-90-rsc-1d2ha7.jpg"),
   "te-90-sw-vvnqtq": require("./assets/catalog/valaco/te-90-sw-vvnqtq.jpg"),
+  "te-reducao-90-1tcxu3": require("./assets/catalog/valaco/te-reducao-90-1tcxu3.jpg"),
+  "uniao-f0xai4": require("./assets/catalog/valaco/uniao-f0xai4.jpg"),
   "uniao-rsc-q1hj6f": require("./assets/catalog/valaco/uniao-rsc-q1hj6f.jpg"),
   "uniao-sw-1y37e9": require("./assets/catalog/valaco/uniao-sw-1y37e9.jpg"),
   "wn-11rd9u": require("./assets/catalog/valaco/wn-11rd9u.jpg"),
@@ -176,15 +223,21 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "credit": "Valaco"
   },
   "awwacego-3w4rbi": {
-    "title": "Flange Cego DIN",
+    "title": "Flange Cego AWWA",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwacego.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_AWWA.html",
     "credit": "Valaco"
   },
   "awwaliso-17kfel": {
-    "title": "Flange SO Plano DIN",
+    "title": "Flange SO Plano AWWA",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwaliso.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_AWWA.html",
+    "credit": "Valaco"
+  },
+  "bucha-1ohn29": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/bucha.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
     "credit": "Valaco"
   },
   "bucha-rsc-1vy636": {
@@ -205,6 +258,18 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_rsc.html",
     "credit": "Valaco"
   },
+  "bujao-i2kpf7": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/bujao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "cap-1x8al5": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/cap.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
   "cap-rsc-8bsamj": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/cap_rsc.jpg",
@@ -218,9 +283,9 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "credit": "Valaco"
   },
   "cego-jkzscu": {
-    "title": "Flange Cego JIS",
+    "title": "Flange Cego ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cego.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_ANSI.html",
     "credit": "Valaco"
   },
   "cegodin2527-bt-1f9c3g": {
@@ -241,6 +306,42 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JISB2220_5K.html",
     "credit": "Valaco"
   },
+  "cnx-rsc-1e06d9": {
+    "title": "Ap",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/cnx_rsc.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap.html",
+    "credit": "Valaco"
+  },
+  "cnx-sw-24eq3h": {
+    "title": "Ap",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/cnx_sw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap.html",
+    "credit": "Valaco"
+  },
+  "colarbw-1p9m20": {
+    "title": "Colares",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/colarbw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares.html",
+    "credit": "Valaco"
+  },
+  "colarrsc-22uthd": {
+    "title": "Colares",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/colarrsc.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares.html",
+    "credit": "Valaco"
+  },
+  "colarsw-1xbdmq": {
+    "title": "Colares",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/colarsw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares.html",
+    "credit": "Valaco"
+  },
+  "cotovelo-45-osbf3p": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/cotovelo_45.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "cotovelo-45-rsc-ntrwrk": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/cotovelo_45_rsc.jpg",
@@ -253,10 +354,22 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
     "credit": "Valaco"
   },
+  "cotovelo-90-macho-femea-qom765": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/cotovelo_90_macho_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "cotovelo-90-mf-rsc-1y8i1v": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/cotovelo_90_mf_rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_rsc.html",
+    "credit": "Valaco"
+  },
+  "cotovelo-90-r2sk3v": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/cotovelo_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
     "credit": "Valaco"
   },
   "cotovelo-90-rsc-ez42t2": {
@@ -271,6 +384,12 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
     "credit": "Valaco"
   },
+  "cruzeta-92e6a4": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/cruzeta.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "cruzeta-rsc-k3mrlj": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/cruzeta_rsc.jpg",
@@ -281,6 +400,60 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "title": "Ap SW",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/cruzeta_sw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
+    "credit": "Valaco"
+  },
+  "curva-180-1wg9f0": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/curva_180.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "curva-45-femea-d6lt88": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_45_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "curva-45-macho-femea-qqpq4v": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_45_macho_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "curva-45-xdbbk6": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/curva_45.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "curva-90-femea-udxob2": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_90_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "curva-90-macho-1lxb5m": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_90_macho.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "curva-90-macho-femea-19h9o2": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_90_macho_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "curva-90-znsgkc": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/curva_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "curva-de-retorno-x3wbir": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/curva_de_retorno.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
     "credit": "Valaco"
   },
   "des-amortecedor-11l8qy": {
@@ -841,6 +1014,12 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_ANSI_150.html",
     "credit": "Valaco"
   },
+  "flange-com-sextavado-708hp1": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/flange_com_sextavado.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "flg-rsc-sem-encaixe-lepjoy": {
     "title": "Flange RSC ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/flg_rsc_sem_encaixe.jpg",
@@ -848,9 +1027,9 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "credit": "Valaco"
   },
   "liso-1n9afm": {
-    "title": "Flange SO Plano JIS",
+    "title": "Flange SO Plano ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/liso.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_ANSI.html",
     "credit": "Valaco"
   },
   "lisodin-1c3bpw": {
@@ -863,6 +1042,24 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "title": "Flange SO Plano JISB2220 5K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/lisoJIS2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_JISB2220_5K.html",
+    "credit": "Valaco"
+  },
+  "luva-macho-femea-ha275a": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/luva_macho_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "luva-reducao-macho-femea-p48c70": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/luva_reducao_macho_femea.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "luva-reducao-o592re": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/luva_reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
     "credit": "Valaco"
   },
   "luva-reducao-rsc-1lm13d": {
@@ -883,6 +1080,12 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_rsc.html",
     "credit": "Valaco"
   },
+  "luva-so3mlo": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/luva.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "luva-sw-1kxcqo": {
     "title": "Ap SW",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/luva_sw.jpg",
@@ -901,10 +1104,70 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
     "credit": "Valaco"
   },
+  "niple-concentrico-1ilurb": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/niple_concentrico.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "niple-duplo-d8imn3": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/niple_duplo.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "niple-duplo-reducao-d9ek31": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/niple_duplo_reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "niple-excentrico-1sm2ym": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/niple_excentrico.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
   "niple-rsc-xg0sqv": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/niple_rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_rsc.html",
+    "credit": "Valaco"
+  },
+  "orificioso-1ckte0": {
+    "title": "Flange Orificio SO ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/orificioso.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_so_ANSI.html",
+    "credit": "Valaco"
+  },
+  "orificiown-1egg2z": {
+    "title": "Flange Orificio WN ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/orificiown.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_wn_ANSI.html",
+    "credit": "Valaco"
+  },
+  "pestana-1tvfn3": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/pestana.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "reducao-1bknkb": {
+    "title": "Flange Reducao ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_reducao_ANSI.html",
+    "credit": "Valaco"
+  },
+  "reducao-concentrica-1mr2wj": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/reducao_concentrica.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "reducao-excentrica-1h30bp": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/reducao_excentrica.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
     "credit": "Valaco"
   },
   "rsc-yv20lg": {
@@ -926,9 +1189,9 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "credit": "Valaco"
   },
   "so-zvqkv4": {
-    "title": "Flange SO JIS",
+    "title": "Flange SO ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/so.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_ANSI.html",
     "credit": "Valaco"
   },
   "sojisb2220-6v1kks": {
@@ -955,6 +1218,12 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_30K.html",
     "credit": "Valaco"
   },
+  "solto-1vkh7g": {
+    "title": "Flange Solto ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/solto.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_ANSI.html",
+    "credit": "Valaco"
+  },
   "soltodin2641-1iiuqf": {
     "title": "Flange Solto DIN2641 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/soltoDIN2641.jpg",
@@ -967,10 +1236,58 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_DIN2652_PN6.html",
     "credit": "Valaco"
   },
+  "sw-1004xm": {
+    "title": "Flange SW ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/sw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_sw_ANSI.html",
+    "credit": "Valaco"
+  },
+  "tampao-1ext2b": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/tampao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "te-45-16q7h7": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/te_45.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "te-45-18d0td": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/te_45.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "te-45-reducao-180jph": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/te_45_reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
   "te-45-rsc-1lx545": {
     "title": "Ap SW",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/te_45_rsc.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
+    "credit": "Valaco"
+  },
+  "te-90-190om7": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/te_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "te-90-1anhye": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/te_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
+  "te-90-reducao-qgzjvs": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/te_90_reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
     "credit": "Valaco"
   },
   "te-90-reducao-rsc-1gce7z": {
@@ -997,6 +1314,18 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
     "credit": "Valaco"
   },
+  "te-reducao-90-1tcxu3": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/te_reducao_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
+  "uniao-f0xai4": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/uniao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
+    "credit": "Valaco"
+  },
   "uniao-rsc-q1hj6f": {
     "title": "Ap RSC",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/uniao_rsc.jpg",
@@ -1010,9 +1339,9 @@ export const CATALOG_DRAWING_META: Record<string, CatalogDrawingMeta> = {
     "credit": "Valaco"
   },
   "wn-11rd9u": {
-    "title": "Flange WN DIN",
+    "title": "Flange WN ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/wn.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_WN_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_ANSI.html",
     "credit": "Valaco"
   },
   "wndin-1jq6eu": {
@@ -1087,10 +1416,12 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "des-retencao-passagem-reta-jce1oc"
   ],
   "flanges-conexoes-flg-cego-ANSI-html": [
+    "cego-jkzscu",
     "des-cego-1drgkm",
     "des-b-cego-1xsx1r"
   ],
   "flanges-conexoes-flg-cego-AWWA-html": [
+    "awwacego-3w4rbi",
     "awwa-cego-8cl7l7"
   ],
   "flanges-conexoes-flg-cego-DIN-html": [
@@ -1172,6 +1503,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "cegojisb2220-19bbbm"
   ],
   "flanges-conexoes-flg-wn-ANSI-html": [
+    "wn-11rd9u",
     "des-wn-1vku4i",
     "esp-sob-encomenda-ujluwa",
     "des-b-wn-cj85mt"
@@ -1237,6 +1569,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "wnjisb222040k-18rxom"
   ],
   "flanges-conexoes-flg-so-ANSI-html": [
+    "so-zvqkv4",
     "des-so-1tp7fj",
     "des-b-so-anlgne"
   ],
@@ -1259,6 +1592,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "des-b-so-anlgne"
   ],
   "flanges-conexoes-flg-so-AWWA-html": [
+    "so-zvqkv4",
     "awwa-so-a00919"
   ],
   "flanges-conexoes-flg-so-AWWA-175-150psi-html": [
@@ -1286,6 +1620,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "sojisb222030k-1id1hm"
   ],
   "flanges-conexoes-flg-sw-ANSI-html": [
+    "sw-1004xm",
     "des-sw-1ttlsa",
     "esp-sob-encomenda-ujluwa",
     "des-b-sw-arztea"
@@ -1350,6 +1685,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "rscdinpn64100-obvieo"
   ],
   "flanges-conexoes-flg-solto-ANSI-html": [
+    "solto-1vkh7g",
     "des-solto-8pcrs0"
   ],
   "flanges-conexoes-flg-solto-ANSI-150-html": [
@@ -1392,6 +1728,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "soltodin2652-1j0g5e"
   ],
   "flanges-conexoes-flg-so-plano-ANSI-html": [
+    "liso-1n9afm",
     "des-liso-ien5wq",
     "des-b-liso-12g3n2"
   ],
@@ -1414,6 +1751,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "des-b-liso-12g3n2"
   ],
   "flanges-conexoes-flg-so-plano-AWWA-html": [
+    "awwaliso-17kfel",
     "awwa-liso-1c0vuu"
   ],
   "flanges-conexoes-flg-so-plano-AWWA-86psi-html": [
@@ -1462,6 +1800,7 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "lisojis2220-186bpm"
   ],
   "flanges-conexoes-flg-orificio-wn-ANSI-html": [
+    "orificiown-1egg2z",
     "des-orificio-wn-1mj25f",
     "esp-sob-encomenda-ujluwa",
     "des-orificio-wn-rf-1vbhm3",
@@ -1504,24 +1843,29 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "esp-sob-encomenda-ujluwa"
   ],
   "flanges-conexoes-flg-orificio-so-ANSI-html": [
+    "orificioso-1ckte0",
     "des-orificio-so-1knfgg"
   ],
   "flanges-conexoes-flg-orificio-so-ANSI-300-html": [
     "des-orificio-so-1knfgg"
   ],
   "flanges-conexoes-flg-orificio-rsc-ANSI-html": [
+    "orificioso-1ckte0",
     "des-orificio-rsc-13fgq6"
   ],
   "flanges-conexoes-flg-orificio-rsc-ANSI-300-html": [
     "des-orificio-rsc-13fgq6"
   ],
   "flanges-conexoes-flg-reducao-ANSI-html": [
+    "reducao-1bknkb",
     "des-reducao-jcwfhe"
   ],
   "flanges-conexoes-flg-reducao-ANSI-150-2500-html": [
     "des-reducao-jcwfhe"
   ],
   "conexoes-conexoes-ap-html": [
+    "cnx-sw-24eq3h",
+    "cnx-rsc-1e06d9",
     "te-90-sw-vvnqtq",
     "te-90-reducao-sw-155evn",
     "te-45-rsc-1lx545",
@@ -1550,6 +1894,30 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "uniao-rsc-q1hj6f"
   ],
   "conexoes-conexoes-fm-html": [
+    "curva-90-femea-udxob2",
+    "curva-90-macho-femea-19h9o2",
+    "curva-90-macho-1lxb5m",
+    "curva-45-femea-d6lt88",
+    "curva-45-macho-femea-qqpq4v",
+    "curva-de-retorno-x3wbir",
+    "cotovelo-90-r2sk3v",
+    "cotovelo-90-macho-femea-qom765",
+    "cotovelo-45-osbf3p",
+    "tampao-1ext2b",
+    "flange-com-sextavado-708hp1",
+    "uniao-f0xai4",
+    "te-90-190om7",
+    "te-reducao-90-1tcxu3",
+    "te-45-16q7h7",
+    "cruzeta-92e6a4",
+    "niple-duplo-d8imn3",
+    "niple-duplo-reducao-d9ek31",
+    "luva-so3mlo",
+    "luva-reducao-o592re",
+    "luva-macho-femea-ha275a",
+    "luva-reducao-macho-femea-p48c70",
+    "bucha-1ohn29",
+    "bujao-i2kpf7",
     "des-curva-90-femea-9wzhuj",
     "des-curva-90-macho-femea-1nq2ss",
     "des-curva-90-macho-11gcz5",
@@ -1576,6 +1944,9 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "des-bujao-abapfq"
   ],
   "conexoes-conexoes-colares-html": [
+    "colarbw-1p9m20",
+    "colarsw-1xbdmq",
+    "colarrsc-22uthd",
     "des-colarbw-18momm",
     "des-colarbw-reducao-1ym79g",
     "des-colarsw-1gog7b",
@@ -1584,6 +1955,19 @@ export const CATALOG_PRODUCT_DRAWINGS: Record<string, string[]> = {
     "des-colarrsc-reducao-q6ysm4"
   ],
   "conexoes-conexoes-tb-html": [
+    "curva-45-xdbbk6",
+    "curva-90-znsgkc",
+    "curva-180-1wg9f0",
+    "cap-1x8al5",
+    "te-90-1anhye",
+    "te-90-reducao-qgzjvs",
+    "pestana-1tvfn3",
+    "te-45-18d0td",
+    "te-45-reducao-180jph",
+    "reducao-concentrica-1mr2wj",
+    "reducao-excentrica-1h30bp",
+    "niple-concentrico-1ilurb",
+    "niple-excentrico-1sm2ym",
     "des-curva-45-suv783",
     "des-curva-90-v5cc89",
     "des-curva-180-1ymlsk",

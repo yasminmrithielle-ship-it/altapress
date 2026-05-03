@@ -21,18 +21,19 @@ export const CATALOG_IMAGE_ASSETS: Record<string, ImageSourcePropType> = {
   "awwacego-3w4rbi": require("./assets/catalog/valaco/awwacego-3w4rbi.jpg"),
   "awwaliso-17kfel": require("./assets/catalog/valaco/awwaliso-17kfel.jpg"),
   "borboleta-lk4mgn": require("./assets/catalog/valaco/borboleta-lk4mgn.jpg"),
+  "cap-1x8al5": require("./assets/catalog/valaco/cap-1x8al5.jpg"),
   "cego-jkzscu": require("./assets/catalog/valaco/cego-jkzscu.jpg"),
   "cegodin2527-bt-1f9c3g": require("./assets/catalog/valaco/cegodin2527-bt-1f9c3g.jpg"),
   "cegodin2527-e-1idqzd": require("./assets/catalog/valaco/cegodin2527-e-1idqzd.jpg"),
   "cegojisb2220-19bbbm": require("./assets/catalog/valaco/cegojisb2220-19bbbm.jpg"),
+  "cnx-sw-24eq3h": require("./assets/catalog/valaco/cnx-sw-24eq3h.jpg"),
+  "colarbw-1p9m20": require("./assets/catalog/valaco/colarbw-1p9m20.jpg"),
+  "cotovelo-90-r2sk3v": require("./assets/catalog/valaco/cotovelo-90-r2sk3v.jpg"),
   "des-b-cego-1xsx1r": require("./assets/catalog/valaco/des-b-cego-1xsx1r.jpg"),
   "des-b-liso-12g3n2": require("./assets/catalog/valaco/des-b-liso-12g3n2.jpg"),
   "des-b-rsc-y6vzoa": require("./assets/catalog/valaco/des-b-rsc-y6vzoa.jpg"),
   "des-b-so-anlgne": require("./assets/catalog/valaco/des-b-so-anlgne.jpg"),
   "des-cego-1drgkm": require("./assets/catalog/valaco/des-cego-1drgkm.jpg"),
-  "des-colarbw-18momm": require("./assets/catalog/valaco/des-colarbw-18momm.jpg"),
-  "des-curva-45-suv783": require("./assets/catalog/valaco/des-curva-45-suv783.jpg"),
-  "des-curva-90-femea-9wzhuj": require("./assets/catalog/valaco/des-curva-90-femea-9wzhuj.jpg"),
   "des-diafragma-tpa-61xaii": require("./assets/catalog/valaco/des-diafragma-tpa-61xaii.jpg"),
   "des-liso-ien5wq": require("./assets/catalog/valaco/des-liso-ien5wq.jpg"),
   "des-orificio-rsc-13fgq6": require("./assets/catalog/valaco/des-orificio-rsc-13fgq6.jpg"),
@@ -45,8 +46,6 @@ export const CATALOG_IMAGE_ASSETS: Record<string, ImageSourcePropType> = {
   "descarga-6vuakj": require("./assets/catalog/valaco/descarga-6vuakj.jpg"),
   "eliminador-ar-1nvobk": require("./assets/catalog/valaco/eliminador-ar-1nvobk.jpg"),
   "esfera-bip-14lt7w": require("./assets/catalog/valaco/esfera-bip-14lt7w.jpg"),
-  "esfera-mon-400wog-10mc58": require("./assets/catalog/valaco/esfera-mon-400wog-10mc58.jpg"),
-  "esfera-tri-ou25f3": require("./assets/catalog/valaco/esfera-tri-ou25f3.jpg"),
   "esp-sob-encomenda-ujluwa": require("./assets/catalog/valaco/esp-sob-encomenda-ujluwa.jpg"),
   "filtro-cesto-dx1e7w": require("./assets/catalog/valaco/filtro-cesto-dx1e7w.jpg"),
   "filtro-y-flg-g7lsx7": require("./assets/catalog/valaco/filtro-y-flg-g7lsx7.jpg"),
@@ -60,12 +59,17 @@ export const CATALOG_IMAGE_ASSETS: Record<string, ImageSourcePropType> = {
   "lisojis2220-186bpm": require("./assets/catalog/valaco/lisojis2220-186bpm.jpg"),
   "man-utilitarios-1gf5w9": require("./assets/catalog/valaco/man-utilitarios-1gf5w9.jpg"),
   "mangote-ca-ciuowh": require("./assets/catalog/valaco/mangote-ca-ciuowh.jpg"),
+  "orificioso-1ckte0": require("./assets/catalog/valaco/orificioso-1ckte0.jpg"),
+  "orificiown-1egg2z": require("./assets/catalog/valaco/orificiown-1egg2z.jpg"),
   "passagem-reta-bw-1byaqx": require("./assets/catalog/valaco/passagem-reta-bw-1byaqx.jpg"),
+  "prod-esfera-mon-400wog-q4tmk0": require("./assets/catalog/valaco/prod-esfera-mon-400wog-q4tmk0.jpg"),
+  "prod-esfera-tri-mdt71r": require("./assets/catalog/valaco/prod-esfera-tri-mdt71r.jpg"),
   "purg-balde-1vtp01": require("./assets/catalog/valaco/purg-balde-1vtp01.jpg"),
   "purg-bimetalico-ivy2op": require("./assets/catalog/valaco/purg-bimetalico-ivy2op.jpg"),
   "purg-boia-1wpccq": require("./assets/catalog/valaco/purg-boia-1wpccq.jpg"),
   "purg-eletronico-ef8nry": require("./assets/catalog/valaco/purg-eletronico-ef8nry.jpg"),
   "purgador-kla3qf": require("./assets/catalog/valaco/purgador-kla3qf.jpg"),
+  "reducao-1bknkb": require("./assets/catalog/valaco/reducao-1bknkb.jpg"),
   "retencao-passagem-reta-bw-gxqugb": require("./assets/catalog/valaco/retencao-passagem-reta-bw-gxqugb.jpg"),
   "rsc-yv20lg": require("./assets/catalog/valaco/rsc-yv20lg.jpg"),
   "rscdin-2exzu3": require("./assets/catalog/valaco/rscdin-2exzu3.jpg"),
@@ -76,9 +80,10 @@ export const CATALOG_IMAGE_ASSETS: Record<string, ImageSourcePropType> = {
   "sojisb222016k-ruink0": require("./assets/catalog/valaco/sojisb222016k-ruink0.jpg"),
   "sojisb222020k-13on7e": require("./assets/catalog/valaco/sojisb222020k-13on7e.jpg"),
   "sojisb222030k-1id1hm": require("./assets/catalog/valaco/sojisb222030k-1id1hm.jpg"),
+  "solto-1vkh7g": require("./assets/catalog/valaco/solto-1vkh7g.jpg"),
   "soltodin2641-1iiuqf": require("./assets/catalog/valaco/soltodin2641-1iiuqf.jpg"),
   "soltodin2652-1j0g5e": require("./assets/catalog/valaco/soltodin2652-1j0g5e.jpg"),
-  "te-90-sw-vvnqtq": require("./assets/catalog/valaco/te-90-sw-vvnqtq.jpg"),
+  "sw-1004xm": require("./assets/catalog/valaco/sw-1004xm.jpg"),
   "ter-bimetalico-comercial-1s6b9t": require("./assets/catalog/valaco/ter-bimetalico-comercial-1s6b9t.jpg"),
   "ventosa-flg-1xitki": require("./assets/catalog/valaco/ventosa-flg-1xitki.jpg"),
   "wn-11rd9u": require("./assets/catalog/valaco/wn-11rd9u.jpg"),
@@ -149,15 +154,15 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "credit": "Valaco"
   },
   "awwacego-3w4rbi": {
-    "title": "Flange Cego DIN",
+    "title": "Flange Cego AWWA",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwacego.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_AWWA.html",
     "credit": "Valaco"
   },
   "awwaliso-17kfel": {
-    "title": "Flange SO Plano DIN",
+    "title": "Flange SO Plano AWWA",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/awwaliso.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_AWWA.html",
     "credit": "Valaco"
   },
   "borboleta-lk4mgn": {
@@ -166,10 +171,16 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/val_borboleta_wafer.html",
     "credit": "Valaco"
   },
+  "cap-1x8al5": {
+    "title": "Tb",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/cap.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb.html",
+    "credit": "Valaco"
+  },
   "cego-jkzscu": {
-    "title": "Flange Cego JIS",
+    "title": "Flange Cego ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cego.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_ANSI.html",
     "credit": "Valaco"
   },
   "cegodin2527-bt-1f9c3g": {
@@ -188,6 +199,24 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "title": "Flange Cego JISB2220 5K",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/cegoJISB2220.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_JISB2220_5K.html",
+    "credit": "Valaco"
+  },
+  "cnx-sw-24eq3h": {
+    "title": "Ap",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/cnx_sw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap.html",
+    "credit": "Valaco"
+  },
+  "colarbw-1p9m20": {
+    "title": "Colares",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/colarbw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares.html",
+    "credit": "Valaco"
+  },
+  "cotovelo-90-r2sk3v": {
+    "title": "Fm",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/cotovelo_90.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm.html",
     "credit": "Valaco"
   },
   "des-b-cego-1xsx1r": {
@@ -218,24 +247,6 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "title": "Flange Cego ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/des_cego.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_cego_ANSI_150.html",
-    "credit": "Valaco"
-  },
-  "des-colarbw-18momm": {
-    "title": "Colares Bw",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/des_colarbw.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_colares_bw.html",
-    "credit": "Valaco"
-  },
-  "des-curva-45-suv783": {
-    "title": "Tb Curva 45",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_tb/des_curva_45.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_tb_curva_45.html",
-    "credit": "Valaco"
-  },
-  "des-curva-90-femea-9wzhuj": {
-    "title": "Fm Bsp Curva 90 Femea",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_fm/des_curva_90_femea.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_fm_bsp_curva_90_femea.html",
     "credit": "Valaco"
   },
   "des-diafragma-tpa-61xaii": {
@@ -310,18 +321,6 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_bip.html",
     "credit": "Valaco"
   },
-  "esfera-mon-400wog-10mc58": {
-    "title": "Valvula Esfera Mon",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/esfera_mon_400wog.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_mon.html",
-    "credit": "Valaco"
-  },
-  "esfera-tri-ou25f3": {
-    "title": "Valvula Esfera Tri Rscswbw",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/esfera_tri.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_tri_rscswbw.html",
-    "credit": "Valaco"
-  },
   "esp-sob-encomenda-ujluwa": {
     "title": "Flange WN ANSI 150",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/esp_sob_encomenda.jpg",
@@ -371,9 +370,9 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "credit": "Valaco"
   },
   "liso-1n9afm": {
-    "title": "Flange SO Plano JIS",
+    "title": "Flange SO Plano ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/liso.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_plano_ANSI.html",
     "credit": "Valaco"
   },
   "lisodin-1c3bpw": {
@@ -400,10 +399,34 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/val_mangote_ca.html",
     "credit": "Valaco"
   },
+  "orificioso-1ckte0": {
+    "title": "Flange Orificio SO ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/orificioso.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_so_ANSI.html",
+    "credit": "Valaco"
+  },
+  "orificiown-1egg2z": {
+    "title": "Flange Orificio WN ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/orificiown.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_orificio_wn_ANSI.html",
+    "credit": "Valaco"
+  },
   "passagem-reta-bw-1byaqx": {
     "title": "Valvula Passagem Reta",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/passagem_reta_bw.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/val_passagem_reta.html",
+    "credit": "Valaco"
+  },
+  "prod-esfera-mon-400wog-q4tmk0": {
+    "title": "Valvula Esfera",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/prod_esfera_mon_400wog.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/val_esfera.html",
+    "credit": "Valaco"
+  },
+  "prod-esfera-tri-mdt71r": {
+    "title": "Valvula Esfera Tri",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/prod_esfera_tri.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/val_esfera_tri.html",
     "credit": "Valaco"
   },
   "purg-balde-1vtp01": {
@@ -434,6 +457,12 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "title": "Purgador Termodinamico",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/purgador.jpg",
     "pageUrl": "http://www.valaco.com.br/produtos/purg_termodinamico.html",
+    "credit": "Valaco"
+  },
+  "reducao-1bknkb": {
+    "title": "Flange Reducao ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/reducao.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_reducao_ANSI.html",
     "credit": "Valaco"
   },
   "retencao-passagem-reta-bw-gxqugb": {
@@ -467,9 +496,9 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "credit": "Valaco"
   },
   "so-zvqkv4": {
-    "title": "Flange SO JIS",
+    "title": "Flange SO ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/so.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JIS.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_ANSI.html",
     "credit": "Valaco"
   },
   "sojisb2220-6v1kks": {
@@ -496,6 +525,12 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_so_JISB2220_30K.html",
     "credit": "Valaco"
   },
+  "solto-1vkh7g": {
+    "title": "Flange Solto ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/solto.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_ANSI.html",
+    "credit": "Valaco"
+  },
   "soltodin2641-1iiuqf": {
     "title": "Flange Solto DIN2641 PN6",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/soltoDIN2641.jpg",
@@ -508,10 +543,10 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_solto_DIN2652_PN6.html",
     "credit": "Valaco"
   },
-  "te-90-sw-vvnqtq": {
-    "title": "Ap SW",
-    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_ap/te_90_sw.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_ap_sw.html",
+  "sw-1004xm": {
+    "title": "Flange SW ANSI",
+    "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/sw.jpg",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_sw_ANSI.html",
     "credit": "Valaco"
   },
   "ter-bimetalico-comercial-1s6b9t": {
@@ -521,15 +556,15 @@ export const CATALOG_IMAGE_META: Record<string, CatalogImageMeta> = {
     "credit": "Valaco"
   },
   "ventosa-flg-1xitki": {
-    "title": "Acessorios Ventosa Simples",
+    "title": "Acessorios Ventosa",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/ventosa_flg.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/acessorios_ventosa_simples.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/acessorios_ventosa.html",
     "credit": "Valaco"
   },
   "wn-11rd9u": {
-    "title": "Flange WN DIN",
+    "title": "Flange WN ANSI",
     "sourceUrl": "https://www.valaco.com.br/Images/produtos/conexoes_flg/wn.jpg",
-    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_WN_DIN.html",
+    "pageUrl": "http://www.valaco.com.br/produtos/conexoes_flg_wn_ANSI.html",
     "credit": "Valaco"
   },
   "wndin-1jq6eu": {
@@ -557,9 +592,9 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "valvulas-val-borboleta-html": "borboleta-lk4mgn",
   "valvulas-val-descarga-html": "descarga-6vuakj",
   "valvulas-val-diafragma-html": "des-diafragma-tpa-61xaii",
-  "valvulas-val-esfera-html": "esfera-mon-400wog-10mc58",
+  "valvulas-val-esfera-html": "prod-esfera-mon-400wog-q4tmk0",
   "valvulas-val-esfera-bip-html": "esfera-bip-14lt7w",
-  "valvulas-val-esfera-tri-html": "esfera-tri-ou25f3",
+  "valvulas-val-esfera-tri-html": "prod-esfera-tri-mdt71r",
   "valvulas-val-gaveta-html": "067-ephbwf",
   "valvulas-val-globo-html": "globo-afd-1u8pqv",
   "valvulas-val-guilhotina-html": "guilhotina-1tp6d0",
@@ -568,8 +603,8 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "valvulas-val-passagem-reta-html": "passagem-reta-bw-1byaqx",
   "valvulas-val-retencao-html": "retencao-passagem-reta-bw-gxqugb",
   "valvulas-val-sa-brz-html": "037038-1sjl9y",
-  "flanges-conexoes-flg-cego-ANSI-html": "des-cego-1drgkm",
-  "flanges-conexoes-flg-cego-AWWA-html": "awwa-cego-8cl7l7",
+  "flanges-conexoes-flg-cego-ANSI-html": "cego-jkzscu",
+  "flanges-conexoes-flg-cego-AWWA-html": "awwacego-3w4rbi",
   "flanges-conexoes-flg-cego-DIN-html": "awwacego-3w4rbi",
   "flanges-conexoes-flg-cego-JIS-html": "cego-jkzscu",
   "flanges-conexoes-flg-cego-ANSI-150-html": "des-cego-1drgkm",
@@ -596,7 +631,7 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-cego-JISB2220-30K-html": "cegojisb2220-19bbbm",
   "flanges-conexoes-flg-cego-JISB2238-40K-html": "cegojisb2220-19bbbm",
   "flanges-conexoes-flg-cego-JISB2238-63K-html": "cegojisb2220-19bbbm",
-  "flanges-conexoes-flg-wn-ANSI-html": "esp-sob-encomenda-ujluwa",
+  "flanges-conexoes-flg-wn-ANSI-html": "wn-11rd9u",
   "flanges-conexoes-flg-wn-ANSI-150-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-wn-ANSI-300-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-wn-ANSI-600-html": "esp-sob-encomenda-ujluwa",
@@ -615,14 +650,14 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-wn-JISB2220-30K-html": "wnjisb2220-1gnqfs",
   "flanges-conexoes-flg-wn-JISB2238-40K-html": "wnjisb222040k-18rxom",
   "flanges-conexoes-flg-wn-JISB2238-63K-html": "wnjisb222040k-18rxom",
-  "flanges-conexoes-flg-so-ANSI-html": "des-so-1tp7fj",
+  "flanges-conexoes-flg-so-ANSI-html": "so-zvqkv4",
   "flanges-conexoes-flg-so-ANSI-150-html": "des-so-1tp7fj",
   "flanges-conexoes-flg-so-ANSI-300-html": "des-so-1tp7fj",
   "flanges-conexoes-flg-so-ANSI-600-html": "des-b-so-anlgne",
   "flanges-conexoes-flg-so-ANSI-900-html": "des-b-so-anlgne",
   "flanges-conexoes-flg-so-ANSI-1500-html": "des-b-so-anlgne",
   "flanges-conexoes-flg-so-ANSI-2500-html": "des-b-so-anlgne",
-  "flanges-conexoes-flg-so-AWWA-html": "awwa-so-a00919",
+  "flanges-conexoes-flg-so-AWWA-html": "so-zvqkv4",
   "flanges-conexoes-flg-so-AWWA-175-150psi-html": "awwa-so-a00919",
   "flanges-conexoes-flg-so-AWWA-275psi-html": "awwa-so-a00919",
   "flanges-conexoes-flg-so-JIS-html": "so-zvqkv4",
@@ -631,7 +666,7 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-so-JISB2220-16K-html": "sojisb222016k-ruink0",
   "flanges-conexoes-flg-so-JISB2220-20K-html": "sojisb222020k-13on7e",
   "flanges-conexoes-flg-so-JISB2220-30K-html": "sojisb222030k-1id1hm",
-  "flanges-conexoes-flg-sw-ANSI-html": "des-sw-1ttlsa",
+  "flanges-conexoes-flg-sw-ANSI-html": "sw-1004xm",
   "flanges-conexoes-flg-sw-ANSI-150-html": "des-sw-1ttlsa",
   "flanges-conexoes-flg-sw-ANSI-300-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-sw-ANSI-600-html": "esp-sob-encomenda-ujluwa",
@@ -650,7 +685,7 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-rsc-DIN2567-PN25PN40-html": "rscdin-2exzu3",
   "flanges-conexoes-flg-rsc-DIN2568-PN64-html": "rscdinpn64100-obvieo",
   "flanges-conexoes-flg-rsc-DIN2569-PN100-html": "rscdinpn64100-obvieo",
-  "flanges-conexoes-flg-solto-ANSI-html": "des-solto-8pcrs0",
+  "flanges-conexoes-flg-solto-ANSI-html": "solto-1vkh7g",
   "flanges-conexoes-flg-solto-ANSI-150-html": "des-solto-8pcrs0",
   "flanges-conexoes-flg-solto-ANSI-300-html": "des-solto-8pcrs0",
   "flanges-conexoes-flg-solto-ANSI-600-html": "des-solto-8pcrs0",
@@ -664,14 +699,14 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-solto-DIN2653-PN10-html": "soltodin2652-1j0g5e",
   "flanges-conexoes-flg-solto-DIN2655-PN25-html": "soltodin2652-1j0g5e",
   "flanges-conexoes-flg-solto-DIN2656-PN40-html": "soltodin2652-1j0g5e",
-  "flanges-conexoes-flg-so-plano-ANSI-html": "des-liso-ien5wq",
+  "flanges-conexoes-flg-so-plano-ANSI-html": "liso-1n9afm",
   "flanges-conexoes-flg-so-plano-ANSI-150-html": "des-liso-ien5wq",
   "flanges-conexoes-flg-so-plano-ANSI-300-html": "des-liso-ien5wq",
   "flanges-conexoes-flg-so-plano-ANSI-600-html": "des-b-liso-12g3n2",
   "flanges-conexoes-flg-so-plano-ANSI-900-html": "des-b-liso-12g3n2",
   "flanges-conexoes-flg-so-plano-ANSI-1500-html": "des-b-liso-12g3n2",
   "flanges-conexoes-flg-so-plano-ANSI-2500-html": "des-b-liso-12g3n2",
-  "flanges-conexoes-flg-so-plano-AWWA-html": "awwa-liso-1c0vuu",
+  "flanges-conexoes-flg-so-plano-AWWA-html": "awwaliso-17kfel",
   "flanges-conexoes-flg-so-plano-AWWA-86psi-html": "awwa-liso-1c0vuu",
   "flanges-conexoes-flg-so-plano-AWWA-175-150psi-html": "awwa-liso-1c0vuu",
   "flanges-conexoes-flg-so-plano-AWWA-275psi-html": "awwa-liso-1c0vuu",
@@ -687,7 +722,7 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-so-plano-JISB2220-30K-html": "lisojis2220-186bpm",
   "flanges-conexoes-flg-so-plano-JISB2238-40K-html": "lisojis2220-186bpm",
   "flanges-conexoes-flg-so-plano-JISB2238-63K-html": "lisojis2220-186bpm",
-  "flanges-conexoes-flg-orificio-wn-ANSI-html": "esp-sob-encomenda-ujluwa",
+  "flanges-conexoes-flg-orificio-wn-ANSI-html": "orificiown-1egg2z",
   "flanges-conexoes-flg-orificio-wn-ANSI-300-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-orificio-wn-ANSI-600-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-orificio-wn-ANSI-900-html": "esp-sob-encomenda-ujluwa",
@@ -697,16 +732,16 @@ export const CATALOG_PRODUCT_IMAGES: Record<string, string> = {
   "flanges-conexoes-flg-orificio-wn-ANSI-900-rtj-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-orificio-wn-ANSI-1500-rtj-html": "esp-sob-encomenda-ujluwa",
   "flanges-conexoes-flg-orificio-wn-ANSI-2500-rtj-html": "esp-sob-encomenda-ujluwa",
-  "flanges-conexoes-flg-orificio-so-ANSI-html": "des-orificio-so-1knfgg",
+  "flanges-conexoes-flg-orificio-so-ANSI-html": "orificioso-1ckte0",
   "flanges-conexoes-flg-orificio-so-ANSI-300-html": "des-orificio-so-1knfgg",
-  "flanges-conexoes-flg-orificio-rsc-ANSI-html": "des-orificio-rsc-13fgq6",
+  "flanges-conexoes-flg-orificio-rsc-ANSI-html": "orificioso-1ckte0",
   "flanges-conexoes-flg-orificio-rsc-ANSI-300-html": "des-orificio-rsc-13fgq6",
-  "flanges-conexoes-flg-reducao-ANSI-html": "des-reducao-jcwfhe",
+  "flanges-conexoes-flg-reducao-ANSI-html": "reducao-1bknkb",
   "flanges-conexoes-flg-reducao-ANSI-150-2500-html": "des-reducao-jcwfhe",
-  "conexoes-conexoes-ap-html": "te-90-sw-vvnqtq",
-  "conexoes-conexoes-fm-html": "des-curva-90-femea-9wzhuj",
-  "conexoes-conexoes-colares-html": "des-colarbw-18momm",
-  "conexoes-conexoes-tb-html": "des-curva-45-suv783",
+  "conexoes-conexoes-ap-html": "cnx-sw-24eq3h",
+  "conexoes-conexoes-fm-html": "cotovelo-90-r2sk3v",
+  "conexoes-conexoes-colares-html": "colarbw-1p9m20",
+  "conexoes-conexoes-tb-html": "cap-1x8al5",
   "filtros-filtro-cesto-html": "filtro-cesto-dx1e7w",
   "filtros-filtro-y-html": "filtro-y-flg-g7lsx7",
   "purgadores-purg-bimetalico-html": "purg-bimetalico-ivy2op",

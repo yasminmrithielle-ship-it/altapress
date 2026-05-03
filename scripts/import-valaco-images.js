@@ -243,7 +243,7 @@ async function getPagesForItem(item) {
   const baseUrl = productUrl(item.slug);
   const baseHtml = await fetchText(baseUrl);
   const linkedPages = extractLinkedProductPages(baseHtml, item.slug);
-  const pages = linkedPages.length ? linkedPages : [item.slug];
+  const pages = [item.slug, ...linkedPages];
 
   return { baseHtml, pages };
 }
