@@ -1648,36 +1648,19 @@ function CatalogAssetImage({
   resizeMode?: ImageProps['resizeMode'];
   accessibilityLabel?: string;
 }) {
-  const resolvedSource = Image.resolveAssetSource(source);
-
-  if (Platform.OS === 'web' && resolvedSource?.uri) {
-    const WebImage = 'img' as any;
-
-    return (
-      <View
-        style={[style, styles.catalogAssetImageWebFrame]}
-        accessibilityRole="image"
-        accessibilityLabel={accessibilityLabel}
-      >
-        <WebImage
-          alt={accessibilityLabel ?? ''}
-          draggable={false}
-          src={resolvedSource.uri}
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-            objectFit: resizeMode === 'cover' ? 'cover' : 'contain',
-          }}
-        />
-      </View>
-    );
-  }
+  const resolvedSource =
+    Platform.OS === 'web' && typeof Image.resolveAssetSource === 'function'
+      ? Image.resolveAssetSource(source)
+      : null;
+  const safeSource =
+    Platform.OS === 'web' && resolvedSource?.uri
+      ? { uri: resolvedSource.uri }
+      : source;
 
   return (
     <Image
       accessibilityLabel={accessibilityLabel}
-      source={source}
+      source={safeSource}
       style={style}
       resizeMode={resizeMode}
     />
@@ -3034,11 +3017,6 @@ const styles = StyleSheet.create({
   catalogCardImage: {
     width: '100%',
     height: '100%',
-  },
-  catalogAssetImageWebFrame: {
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   catalogCopy: {
     flex: 1,
